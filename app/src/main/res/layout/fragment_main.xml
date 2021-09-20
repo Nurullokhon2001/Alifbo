@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img"
+    tools:context=".MainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                tools:ignore="Suspicious0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:orientation="horizontal"
+                    tools:ignore="Suspicious0dp">
+
+
+                    <LinearLayout
+
+                        android:id="@+id/alphabetlayout2"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/abc"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:text="@string/Alphabet"
+                            android:textAlignment="center"
+                            android:textColor="#78A84D"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/numbers"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/Number"
+                            android:textAlignment="center"
+                            android:textColor="#C64ACA"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:orientation="horizontal"
+                    tools:ignore="Suspicious0dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/words"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/draw"
+                            android:textAlignment="center"
+                            android:textColor="#A5086F"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/phrases"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/Order"
+                            android:textAlignment="center"
+                            android:textColor="#109795"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:orientation="horizontal"
+                    tools:ignore="Suspicious0dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/topic"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/word"
+                            android:textAlignment="center"
+                            android:textColor="#2E551F"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="65dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/verbs"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/searchword"
+                            android:textAlignment="center"
+                            android:textColor="#173D57"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/crafty_girls"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

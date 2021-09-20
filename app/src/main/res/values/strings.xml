@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Алифбо</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Alphabet">Алифбо</string>
+    <string name="Number"> Рақамҳо</string>
+    <string name="word">Калимасозӣ</string>
+    <string name="draw">Расмкашӣ</string>
+    <string name="Units">Бобҳо</string>
+    <string name="Order">Тартиб</string>
+    <string name="speechtext">Cуханрони</string>
+    <string name="foreigntopic">Хориҷӣ</string>
+    <string name="vocabularytopic">луғат</string>
+    <string name="questionstopic">Савол</string>
+    <string name="searchword">Калимаро ёв</string>
+    <string name="speechtotext">Талаффуз</string>
+    <string name="stoptotext">Ором</string>
+    <string name="englishtajik">Тоҷики-Англисӣ</string>
+    <string name="tajikenglish">Англисӣ-Тоҷики</string>
+    <string name="abcdraw">Расмкашӣ</string>
+    <string name="abcgame">Бози</string>
+</resources>
