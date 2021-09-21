@@ -31,7 +31,7 @@ import java.io.FileOutputStream
 class DrawActivity : AppCompatActivity() {
 
     private var mImageButtonCurrentPaint: ImageButton? =
-            null // A variable for current color is picked from color pallet.
+            null// Переменная для текущего цвета выбирается из палитры цветов.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,10 @@ class DrawActivity : AppCompatActivity() {
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
         /**
-         * This is to select the default Image button which is
-         * active and color is already defined in the drawing view class.
-         * As the default color is black so in our color pallet it is on 2 position.
-         * But the array list start position is 0 so the black color is at position 1.
+         * Это делается для выбора кнопки Изображения по умолчанию, которая
+         * активна, а цвет уже определен в классе чертежного вида.
+         * Поскольку цвет по умолчанию черный, поэтому в нашей цветовой палитре он находится на 2 позиции.
+         * Но начальная позиция списка массивов равна 0, поэтому черный цвет находится в позиции 1.
          */
         mImageButtonCurrentPaint = ll_paint_colors[1] as ImageButton
         mImageButtonCurrentPaint!!.setImageDrawable(
@@ -58,13 +58,12 @@ class DrawActivity : AppCompatActivity() {
         }
 
         ib_gallery.setOnClickListener {
-            //Very firstly we will check the app required a storage permission.
-            // So we will add a permission in the Android.xml for storage.
-
-            //First checking if the app is already having the permission
+            //Во-первых, мы проверим, требуется ли приложению разрешение на хранение.
+            // Поэтому мы добавим разрешение в Android.xml для хранения.
+            //Сначала проверьте, есть ли у приложения уже разрешение
             if (isReadStorageAllowed()) {
 
-                // This is for selecting the image from local store or let say from Gallery/Photos.
+                // Это для выбора изображения из местного магазина или, скажем, из галереи/Фотографий.
                 val pickPhoto = Intent(
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -72,42 +71,42 @@ class DrawActivity : AppCompatActivity() {
                 startActivityForResult(pickPhoto, GALLERY)
             } else {
 
-                //If the app don't have storage access permission we will ask for it.
+                //Если у приложения нет разрешения на доступ к хранилищу, мы запросим его.
                 requestStoragePermission()
             }
         }
 
         ib_undo.setOnClickListener {
-            // This is for undo recent stroke.
+            // Это для отмены недавнего удара.
             drawing_view.onClickUndo()
         }
 
         ib_save.setOnClickListener {
 
-            //First checking if the app is already having the permission
+            //Сначала проверьте, есть ли у приложения уже разрешение
             if (isReadStorageAllowed()) {
 
                 BitmapAsyncTask(getBitmapFromView(fl_drawing_view_container)).execute()
             } else {
 
-                //If the app don't have storage access permission we will ask for it.
+                //Если у приложения нет разрешения на доступ к хранилищу, мы запросим его.
                 requestStoragePermission()
             }
         }
     }
 
     /**
-     * This is override method and the method will be called when the user will tap on allow or deny
+     * Это метод переопределения, и метод будет вызван, когда пользователь нажмет "разрешить" или "запретить".
      *
-     * Determines whether the delegate should handle
-     * {@link ActivityCompat#requestPermissions(Activity, String[], int)}, and request
-     * permissions if applicable. If this method returns true, it means that permission
-     * request is successfully handled by the delegate, and platform should not perform any
-     * further requests for permission.
+     * Определяет, должен ли делегат обрабатывать
+     * {@link ActivityCompat#Запросы(Действие, строка[], int)} и запрос
+     * разрешения, если это применимо. Если этот метод возвращает значение true, это означает, что разрешение
+     * запрос успешно обработан делегатом, и платформа не должна выполнять никаких
+     * дальнейших запросов на получение разрешения.
      *
-     * @param activity The target activity.
-     * @param permissions The requested permissions. Must me non-null and not empty.
-     * @param requestCode Application specific request code to match with a result reported to
+     * @param activity Целевая деятельность.
+     * @param permissions Запрошенные разрешения. Должен быть ненулевым и не пустым.
+     * @param requestCode Код запроса конкретного приложения для сопоставления с результатом, сообщенным
      */
     override fun onRequestPermissionsResult(
             requestCode: Int,
@@ -116,21 +115,21 @@ class DrawActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        //Checking the request code of our request
+        //Проверка кода запроса нашего запроса
         if (requestCode == STORAGE_PERMISSION_CODE) {
 
-            //If permission is granted
+            //Если разрешение будет предоставлено
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(
                         this@DrawActivity,
-                        "Permission granted now you can read the storage files.",
+                        "Разрешение предоставлено, теперь вы можете читать файлы хранилища.",
                         Toast.LENGTH_LONG
                 ).show()
             } else {
                 //Displaying another toast if permission is not granted
                 Toast.makeText(
                         this@DrawActivity,
-                        "Oops you just denied the permission.",
+                        "Упс, ты только что отказал в разрешении.",
                         Toast.LENGTH_LONG
                 ).show()
             }
@@ -138,8 +137,8 @@ class DrawActivity : AppCompatActivity() {
     }
 
     /**
-     * This is override method here we get the selected image
-     * based on the code what we have passed for selecting the image.
+     * Это метод переопределения, здесь мы получаем выбранное изображение
+     * на основе кода, который мы передали для выбора изображения.
      */
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -148,17 +147,17 @@ class DrawActivity : AppCompatActivity() {
                 try {
                     if (data!!.data != null) {
 
-                        // Here if the user selects the image from local storage make the image view visible.
-                        // By Default we will make it VISIBILITY as GONE.
+                        // Здесь, если пользователь выбирает изображение из локального хранилища, сделайте видимым изображение.
+                        // По умолчанию мы сделаем его ВИДИМЫМ как ИСЧЕЗНУВШИЙ.
                         iv_background.visibility = View.VISIBLE
 
-                        // Set the selected image to the backgroung view.
+                        // Установите выбранное изображение в фоновом режиме.
                         iv_background.setImageURI(data.data)
                     } else {
-                        // If the selected image is not valid. Or not selected.
+                        // Если выбранное изображение недопустимо. Или не выбран.
                         Toast.makeText(
                                 this@DrawActivity,
-                                "Error in parsing the image or its corrupted.",
+                                "Ошибка при анализе изображения или его повреждение.",
                                 Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -170,12 +169,12 @@ class DrawActivity : AppCompatActivity() {
     }
 
     /**
-     * Method is used to launch the dialog to select different brush sizes.
+     * Метод используется для запуска диалогового окна для выбора различных размеров кисти.
      */
     private fun showBrushSizeChooserDialog() {
         val brushDialog = Dialog(this)
         brushDialog.setContentView(R.layout.dialog_brush_size)
-        brushDialog.setTitle("Brush size :")
+        brushDialog.setTitle("Размер кисти :")
         val smallBtn = brushDialog.ib_small_brush
         smallBtn.setOnClickListener(View.OnClickListener {
             drawing_view.setSizeForBrush(10.toFloat())
@@ -196,20 +195,20 @@ class DrawActivity : AppCompatActivity() {
     }
 
     /**
-     * Method is called when color is clicked from pallet_normal.
+     * Метод вызывается, когда цвет выбирается из pallet_normal.
      *
-     * @param view ImageButton on which click took place.
+     * @param view ImageButton по которому произошел щелчок.
      */
     fun paintClicked(view: View) {
         if (view !== mImageButtonCurrentPaint) {
-            // Update the color
+            // Обновите цвет
             val imageButton = view as ImageButton
-            // Here the tag is used for swaping the current color with previous color.
-            // The tag stores the selected view
+            // Здесь тег используется для замены текущего цвета предыдущим цветом.
+            // В теге хранится выбранный вид
             val colorTag = imageButton.tag.toString()
-            // The color is set as per the selected tag here.
+            // Цвет задается в соответствии с выбранным тегом здесь.
             drawing_view.setColor(colorTag)
-            // Swap the backgrounds for last active and currently active image button.
+            // Поменяйте местами фон для последней активной и текущей активной кнопки изображения.
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
             mImageButtonCurrentPaint!!.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -218,32 +217,32 @@ class DrawActivity : AppCompatActivity() {
                     )
             )
 
-            //Current view is updated with selected view in the form of ImageButton.
+            //Текущее представление обновляется выбранным представлением в виде кнопки ImageButton.
             mImageButtonCurrentPaint = view
         }
     }
 
     /**
-     * Requesting permission
+     * Запрос разрешения
      */
     private fun requestStoragePermission() {
 
         /**
-         * Gets whether you should show UI with rationale for requesting a permission.
-         * You should do this only if you do not have the permission and the context in
-         * which the permission is requested does not clearly communicate to the user
-         * what would be the benefit from granting this permission.
+         * Получает, следует ли показывать пользовательский интерфейс с обоснованием запроса разрешения.
+         * Вы должны делать это только в том случае, если у вас нет разрешения и контекста в
+         * о котором запрашивается разрешение, пользователю четко не сообщается
+         * какова была бы польза от предоставления этого разрешения.
          * <p>
-         * For example, if you write a camera app, requesting the camera permission
-         * would be expected by the user and no rationale for why it is requested is
-         * needed. If however, the app needs location for tagging photos then a non-tech
-         * savvy user may wonder how location is related to taking photos. In this case
-         * you may choose to show UI with rationale of requesting this permission.
+         * Например, если вы пишете приложение для камеры, запрашивая разрешение камеры
+         * будет ожидаться пользователем, и не требуется никакого обоснования того, почему он запрашивается
+         *. Если, однако, приложению требуется местоположение для пометки фотографий, то нетехнологичный
+         * опытный пользователь может задаться вопросом, как местоположение связано с фотографированием. В этом случае
+         * вы можете выбрать отображение пользовательского интерфейса с обоснованием запроса этого разрешения.
          * </p>
          *
-         * @param activity The target activity.
-         * @param permission A permission your app wants to request.
-         * @return Whether you can show permission rationale UI.
+         * @param activity Целевая деятельность.
+         * @param permission Разрешение, которое ваше приложение хочет запросить.
+         * @return Можете ли вы показать пользовательский интерфейс с обоснованием разрешений.
          *
          */
         if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -254,17 +253,17 @@ class DrawActivity : AppCompatActivity() {
                         ).toString()
                 )
         ) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
+            //Если пользователь ранее отказал в разрешении, ваш код попадет в этот блок
+            //Здесь вы можете объяснить, зачем вам нужно это разрешение
+            //Объясните здесь, зачем вам нужно это разрешение
         }
 
         /**
-         * Requests permissions to be granted to this application. These permissions
-         * must be requested in your manifest, otherwise they will not be granted to your app.
+         * Запрашивает разрешения, которые должны быть предоставлены этому приложению. Эти разрешения
+         * должны быть запрошены в вашем манифесте, в противном случае они не будут предоставлены вашему приложению.
          */
 
-        //And finally ask for the permission
+        //И, наконец, попросите разрешения
         ActivityCompat.requestPermissions(
                 this, arrayOf(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -275,15 +274,15 @@ class DrawActivity : AppCompatActivity() {
     }
 
     /**
-     * We are calling this method to check the permission status
+     * Мы вызываем этот метод, чтобы проверить статус разрешения
      */
     private fun isReadStorageAllowed(): Boolean {
         //Getting the permission status
         // Here the checkSelfPermission is
         /**
-         * Determine whether <em>you</em> have been granted a particular permission.
+         * Определите, было ли <em>вам</em> предоставлено определенное разрешение.
          *
-         * @param permission The name of the permission being checked.
+         * @param permission Имя проверяемого разрешения.
          *
          */
         val result = ContextCompat.checkSelfPermission(
@@ -292,59 +291,59 @@ class DrawActivity : AppCompatActivity() {
 
         /**
          *
-         * @return {@link android.content.pm.PackageManager#PERMISSION_GRANTED} if you have the
-         * permission, or {@link android.content.pm.PackageManager#PERMISSION_DENIED} if not.
+         * @return {@link android.content.pm.PackageManager#PERMISSION_GRANTED} если у вас есть
+         *разрешения, или {@link android.content.pm.PackageManager#PERMISSION_DENIED} если нет.
          *
          */
-        //If permission is granted returning true and If permission is not granted returning false
+        //Если разрешение предоставлено, возвращает значение true, а если разрешение не предоставлено, возвращает значение false
         return result == PackageManager.PERMISSION_GRANTED
     }
 
     /**
-     * Create bitmap from view and returns it
+     * Создайте растровое изображение из представления и верните его
      */
     private fun getBitmapFromView(view: View): Bitmap {
 
-        //Define a bitmap with the same size as the view.
-        // CreateBitmap : Returns a mutable bitmap with the specified width and height
+        //Определите растровое изображение того же размера, что и вид.
+        // CreateBitmap : Возвращает изменяемое растровое изображение с заданными шириной и высотой
         val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        //Bind a canvas to it
+        //Привяжите к нему холст
         val canvas = Canvas(returnedBitmap)
-        //Get the view's background
+        //Получить фон представления
         val bgDrawable = view.background
         if (bgDrawable != null) {
-            //has background drawable, then draw it on the canvas
+            //имеет возможность рисования фона, затем нарисуйте его на холсте
             bgDrawable.draw(canvas)
         } else {
-            //does not have background drawable, then draw white background on the canvas
+            //не имеет рисоваемого фона, затем нарисуйте белый фон на холсте
             canvas.drawColor(Color.WHITE)
         }
-        // draw the view on the canvas
+        // нарисуйте вид на холсте
         view.draw(canvas)
-        //return the bitmap
+        //верните растровое изображение
         return returnedBitmap
     }
 
     /**
-     * “A nested class marked as inner can access the members of its outer class.
-     * Inner classes carry a reference to an object of an outer class:”
-     * source: https://kotlinlang.org/docs/reference/nested-classes.html
+     * “Вложенный класс, помеченный как внутренний, может получить доступ к членам своего внешнего класса.
+     * Внутренние классы содержат ссылку на объект внешнего класса:”
+     * источник: https://kotlinlang.org/docs/reference/nested-classes.html
      *
-     * This is the background class is used to save the edited image of user in form of bitmap to the local storage.
+     * Это класс фона, используемый для сохранения отредактированного изображения пользователя в виде растрового изображения в локальном хранилище.
      *
-     * For Background we have used the AsyncTask
+     * Для фона мы использовали AsyncTask
      *
-     * Asynctask : Creates a new asynchronous task. This constructor must be invoked on the UI thread.
+     * Asynctask : Создает новую асинхронную задачу. Этот конструктор должен быть вызван в потоке пользовательского интерфейса.
      */
     @SuppressLint("StaticFieldLeak")
     private inner class BitmapAsyncTask(val mBitmap: Bitmap?) :
             AsyncTask<Any, Void, String>() {
 
         /**
-         * ProgressDialog is a modal dialog, which prevents the user from interacting with the app.
+         * ProgressDialog-это модальный диалог, который запрещает пользователю взаимодействовать с приложением.
          *
-         * The progress dialog in newer versions is deprecated so we will create a custom progress dialog later on.
-         * This is just an idea to use progress dialog.
+         * Диалоговое окно прогресса в более новых версиях устарело, поэтому мы создадим настраиваемое диалоговое окно прогресса позже.
+         * Это просто идея использовать диалоговое окно прогресса.
          */
 
         @Suppress("DEPRECATION")
@@ -363,42 +362,40 @@ class DrawActivity : AppCompatActivity() {
             if (mBitmap != null) {
 
                 try {
-                    val bytes = ByteArrayOutputStream() // Creates a new byte array output stream.
-                    // The buffer capacity is initially 32 bytes, though its size increases if necessary.
-
+                    val bytes = ByteArrayOutputStream() // Создает новый поток вывода массива байтов.
+                    // Емкость буфера изначально составляет 32 байта, хотя при необходимости его размер увеличивается.
                     mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
                     /**
-                     * Write a compressed version of the bitmap to the specified outputstream.
-                     * If this returns true, the bitmap can be reconstructed by passing a
-                     * corresponding inputstream to BitmapFactory.decodeStream(). Note: not
-                     * all Formats support all bitmap configs directly, so it is possible that
-                     * the returned bitmap from BitmapFactory could be in a different bitdepth,
-                     * and/or may have lost per-pixel alpha (e.g. JPEG only supports opaque
-                     * pixels).
+                     * Запишите сжатую версию растрового изображения в указанный выходной поток.
+                     * Если это возвращает значение true, растровое изображение можно восстановить, передав
+                     * соответствующий входной поток для BitmapFactory.decodeStream(). Примечание: не
+                     * все форматы поддерживают все конфигурации растровых изображений напрямую, поэтому возможно, что
+                     * возвращенное растровое изображение из BitmapFactory может иметь другую глубину
+                    в битах * и/или может быть потеряно альфа-изображение на пиксель (например, JPEG поддерживает только непрозрачное
+                     * пикселей).
                      *
-                     * @param format   The format of the compressed image
-                     * @param quality  Hint to the compressor, 0-100. 0 meaning compress for
-                     *                 small size, 100 meaning compress for max quality. Some
-                     *                 formats, like PNG which is lossless, will ignore the
-                     *                 quality setting
-                     * @param stream   The outputstream to write the compressed data.
-                     * @return true if successfully compressed to the specified stream.
+                     * @param format  Формат сжатого изображения
+                     * @param quality  Подсказка компрессору, 0-100, 0 означает сжатие для
+                     * малый размер, 100% сжатие для максимального качества. Некоторые
+                     * форматы, такие как PNG без потерь, будут игнорировать параметр
+                     * качество
+                     * @param stream  Выходной поток для записи сжатых данных.
+                     * @return значение true, если успешно сжато в указанный поток.
                      */
 
                     val f = File(
                             externalCacheDir!!.absoluteFile.toString()
                                     + File.separator + "KidDrawingApp_" + System.currentTimeMillis() / 1000 + ".jpg"
                     )
-                    // Here the Environment : Provides access to environment variables.
-                    // getExternalStorageDirectory : returns the primary shared/external storage directory.
-                    // absoluteFile : Returns the absolute form of this abstract pathname.
-                    // File.separator : The system-dependent default name-separator character. This string contains a single character.
-
+                    // Здесь Среда : Предоставляет доступ к переменным среды.
+                    // getExternalStorageDirectory : возвращает основной каталог общего/внешнего хранилища.
+                    // absoluteFile : Возвращает абсолютную форму этого абстрактного пути.
+                    // File.separator : Зависящий от системы символ-разделитель имени по умолчанию. Эта строка содержит один символ.
                     val fo =
-                            FileOutputStream(f) // Creates a file output stream to write to the file represented by the specified object.
-                    fo.write(bytes.toByteArray()) // Writes bytes from the specified byte array to this file output stream.
-                    fo.close() // Closes this file output stream and releases any system resources associated with this stream. This file output stream may no longer be used for writing bytes.
-                    result = f.absolutePath // The file absolute path is return as a result.
+                            FileOutputStream(f) // Создает поток вывода файла для записи в файл, представленный указанным объектом.
+                    fo.write(bytes.toByteArray()) // Записывает байты из указанного массива байтов в этот поток вывода файла.
+                    fo.close() //Закрывает это поток вывода файла и освобождает любые системные ресурсы, связанные с этим потоком. Этот поток вывода файла больше не может использоваться для записи байтов.
+                    result = f.absolutePath // В результате возвращается абсолютный путь к файлу.
                 } catch (e: Exception) {
                     result = ""
                     e.printStackTrace()
@@ -415,69 +412,68 @@ class DrawActivity : AppCompatActivity() {
             if (!result.isEmpty()) {
                 Toast.makeText(
                         this@DrawActivity,
-                        "File saved successfully :$result",
+                        "Файл успешно сохранен:$result",
                         Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Toast.makeText(
                         this@DrawActivity,
-                        "Something went wrong while saving the file.",
+                        "Что-то пошло не так при сохранении файла.",
                         Toast.LENGTH_SHORT
                 ).show()
             }
 
             // TODO (Step 1 - Sharing the downloaded Image file)
-            // START
+            // НАЧАТЬ
 
-            /*MediaScannerConnection provides a way for applications to pass a
-            newly created or downloaded media file to the media scanner service.
-            The media scanner service will read metadata from the file and add
-            the file to the media content provider.
-            The MediaScannerConnectionClient provides an interface for the
-            media scanner service to return the Uri for a newly scanned file
-            to the client of the MediaScannerConnection class.*/
+            /*MediaScannerConnection предоставляет приложениям возможность передавать
+           недавно созданный или загруженный медиафайл в службу сканирования мультимедиа.
+            Служба сканирования мультимедиа считает метаданные из файла и добавит
+           файл поставщику мультимедийного контента.
+            MediaScannerConnectionClient предоставляет
+           службе сканирования мультимедиа интерфейс для возврата Uri для только что отсканированного файла
+           клиенту класса MediaScannerConnection.*/
 
-            /*scanFile is used to scan the file when the connection is established with MediaScanner.*/
-            MediaScannerConnection.scanFile(
+            /*scanFile используется для сканирования файла при установлении соединения с MediaScanner.*/            MediaScannerConnection.scanFile(
                     this@DrawActivity, arrayOf(result), null
             ) { path, uri ->
-                // This is used for sharing the image after it has being stored in the storage.
+                // Это используется для совместного использования изображения после того, как оно было сохранено в хранилище.
                     val shareIntent = Intent()
                     shareIntent.action = Intent.ACTION_SEND
                     shareIntent.putExtra(
                             Intent.EXTRA_STREAM,
                             uri
-                    ) // A content: URI holding a stream of data associated with the Intent, used to supply the data being sent.
+                    ) // Содержимое: URI, содержащий поток данных, связанных с Намерением, используемый для предоставления отправляемых данных.
                     shareIntent.type =
-                            "image/jpeg" // The MIME type of the data being handled by this intent.
+                            "image/jpeg" // Тип MIME данных, обрабатываемых этим намерением.
                     startActivity(
                             Intent.createChooser(
                                     shareIntent,
                                     "Share"
                             )
-                    )// Activity Action: Display an activity chooser,
-                    // allowing the user to pick what they want to before proceeding.
-                    // This can be used as an alternative to the standard activity picker
-                    // that is displayed by the system when you try to start an activity with multiple possible matches,
-                    // with these differences in behavior:
+                    )// Действие действия: Отображение средства выбора действия,
+                // позволяет пользователю выбрать то, что он хочет, прежде чем продолжить.
+                // Это может быть использовано в качестве альтернативы стандартному средству выбора действий
+                // это отображается системой при попытке начать действие с несколькими возможными совпадениями,
+// с этими различиями в поведении:
             }
-            // END
+            // КОНЕЦ
         }
 
         /**
-         * This function is used to show the progress dialog with the title and message to user.
+         * Эта функция используется для отображения диалога выполнения с заголовком и сообщением пользователю.
          */
         private fun showProgressDialog() {
             @Suppress("DEPRECATION")
             mDialog = ProgressDialog.show(
                     this@DrawActivity,
                     "",
-                    "Saving your image..."
+                    "Сохранение вашего изображения..."
             )
         }
 
         /**
-         * This function is used to dismiss the progress dialog if it is visible to user.
+         * Эта функция используется для закрытия диалога выполнения, если он виден пользователю.
          */
         private fun cancelProgressDialog() {
             if (mDialog != null) {
@@ -490,13 +486,13 @@ class DrawActivity : AppCompatActivity() {
     companion object {
 
         /**
-         * Permission code that will be checked in the method onRequestPermissionsResult
+         * Код разрешения, который будет проверен в методе onRequestPermissionsResult
          *
-         * For more Detail visit : https://developer.android.com/training/permissions/requesting#kotlin
+         * Для получения более подробной информации посетите : https://developer.android.com/training/permissions/requesting#kotlin
          */
         private const val STORAGE_PERMISSION_CODE = 1
 
-        // This is to identify the selection of image from Gallery.
+        // Это делается для определения выбора изображения из галереи.
         private const val GALLERY = 2
     }
 }
