@@ -12,7 +12,7 @@ import com.example.tajikenglish.Alphabet.AlphabetActivity
 
 class MainFragment : Fragment() {
     lateinit var  alphabetFragment : LinearLayout
-//   lateinit var  topicfragment : LinearLayout
+   lateinit var  drawview : LinearLayout
 //    lateinit var  numberFragment : LinearLayout
 //    lateinit var  unitFragment : LinearLayout
 //    lateinit var wordsFragment: LinearLayout
@@ -30,6 +30,11 @@ class MainFragment : Fragment() {
         alphabetFragment=view.findViewById(R.id.alphabetlayout2)
         alphabetFragment.setOnClickListener {
             val intent = Intent(context,AlphabetActivity::class.java)
+            startActivity(intent)
+        }
+        drawview=view.findViewById(R.id.DrawView)
+        drawview.setOnClickListener {
+            val intent = Intent(context,DrawActivity::class.java)
             startActivity(intent)
         }
         return view
