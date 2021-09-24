@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:viewBindingIgnore="true" >
     tools:context=".DrawActivity">
+    <LinearLayout
+        android:id="@+id/alphabet_action_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        <ImageButton
+        android:id="@+id/alphabet_gallery"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="image"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_gallery" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fl_drawing_view_container"
@@ -17,16 +45,10 @@
         app:layout_constraintBottom_toTopOf="@+id/ll_paint_colors"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/alphabet_action_buttons"
+        >
 
-        <!-- In FrameLayout the component which are
-       added below are in foreground and added above are in Background.-->
-        <ImageView
-            android:id="@+id/iv_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="image"
-            android:scaleType="centerCrop" />
+
 
         <com.kidsdrawingapp.DrawingView
             android:id="@+id/drawing_view"
@@ -136,14 +158,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <ImageButton
-            android:id="@+id/ib_gallery"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:contentDescription="image"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_gallery" />
+
 
         <ImageButton
             android:id="@+id/ib_undo"

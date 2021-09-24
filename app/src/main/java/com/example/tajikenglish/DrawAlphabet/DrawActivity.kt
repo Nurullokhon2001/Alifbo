@@ -14,7 +14,9 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,14 +30,17 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
-class DrawActivity : AppCompatActivity() {
+class DrawActivity : AppCompatActivity(),View.OnClickListener {
 
     private var mImageButtonCurrentPaint: ImageButton? =
             null// Переменная для текущего цвета выбирается из палитры цветов.
+    lateinit var Abutton : ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
+        Abutton = findViewById(R.id.alphabet_gallery)
+        Abutton.setOnClickListener(this)
 
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
@@ -57,24 +62,7 @@ class DrawActivity : AppCompatActivity() {
             showBrushSizeChooserDialog()
         }
 
-        ib_gallery.setOnClickListener {
-            //Во-первых, мы проверим, требуется ли приложению разрешение на хранение.
-            // Поэтому мы добавим разрешение в Android.xml для хранения.
-            //Сначала проверьте, есть ли у приложения уже разрешение
-            if (isReadStorageAllowed()) {
 
-                // Это для выбора изображения из местного магазина или, скажем, из галереи/Фотографий.
-                val pickPhoto = Intent(
-                        Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                startActivityForResult(pickPhoto, GALLERY)
-            } else {
-
-                //Если у приложения нет разрешения на доступ к хранилищу, мы запросим его.
-                requestStoragePermission()
-            }
-        }
 
         ib_undo.setOnClickListener {
             // Это для отмены недавнего удара.
@@ -140,33 +128,7 @@ class DrawActivity : AppCompatActivity() {
      * Это метод переопределения, здесь мы получаем выбранное изображение
      * на основе кода, который мы передали для выбора изображения.
      */
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == GALLERY) {
-                try {
-                    if (data!!.data != null) {
 
-                        // Здесь, если пользователь выбирает изображение из локального хранилища, сделайте видимым изображение.
-                        // По умолчанию мы сделаем его ВИДИМЫМ как ИСЧЕЗНУВШИЙ.
-                        iv_background.visibility = View.VISIBLE
-
-                        // Установите выбранное изображение в фоновом режиме.
-                        iv_background.setImageURI(data.data)
-                    } else {
-                        // Если выбранное изображение недопустимо. Или не выбран.
-                        Toast.makeText(
-                                this@DrawActivity,
-                                "Ошибка при анализе изображения или его повреждение.",
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-    }
 
     /**
      * Метод используется для запуска диалогового окна для выбора различных размеров кисти.
@@ -494,5 +456,14 @@ class DrawActivity : AppCompatActivity() {
 
         // Это делается для определения выбора изображения из галереи.
         private const val GALLERY = 2
+    }
+
+    override fun onClick(v: View?) {
+        if (v != null ){
+            var background: com.kidsdrawingapp.DrawingView = findViewById(R.id.drawing_view)
+            when(v.id){
+                R.id.alphabet_gallery->background.setBackgroundResource(R.drawable.abc)
+            }
+        }
     }
 }
