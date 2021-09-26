@@ -22,6 +22,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.tajikenglish.DrawAlphabet.vm.DrawViewModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.activity_draw.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
@@ -35,12 +38,15 @@ class DrawActivity : AppCompatActivity(),View.OnClickListener {
     private var mImageButtonCurrentPaint: ImageButton? =
             null// Переменная для текущего цвета выбирается из палитры цветов.
     lateinit var Abutton : ImageButton
+    private lateinit var viewModel: DrawViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
         Abutton = findViewById(R.id.alphabet_gallery)
         Abutton.setOnClickListener(this)
+        viewModel = ViewModelProvider(this).get(DrawViewModel::class.java)
 
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
@@ -462,7 +468,10 @@ class DrawActivity : AppCompatActivity(),View.OnClickListener {
         if (v != null ){
             var background: com.kidsdrawingapp.DrawingView = findViewById(R.id.drawing_view)
             when(v.id){
-                R.id.alphabet_gallery->background.setBackgroundResource(R.drawable.abc)
+                R.id.alphabet_gallery->viewModel.fetchDictionaries().observe(this, Observer {
+                    val aaaa = it[0].image
+                    Toast.makeText(this, "$aaaa", Toast.LENGTH_SHORT).show()
+                })
             }
         }
     }
