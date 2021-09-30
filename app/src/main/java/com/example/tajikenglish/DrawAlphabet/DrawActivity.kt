@@ -1,7 +1,6 @@
 package com.example.tajikenglish
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
@@ -12,7 +11,6 @@ import android.graphics.Color
 import android.media.MediaScannerConnection
 import android.os.AsyncTask
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
@@ -20,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import com.example.tajikenglish.R
+
 import kotlinx.android.synthetic.main.activity_draw.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 
@@ -33,9 +31,14 @@ class DrawActivity : AppCompatActivity() {
     private var mImageButtonCurrentPaint: ImageButton? =
             null// Переменная для текущего цвета выбирается из палитры цветов.
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetButtonDrawFragment())
+            .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetImageFragment())
+            .commit()
 
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
@@ -57,24 +60,7 @@ class DrawActivity : AppCompatActivity() {
             showBrushSizeChooserDialog()
         }
 
-        ib_gallery.setOnClickListener {
-            //Во-первых, мы проверим, требуется ли приложению разрешение на хранение.
-            // Поэтому мы добавим разрешение в Android.xml для хранения.
-            //Сначала проверьте, есть ли у приложения уже разрешение
-            if (isReadStorageAllowed()) {
 
-                // Это для выбора изображения из местного магазина или, скажем, из галереи/Фотографий.
-                val pickPhoto = Intent(
-                        Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                startActivityForResult(pickPhoto, GALLERY)
-            } else {
-
-                //Если у приложения нет разрешения на доступ к хранилищу, мы запросим его.
-                requestStoragePermission()
-            }
-        }
 
         ib_undo.setOnClickListener {
             // Это для отмены недавнего удара.
@@ -140,33 +126,7 @@ class DrawActivity : AppCompatActivity() {
      * Это метод переопределения, здесь мы получаем выбранное изображение
      * на основе кода, который мы передали для выбора изображения.
      */
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == GALLERY) {
-                try {
-                    if (data!!.data != null) {
 
-                        // Здесь, если пользователь выбирает изображение из локального хранилища, сделайте видимым изображение.
-                        // По умолчанию мы сделаем его ВИДИМЫМ как ИСЧЕЗНУВШИЙ.
-                        iv_background.visibility = View.VISIBLE
-
-                        // Установите выбранное изображение в фоновом режиме.
-                        iv_background.setImageURI(data.data)
-                    } else {
-                        // Если выбранное изображение недопустимо. Или не выбран.
-                        Toast.makeText(
-                                this@DrawActivity,
-                                "Ошибка при анализе изображения или его повреждение.",
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-    }
 
     /**
      * Метод используется для запуска диалогового окна для выбора различных размеров кисти.
@@ -495,4 +455,6 @@ class DrawActivity : AppCompatActivity() {
         // Это делается для определения выбора изображения из галереи.
         private const val GALLERY = 2
     }
-}
+
+
+    }
