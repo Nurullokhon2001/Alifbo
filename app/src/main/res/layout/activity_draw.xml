@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:viewBindingIgnore="true" >
-    tools:context=".DrawActivity">
+    tools:viewBindingIgnore="true"
+    android:backgroundTint="#e8f3f5"
+    android:background="#e8f3f5"
+    >
+
     <LinearLayout
+        android:backgroundTint="#e8f3f5"
+        android:background="#e8f3f5"
         android:id="@+id/alphabet_action_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,53 +21,57 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         >
-        <HorizontalScrollView
+        <androidx.fragment.app.FragmentContainerView
+            android:backgroundTint="#e8f3f5"
+            android:background="#e8f3f5"
+            android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-        <ImageButton
-        android:id="@+id/alphabet_gallery"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:contentDescription="image"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_gallery" />
-            </LinearLayout>
-        </HorizontalScrollView>
+            android:layout_height="150dp"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment"
+            />
 
     </LinearLayout>
 
     <FrameLayout
+        android:backgroundTint="#e8f3f5"
         android:id="@+id/fl_drawing_view_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="5dp"
         android:background="@drawable/background_drawing_view_layout"
-        android:padding="1dp"
         app:layout_constraintBottom_toTopOf="@+id/ll_paint_colors"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alphabet_action_buttons"
         >
-        <ImageView
-            android:id="@+id/alphabetImage"
+        <androidx.fragment.app.FragmentContainerView
+
+            android:layout_below="@id/fragmentContainer"
+            android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentContainer" />
 
-            />
+
 
 
         <com.kidsdrawingapp.DrawingView
+
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#80FFFFFF" />
+           />
     </FrameLayout>
 
     <LinearLayout
+        android:backgroundTint="#e8f3f5"
+        android:background="#e8f3f5"
         android:id="@+id/ll_paint_colors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,6 +163,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:backgroundTint="#e8f3f5"
+        android:background="#e8f3f5"
         android:id="@+id/ll_action_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,7 +1,6 @@
 package com.example.tajikenglish
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
@@ -12,20 +11,14 @@ import android.graphics.Color
 import android.media.MediaScannerConnection
 import android.os.AsyncTask
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.tajikenglish.DrawAlphabet.vm.DrawViewModel
-import com.example.tajikenglish.R
+
 import kotlinx.android.synthetic.main.activity_draw.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 
@@ -33,20 +26,19 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
-class DrawActivity : AppCompatActivity(),View.OnClickListener {
+class DrawActivity : AppCompatActivity() {
 
     private var mImageButtonCurrentPaint: ImageButton? =
             null// Переменная для текущего цвета выбирается из палитры цветов.
-    lateinit var Abutton : ImageButton
-    private lateinit var viewModel: DrawViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
-        Abutton = findViewById(R.id.alphabet_gallery)
-        Abutton.setOnClickListener(this)
-        viewModel = ViewModelProvider(this).get(DrawViewModel::class.java)
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetButtonDrawFragment())
+            .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetImageFragment())
+            .commit()
 
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
@@ -464,15 +456,5 @@ class DrawActivity : AppCompatActivity(),View.OnClickListener {
         private const val GALLERY = 2
     }
 
-    override fun onClick(v: View?) {
-        if (v != null ){
-            var background: com.kidsdrawingapp.DrawingView = findViewById(R.id.drawing_view)
-            when(v.id){
-                R.id.alphabet_gallery->viewModel.fetchDictionaries().observe(this, Observer {
-                    val aaaa = it[0].image
-                    Toast.makeText(this, "$aaaa", Toast.LENGTH_SHORT).show()
-                })
-            }
-        }
+
     }
-}

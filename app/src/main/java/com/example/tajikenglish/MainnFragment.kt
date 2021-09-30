@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import com.example.tajikenglish.Alphabet.AlphabetActivity
 
 
-class MainFragment : Fragment() {
+class MainnFragment : Fragment() {
     lateinit var  alphabetFragment : LinearLayout
    lateinit var  drawview : LinearLayout
 //    lateinit var  numberFragment : LinearLayout
@@ -26,7 +26,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_main, container, false)
+        val view =  inflater.inflate(R.layout.fragment_mainn, container, false)
         alphabetFragment=view.findViewById(R.id.alphabetlayout2)
         alphabetFragment.setOnClickListener {
             val intent = Intent(context,AlphabetActivity::class.java)
