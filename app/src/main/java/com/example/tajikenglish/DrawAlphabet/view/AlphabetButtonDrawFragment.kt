@@ -41,7 +41,7 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
         v?.let {
             val alphabet: AlphabetModel = it.getTag() as AlphabetModel
 
-requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragment,AlphabetImageFragment.newInstance(alphabet)).commit()
+requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragment,AlphabetDrawFragment.newInstance(alphabet)).commit()
 
 
         }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="50dp"
+    android:minHeight="50dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="8dp"
+    android:layout_margin="-5dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:backgroundTint="#00BCD4"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="5dp"
+        >
+
+        <TextView
+            android:id="@+id/alpabetView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/col"
+            android:textSize="120dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/wordtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:foreground="?selectableItemBackground"
+            android:padding="4dp"
+            android:textColor="@color/col"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/alpabetView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:foreground="?selectableItemBackground"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

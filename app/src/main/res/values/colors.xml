@@ -12,7 +12,7 @@
     <color name="unchecked">#575552</color>
     <color name="button">#469AA3</color>
     <color name="colorPrimary">#6200EE</color>
-
+    <color name="col">#49AAA7</color>
     <color name="colorPrimaryDark">#3700B3</color>
 
     <color name="colorAccent">#03DAC5</color>
