@@ -1,4 +1,4 @@
-package com.example.tajikenglish.Alphabet
+package com.example.tajikenglish.Number
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ import com.example.tajikenglish.MainActivity
 import com.example.tajikenglish.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class AlphabetActivity : AppCompatActivity() {
+class NumberActivity : AppCompatActivity() {
     lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,30 +27,30 @@ class AlphabetActivity : AppCompatActivity() {
             // поместили фрагмент SettingsFragment() в переменную fragment
         }
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, Number2Fragment())
             .commit()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, NumberFragment())
             .commit()
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.abclearn -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, Number2Fragment())
                         .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, NumberFragment())
                         .commit()
                 }
                 R.id.abcdraw->{
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, HamsadoMainCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, Toq2Fragment())
                         .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HamsadoCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, ToqFragment())
                         .commit()
                 }
                 R.id.abcgame->{
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,SadonokMainCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,Juft2Fragment())
                         .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, SadonokCviewFragment())
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, JuftFragment())
                         .commit()
                 }
             }

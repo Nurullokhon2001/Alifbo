@@ -8,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.example.tajikenglish.Alphabet.AlphabetActivity
+import com.example.tajikenglish.Number.NumberActivity
 
 
 class MainnFragment : Fragment() {
     lateinit var  alphabetFragment : LinearLayout
    lateinit var  drawview : LinearLayout
+    lateinit var  numbersLayout : LinearLayout
+
+
 //    lateinit var  numberFragment : LinearLayout
 //    lateinit var  unitFragment : LinearLayout
 //    lateinit var wordsFragment: LinearLayout
@@ -26,20 +30,28 @@ class MainnFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_mainn, container, false)
-        alphabetFragment=view.findViewById(R.id.alphabetlayout2)
+        val view = inflater.inflate(R.layout.fragment_mainn, container, false)
+        alphabetFragment = view.findViewById(R.id.alphabetlayout2)
         alphabetFragment.setOnClickListener {
-            val intent = Intent(context,AlphabetActivity::class.java)
+            val intent = Intent(context, AlphabetActivity::class.java)
             startActivity(intent)
         }
-        drawview=view.findViewById(R.id.DrawView)
+        drawview = view.findViewById(R.id.DrawView)
         drawview.setOnClickListener {
-            val intent = Intent(context,DrawActivity::class.java)
+            val intent = Intent(context, DrawActivity::class.java)
             startActivity(intent)
         }
+            numbersLayout = view.findViewById(R.id.NumbersLayout)
+            numbersLayout.setOnClickListener {
+                val intent = Intent(context, NumberActivity::class.java)
+                startActivity(intent)
+
+            }
+
+
+
+
         return view
-
     }
-
 
     }

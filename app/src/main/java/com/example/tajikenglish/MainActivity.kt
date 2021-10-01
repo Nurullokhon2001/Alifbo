@@ -14,15 +14,15 @@ class MainActivity : AppCompatActivity() {
 
         val fragment = supportFragmentManager.beginTransaction()
         fragment.replace(R.id.container,MainnFragment()).commit()
-        val toolbar  : Toolbar = findViewById(R.id.toolbar)
-        // создали переменную toolbar и  зашли в xml и достали нужный id присваили к переменную нужный нам id
-        setSupportActionBar(toolbar)
+//        val toolbar  : Toolbar = findViewById(R.id.toolbar)
+//        // создали переменную toolbar и  зашли в xml и достали нужный id присваили к переменную нужный нам id
+//        setSupportActionBar(toolbar)
         // установили tollbar
-        toolbar.setNavigationOnClickListener {
-            val fragment = supportFragmentManager.beginTransaction()
-            fragment.replace(R.id.container, SettingsFragment()).addToBackStack(SettingsFragment()::class.java.simpleName).commit()
-            // поместили фрагмент SettingsFragment() в переменную fragment
-        }
+//        toolbar.setNavigationOnClickListener {
+//            val fragment = supportFragmentManager.beginTransaction()
+//            fragment.replace(R.id.container, SettingsFragment()).addToBackStack(SettingsFragment()::class.java.simpleName).commit()
+//            // поместили фрагмент SettingsFragment() в переменную fragment
+//        }
 
 
 
