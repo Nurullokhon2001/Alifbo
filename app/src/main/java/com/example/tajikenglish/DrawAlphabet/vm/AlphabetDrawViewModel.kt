@@ -10,7 +10,7 @@ import com.encom.dynamicview.repository.model.AlphabetImageRepository
  * http://abduahad.com/
  *
  */
-class AlphabetImageViewModel:ViewModel(){
+class AlphabetDrawViewModel:ViewModel(){
    private val repository:AlphabetImageRepository = AlphabetImageRepository()
 
    fun getAlphabets(getIndexArray : Int):AlphabetImageModel{

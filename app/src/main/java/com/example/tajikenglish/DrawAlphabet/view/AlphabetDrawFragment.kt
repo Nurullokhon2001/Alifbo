@@ -12,26 +12,26 @@ import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
 import com.encom.dynamicview.repository.model.AlphabetModel
 import com.encom.dynamicview.repository.model.AlphabetImageModel
-import com.encom.dynamicview.vm.AlphabetImageViewModel
+import com.encom.dynamicview.vm.AlphabetDrawViewModel
 import java.io.InputStream
 
 
-class AlphabetImageFragment : Fragment(), View.OnClickListener {
+class AlphabetDrawFragment : Fragment(), View.OnClickListener {
     private lateinit var linearLayout: LinearLayout
-    private lateinit var viewModel: AlphabetImageViewModel
+    private lateinit var viewModel: AlphabetDrawViewModel
 
     var itemAlphabet : Int = 0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel = ViewModelProvider(this).get(AlphabetImageViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AlphabetDrawViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_second, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_alphabet_draw, container, false)
         linearLayout = view.findViewById<LinearLayout>(R.id.linearLayout)
         return view
     }
@@ -68,9 +68,9 @@ class AlphabetImageFragment : Fragment(), View.OnClickListener {
 
     }
     companion object{
-        fun newInstance(itemContact : AlphabetModel): AlphabetImageFragment  {
+        fun newInstance(itemContact : AlphabetModel): AlphabetDrawFragment  {
 
-            val fragment = AlphabetImageFragment()
+            val fragment = AlphabetDrawFragment()
             fragment.itemAlphabet=itemContact.id
             return fragment
         }
