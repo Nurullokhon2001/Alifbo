@@ -37,7 +37,7 @@ class DrawActivity : AppCompatActivity() {
         setContentView(R.layout.activity_draw)
         supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetButtonDrawFragment())
             .commit()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetImageFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetDrawFragment())
             .commit()
 
          drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v

@@ -4,12 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import com.example.tajikenglish.Alphabet.Views.AlphabetDrawView
-import com.example.tajikenglish.Alphabet.Views.AlphabetGameView
-import com.example.tajikenglish.Alphabet.Views.AlphabetLearnView
+import com.encom.dynamicview.view.*
+
 import com.example.tajikenglish.MainActivity
 import com.example.tajikenglish.R
-import com.example.tajikenglish.Settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AlphabetActivity : AppCompatActivity() {
@@ -29,23 +27,31 @@ class AlphabetActivity : AppCompatActivity() {
             // поместили фрагмент SettingsFragment() в переменную fragment
         }
 
-        supportFragmentManager.beginTransaction().
-        replace(R.id.container, AlphabetLearnView()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
+            .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
+            .commit()
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.abclearn -> {
-                    supportFragmentManager.beginTransaction().
-                    replace(R.id.container, AlphabetLearnView()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
+                        .commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
+                        .commit()
                 }
                 R.id.abcdraw->{
-                    supportFragmentManager.beginTransaction().
-                    replace(R.id.container, AlphabetDrawView()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, HamsadoMainCviewFragment())
+                        .commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HamsadoCviewFragment())
+                        .commit()
                 }
                 R.id.abcgame->{
-                    supportFragmentManager.beginTransaction().
-                            replace(R.id.container, AlphabetGameView()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,SadonokMainCviewFragment())
+                        .commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, SadonokCviewFragment())
+                        .commit()
                 }
             }
             true
