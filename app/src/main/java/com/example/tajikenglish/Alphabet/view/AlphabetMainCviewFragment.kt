@@ -14,10 +14,13 @@ import com.encom.dynamicview.vm.AlphabetMainCviewViewModel
 import com.example.tajikenglish.R
 
 
+
+// change name to AlphabetsFragment
 class AlphabetMainCviewFragment : Fragment(), View.OnClickListener {
     private lateinit var linearLayout: LinearLayout
     private lateinit var cviewViewModelAlphabet: AlphabetMainCviewViewModel
 
+    // delete indexarray
     var indexarray: Int = 0
 
     override fun onAttach(context: Context) {
@@ -41,7 +44,7 @@ class AlphabetMainCviewFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         v?.let {
             val alphabetCviewModel: AlphabetButtonModel = it.getTag() as AlphabetButtonModel
-            var index: Int = indexarray - alphabetCviewModel.id
+
 
 
             requireActivity().supportFragmentManager.beginTransaction()
@@ -52,6 +55,8 @@ class AlphabetMainCviewFragment : Fragment(), View.OnClickListener {
 
     fun initializeViews(alphabetCviewModels: ArrayList<AlphabetButtonModel>) {
         alphabetCviewModels.forEachIndexed { index, alphabetModel ->
+            // change name item_alphabet_main_cview_fragment_view to item_alphabet
+
             val itemView: View =
                 layoutInflater.inflate(R.layout.item_alphabet_main_cview_fragment_view, linearLayout, false)
             itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.alphabet

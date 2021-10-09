@@ -11,24 +11,16 @@ import com.example.tajikenglish.Alphabet.AlphabetActivity
 import com.example.tajikenglish.Number.NumberActivity
 
 
-class MainnFragment : Fragment() {
-    lateinit var  alphabetFragment : LinearLayout
-   lateinit var  drawview : LinearLayout
-    lateinit var  numbersLayout : LinearLayout
-
-
-//    lateinit var  numberFragment : LinearLayout
-//    lateinit var  unitFragment : LinearLayout
-//    lateinit var wordsFragment: LinearLayout
-//    lateinit var phrasesFragment: LinearLayout
-//    lateinit var speechFragment: LinearLayout
-
+class MainFragment : Fragment() {
+    private lateinit var alphabetFragment: LinearLayout
+    private lateinit var drawer: LinearLayout
+    private lateinit var numbersLayout: LinearLayout
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_mainn, container, false)
         alphabetFragment = view.findViewById(R.id.alphabetlayout2)
@@ -36,17 +28,17 @@ class MainnFragment : Fragment() {
             val intent = Intent(context, AlphabetActivity::class.java)
             startActivity(intent)
         }
-        drawview = view.findViewById(R.id.DrawView)
-        drawview.setOnClickListener {
+        drawer = view.findViewById(R.id.DrawView)
+        drawer.setOnClickListener {
             val intent = Intent(context, DrawActivity::class.java)
             startActivity(intent)
         }
-            numbersLayout = view.findViewById(R.id.NumbersLayout)
-            numbersLayout.setOnClickListener {
-                val intent = Intent(context, NumberActivity::class.java)
-                startActivity(intent)
+        numbersLayout = view.findViewById(R.id.NumbersLayout)
+        numbersLayout.setOnClickListener {
+            val intent = Intent(context, NumberActivity::class.java)
+            startActivity(intent)
 
-            }
+        }
 
 
 
@@ -54,4 +46,4 @@ class MainnFragment : Fragment() {
         return view
     }
 
-    }
+}

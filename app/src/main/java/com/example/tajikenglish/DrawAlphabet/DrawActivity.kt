@@ -442,7 +442,6 @@ class DrawActivity : AppCompatActivity() {
             }
         }
     }
-
     companion object {
 
         /**
