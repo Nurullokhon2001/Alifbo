@@ -14,10 +14,39 @@ class AlphabetsViewModel(application: Application) : AndroidViewModel(applicatio
     init {
         repository = AlphabetsRepository(application)
     }
-    var   myDataSet = repository.getAlphabet()
-    fun fetchAlphabet(): LiveData<ArrayList<AlphabetsModel>> {
+
+
+    fun getAlphabet(): LiveData<ArrayList<AlphabetsModel>> {
+        val myDataSet = repository.getAlphabet()
         val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
         result.postValue(myDataSet)
         return result
     }
+
+
+
+
+    fun getHamsado(): LiveData<ArrayList<AlphabetsModel>> {
+        val myDataSet = repository.getHamsado()
+        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+        result.postValue(myDataSet)
+        return result
+    }
+
+    fun getSadonok(): LiveData<ArrayList<AlphabetsModel>> {
+        val myDataSet = repository.getSadonok()
+        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+        result.postValue(myDataSet)
+        return result
+    }
+
+    fun getYodbarsar(): LiveData<ArrayList<AlphabetsModel>> {
+        val myDataSet = repository.getYodbarsar()
+        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+        result.postValue(myDataSet)
+        return result
+    }
+
+
+
 }
