@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:foregroundGravity="center"
     android:minWidth="50dp"
     android:minHeight="50dp"
     app:cardCornerRadius="25dp"
@@ -13,12 +15,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:backgroundTint="#00BCD4"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:paddingLeft="50dp"
-        android:paddingRight="50dp"
         android:paddingTop="5dp"
-        >
+        android:paddingRight="50dp">
 
         <TextView
             android:id="@+id/alpabetView"
@@ -29,7 +33,6 @@
             android:layout_marginTop="5dp"
             android:foreground="?selectableItemBackground"
             android:gravity="center"
-            android:text="A"
             android:textColor="@color/col"
             android:textSize="120dp"
             android:textStyle="bold|italic" />
@@ -59,10 +62,10 @@
             android:layout_marginBottom="10dp"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?selectableItemBackground"
             android:textColor="#000"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:foreground="?selectableItemBackground"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
