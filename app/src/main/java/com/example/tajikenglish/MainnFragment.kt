@@ -38,7 +38,7 @@ class MainnFragment : Fragment(), View.OnClickListener {
         val ic = MainRepository()
 
 
-        adapter = EngTopicAdapter(requireContext(),ic.getMenu(), this)
+        adapter = EngTopicAdapter(requireContext(), ic.getMenu(), this)
         recyclerView.adapter = adapter
 
 
@@ -48,31 +48,29 @@ class MainnFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when(v.tag.toString()){
+        when (v.tag.toString()) {
             MainRepository.ALIFBO -> {
-                Toast.makeText(context, "vkladka alifbo", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, AlphabetActivity::class.java)
+                startActivity(intent)
+            }
+            MainRepository.RAQAMHO -> {
                 val intent = Intent(context, NumberActivity::class.java)
                 startActivity(intent)
 
             }
-            MainRepository.RAQAMHO ->{
-                Toast.makeText(context, "vkladka raqamho", Toast.LENGTH_SHORT).show()
-
-            }
             MainRepository.RASMKASHI -> {
-                Toast.makeText(context, "vkladka rasmkashi", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, DrawActivity::class.java)
+                startActivity(intent)
             }
             MainRepository.TARTIB -> {
                 Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
             }
-            MainRepository.KALIMASOZI ->{
+            MainRepository.KALIMASOZI -> {
                 Toast.makeText(context, "vkladka kalimasozi", Toast.LENGTH_SHORT).show()
             }
-            MainRepository.KALIMAYOBI ->{
+            MainRepository.KALIMAYOBI -> {
                 Toast.makeText(context, "vkladka kalimayobi", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
 }
