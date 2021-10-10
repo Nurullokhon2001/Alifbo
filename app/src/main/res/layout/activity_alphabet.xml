@@ -58,6 +58,6 @@ android:foregroundGravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        app:menu="@menu/alphabet_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

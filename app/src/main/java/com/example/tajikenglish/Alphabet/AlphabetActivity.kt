@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.example.tajikenglish.Alphabet.view.AlphabetsDetailsFragment
 import com.example.tajikenglish.Alphabet.view.AlphabetsFragment
 import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
@@ -20,17 +19,14 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var vm: AlphabetsViewModel
-    private var alphabetsArray: ArrayList<AlphabetsModel> = ArrayList()
-    private var hamsadoArray: ArrayList<AlphabetsModel> =   ArrayList()
-    private var sadonokArray: ArrayList<AlphabetsModel> =   ArrayList()
-    private var yodbarsarArray: ArrayList<AlphabetsModel> =   ArrayList()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alphabet)
 
         vm = ViewModelProvider(this).get(AlphabetsViewModel::class.java)
         vm.getAlphabet().observe(this, {
-            alphabetsArray=it
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
                 .commit()
@@ -40,20 +36,11 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
                 .commit()
         })
 
-        vm.getHamsado().observe(this, {
-            hamsadoArray=it
 
-        })
 
-        vm.getSadonok().observe(this, {
-            sadonokArray=it
 
-        })
 
-        vm.getYodbarsar().observe(this, {
-           yodbarsarArray=it
 
-        })
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -72,42 +59,54 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.alphabet -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(alphabetsArray))
-                    .commit()
+                vm.getAlphabet().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(alphabetsArray[0]))
-                    .commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+                })
             }
             R.id.hamsado -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(hamsadoArray))
-                    .commit()
+                vm.getHamsado().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(hamsadoArray[0]))
-                    .commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+
+                })
 
 
             }
             R.id.sadonok -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(sadonokArray))
-                    .commit()
+                vm.getSadonok().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(sadonokArray[0]))
-                    .commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+                })
             }
             R.id.yodbarsar -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(yodbarsarArray))
-                    .commit()
+                vm.getYodbarsar().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(yodbarsarArray[0]))
-                    .commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+                })
             }
         }
         return true
