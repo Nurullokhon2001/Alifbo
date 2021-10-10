@@ -51,6 +51,9 @@ class MainnFragment : Fragment(), View.OnClickListener {
         when(v.tag.toString()){
             MainRepository.ALIFBO -> {
                 Toast.makeText(context, "vkladka alifbo", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, NumberActivity::class.java)
+                startActivity(intent)
+
             }
             MainRepository.RAQAMHO ->{
                 Toast.makeText(context, "vkladka raqamho", Toast.LENGTH_SHORT).show()
