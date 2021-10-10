@@ -20,12 +20,12 @@
     </HorizontalScrollView>
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_gravity="center"
-
         android:id="@+id/fragmentContainer"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/horizontal_only"
+        android:layout_gravity="center"
 
         />
 </RelativeLayout>

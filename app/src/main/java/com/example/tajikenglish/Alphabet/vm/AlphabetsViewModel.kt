@@ -1,4 +1,4 @@
-package com.example.tajikenglish.Number.vm
+package com.example.tajikenglish.Alphabet.vm
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.tajikenglish.Alphabet.repository.AlphabetsRepository
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 
-class NumberViewModel (application: Application) : AndroidViewModel(application) {
+class AlphabetsViewModel(application: Application) : AndroidViewModel(application) {
 
     val repository: AlphabetsRepository
 
