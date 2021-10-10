@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".Alphabet.view.AlphabetsDetailsFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="-5dp"
+        android:minWidth="50dp"
+        android:minHeight="50dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="8dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:backgroundTint="#00BCD4"
+            android:paddingLeft="50dp"
+            android:paddingTop="5dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:id="@+id/alhpabet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center"
+                android:textColor="@color/col"
+                android:textSize="120dp"
+                android:textStyle="bold|italic" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/alhpabet"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:foreground="?selectableItemBackground"
+                android:padding="4dp"
+                android:textColor="@color/col"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

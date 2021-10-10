@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/alphabet"
+        android:enabled="true"
+        android:icon="@drawable/abclearn"
+        android:title="@string/Alphabet" />
+    <item
+        android:id="@+id/hamsado"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="Хамсадо" />
+    <item
+        android:id="@+id/sadonok"
+        android:enabled="true"
+        android:icon="@drawable/abcgame"
+        android:title="Cадонок" />
+    <item
+        android:id="@+id/yodbarsar"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="Ёдбарсар" />
+
+</menu>

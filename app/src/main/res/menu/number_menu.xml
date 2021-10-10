@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/number"
+        android:enabled="true"
+        android:icon="@drawable/abclearn"
+        android:title="@string/Number" />
+    <item
+        android:id="@+id/toq"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="Ток" />
+    <item
+        android:id="@+id/juft"
+        android:enabled="true"
+        android:icon="@drawable/abcgame"
+        android:title="Чуфт" />
+
+</menu>

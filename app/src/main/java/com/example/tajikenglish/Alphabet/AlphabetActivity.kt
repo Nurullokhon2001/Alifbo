@@ -3,59 +3,113 @@ package com.example.tajikenglish.Alphabet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import com.encom.dynamicview.view.*
+import androidx.lifecycle.ViewModelProvider
+import com.example.tajikenglish.Alphabet.view.AlphabetsDetailsFragment
+import com.example.tajikenglish.Alphabet.view.AlphabetsFragment
+import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
 
 import com.example.tajikenglish.MainActivity
 import com.example.tajikenglish.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
-class AlphabetActivity : AppCompatActivity() {
-    lateinit var bottomNavigationView: BottomNavigationView
+class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var vm: AlphabetsViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alphabet)
 
-        val toolbar  : Toolbar = findViewById(R.id.toolbar)
-        // создали переменную toolbar и  зашли в xml и достали нужный id присваили к переменную нужный нам id
-        setSupportActionBar(toolbar)
-        // установили tollbar
-        toolbar.setNavigationOnClickListener {
-           val intent= Intent(this,MainActivity::class.java)
-            startActivity(intent)
-            // поместили фрагмент SettingsFragment() в переменную fragment
-        }
+        vm = ViewModelProvider(this).get(AlphabetsViewModel::class.java)
+        vm.getAlphabet().observe(this, {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                .commit()
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
-            .commit()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
-            .commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                .commit()
+        })
+
+
+
+
+
+
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.abclearn -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetMainCviewFragment())
-                        .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetCviewFragment())
-                        .commit()
-                }
-                R.id.abcdraw->{
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, HamsadoMainCviewFragment())
-                        .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HamsadoCviewFragment())
-                        .commit()
-                }
-                R.id.abcgame->{
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,SadonokMainCviewFragment())
-                        .commit()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, SadonokCviewFragment())
-                        .commit()
-                }
-            }
-            true
-        }
+        bottomNavigationView.setOnItemSelectedListener(this)
+
+
 
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.alphabet -> {
+                vm.getAlphabet().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+                })
+            }
+            R.id.hamsado -> {
+                vm.getHamsado().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+
+                })
+
+
+            }
+            R.id.sadonok -> {
+                vm.getSadonok().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+                })
+            }
+            R.id.yodbarsar -> {
+                vm.getYodbarsar().observe(this, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .commit()
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .commit()
+
+                })
+            }
+        }
+        return true
+    }
+
 }
