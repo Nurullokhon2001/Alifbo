@@ -56,7 +56,6 @@ class MainnFragment : Fragment(), View.OnClickListener {
             MainRepository.RAQAMHO -> {
                 val intent = Intent(context, NumberActivity::class.java)
                 startActivity(intent)
-
             }
             MainRepository.RASMKASHI -> {
                 val intent = Intent(context, DrawActivity::class.java)
