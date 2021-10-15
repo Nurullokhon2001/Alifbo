@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.Alphabet.AlphabetActivity
 import com.example.tajikenglish.Number.NumberActivity
+import com.example.tajikenglish.Order.OrderActivity
 import com.example.tajikenglish.main.adaptors.EngTopicAdapter
 import com.example.tajikenglish.main.model.MainRepository
 import android.widget.Toast.makeText as makeText1
@@ -62,7 +63,10 @@ class MainnFragment : Fragment(), View.OnClickListener {
                 startActivity(intent)
             }
             MainRepository.TARTIB -> {
-                Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(context, OrderActivity::class.java)
+                startActivity(intent)
+               // Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
             }
             MainRepository.KALIMASOZI -> {
                 Toast.makeText(context, "vkladka kalimasozi", Toast.LENGTH_SHORT).show()
