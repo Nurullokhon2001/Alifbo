@@ -4,12 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.encom.dynamicview.repository.model.AlphabetImageModel
 import com.encom.dynamicview.repository.model.AlphabetImageRepository
 
-/**
- * Created by ABDUAHAD FAIZULLOEV on 26,сентябрь,2021
- * abduahad.fayzulloev@gmail.com
- * http://abduahad.com/
- *
- */
+
 class AlphabetDrawViewModel:ViewModel(){
    private val repository:AlphabetImageRepository = AlphabetImageRepository()
 

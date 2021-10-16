@@ -1,14 +1,17 @@
 package com.example.tajikenglish.Order
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tajikenglish.Order.Adapter.DragDropRecyclerAdapter
+import com.example.tajikenglish.Order.Adapter.ItemMoveCallbackListener
+import com.example.tajikenglish.Order.Adapter.OnStartDragListener
+import com.example.tajikenglish.Order.Model.OrderModel
 import com.example.tajikenglish.R
 
 class OrderActivity : AppCompatActivity(), OnStartDragListener {
@@ -16,23 +19,32 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var adapter: DragDropRecyclerAdapter
     lateinit var touchHelper: ItemTouchHelper
     lateinit var recyclerView: RecyclerView
-    lateinit var button : Button
-              var users : ArrayList<OrderModel> = ArrayList()
+    lateinit var button: Button
+    lateinit var reset: Button
+    var number: Int = 0
 
 
-
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
 
-        recyclerView=findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
 
 
         button = findViewById(R.id.button)
+        reset = findViewById(R.id.reset)
+        reset.setOnClickListener {
+            number = (0..3).random()
+            // Toast.makeText(this, "korkad", Toast.LENGTH_SHORT).show()
+            adapter.notifyDataSetChanged()
+            populateListItem()
+
+        }
 
 
 
-        adapter = DragDropRecyclerAdapter(this, this)
+        adapter = DragDropRecyclerAdapter(this)
         populateListItem()
 
         val callback: ItemTouchHelper.Callback = ItemMoveCallbackListener(adapter)
@@ -44,7 +56,12 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         recyclerView.adapter = adapter
 
         button.setOnClickListener {
-            adapter.onClickForButton()
+
+            if (adapter.onClickForButton()) {
+                Toast.makeText(this, "Durust", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Khato", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -53,17 +70,52 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
-        users.add(OrderModel(1,R.drawable.abc))
-        users.add(OrderModel(2,R.drawable.abc))
-        users.add(OrderModel(3,R.drawable.abc))
-        users.add(OrderModel(4,R.drawable.abc))
-        users.add(OrderModel(5,R.drawable.abc))
-        users.add(OrderModel(6,R.drawable.abc))
-        users.add(OrderModel(7,R.drawable.abc))
+        when (number) {
+            0 -> {
+                val users: ArrayList<OrderModel> = ArrayList()
+                users.add(OrderModel(3, R.drawable.v))
+                users.add(OrderModel(4, R.drawable.g))
+                users.add(OrderModel(1, R.drawable.a))
+                users.add(OrderModel(5, R.drawable.gg))
+                users.add(OrderModel(2, R.drawable.b))
 
-        adapter.setUsers(users)
+                adapter.setUsers(users)
+            }
+            1 -> {
+                val users: ArrayList<OrderModel> = ArrayList()
+                users.add(OrderModel(1, R.drawable.a))
+                users.add(OrderModel(5, R.drawable.gg))
+                users.add(OrderModel(2, R.drawable.b))
+
+                users.add(OrderModel(4, R.drawable.g))
+                users.add(OrderModel(3, R.drawable.v))
+
+                adapter.setUsers(users)
+            }
+            2 -> {
+                val users: ArrayList<OrderModel> = ArrayList()
+
+                users.add(OrderModel(4, R.drawable.g))
+                users.add(OrderModel(3, R.drawable.v))
+                users.add(OrderModel(1, R.drawable.a))
+                users.add(OrderModel(5, R.drawable.gg))
+                users.add(OrderModel(2, R.drawable.b))
+
+                adapter.setUsers(users)
+            }
+            3 -> {
+                val users: ArrayList<OrderModel> = ArrayList()
+
+                users.add(OrderModel(5, R.drawable.gg))
+                users.add(OrderModel(2, R.drawable.b))
+                users.add(OrderModel(4, R.drawable.g))
+                users.add(OrderModel(3, R.drawable.v))
+                users.add(OrderModel(1, R.drawable.a))
+
+                adapter.setUsers(users)
+            }
+        }
     }
-
 
 
 }

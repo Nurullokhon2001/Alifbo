@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
-    android:background="#F7EEEE"
+    android:background="#e8f3f5"
     android:layout_margin="8dp">
 
     <ImageView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textSize="18sp"
