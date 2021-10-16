@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
-import com.example.tajikenglish.Alphabet.view.AlphabetsDetailsFragment
-import com.example.tajikenglish.Alphabet.view.AlphabetsFragment
 import com.example.tajikenglish.MainActivity
+import com.example.tajikenglish.Number.Model.NumbersModel
+import com.example.tajikenglish.Number.view.NumbersDetailsFragment
+import com.example.tajikenglish.Number.view.NumbersFragment
 import com.example.tajikenglish.Number.vm.NumberViewModel
 import com.example.tajikenglish.R
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
@@ -19,9 +19,8 @@ class NumberActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedList
     lateinit var bottomNavigationView: BottomNavigationView
 
     private lateinit var vm: NumberViewModel
-    private var numbersArray: ArrayList<AlphabetsModel> = ArrayList()
-    private var toqArray: ArrayList<AlphabetsModel> =   ArrayList()
-    private var juftArray: ArrayList<AlphabetsModel> =   ArrayList()
+    private var numbersArray: ArrayList<NumbersModel> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,26 +28,17 @@ class NumberActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedList
 
 
         vm = ViewModelProvider(this).get(NumberViewModel::class.java)
-        vm.getAlphabet().observe(this, {
+        vm.getNumber().observe(this, {
             numbersArray=it
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                .replace(R.id.fragmentContainer, NumbersFragment.newInstance(it))
                 .commit()
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                .replace(R.id.fragment, NumbersDetailsFragment.newInstance(it[0]))
                 .commit()
         })
 
-        vm.getHamsado().observe(this, {
-            toqArray=it
-
-        })
-
-        vm.getSadonok().observe(this, {
-            juftArray=it
-
-        })
 
 
 
@@ -70,44 +60,47 @@ class NumberActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.number -> {
-                vm.getAlphabet().observe(this, {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
-                        .commit()
+                vm.getNumber().observe(this, {
+                numbersArray=it
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, NumbersFragment.newInstance(it))
+                    .commit()
 
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
-                        .commit()
-                })
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment, NumbersDetailsFragment.newInstance(it[0]))
+                    .commit()
+            })
+
             }
             R.id.toq -> {
-                vm.getHamsado().observe(this, {
+                vm.getToq().observe(this, {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .replace(R.id.fragmentContainer, NumbersFragment.newInstance(it))
                         .commit()
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .replace(R.id.fragment, NumbersDetailsFragment.newInstance(it[0]))
                         .commit()
-
 
                 })
+
 
             }
             R.id.juft -> {
-                vm.getSadonok().observe(this, {
+                vm.getJuft().observe(this, {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, AlphabetsFragment.newInstance(it))
+                        .replace(R.id.fragmentContainer, NumbersFragment.newInstance(it))
                         .commit()
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment, AlphabetsDetailsFragment.newInstance(it[0]))
+                        .replace(R.id.fragment, NumbersDetailsFragment.newInstance(it[0]))
                         .commit()
 
                 })
             }
+            }
 
-        }
+
         return true
     }
 }

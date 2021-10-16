@@ -4,21 +4,21 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.tajikenglish.Alphabet.repository.AlphabetsRepository
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.Number.Model.NumbersModel
+import com.example.tajikenglish.Number.Repository.NumbersRepository
 
 class NumberViewModel (application: Application) : AndroidViewModel(application) {
 
-    val repository: AlphabetsRepository
+    val repository: NumbersRepository
 
     init {
-        repository = AlphabetsRepository(application)
+        repository = NumbersRepository(application)
     }
 
 
-    fun getAlphabet(): LiveData<ArrayList<AlphabetsModel>> {
-        val myDataSet = repository.getAlphabet()
-        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+    fun getNumber(): LiveData<ArrayList<NumbersModel>> {
+        val myDataSet = repository.getNumber()
+        val result: MutableLiveData<ArrayList<NumbersModel>> = MutableLiveData()
         result.postValue(myDataSet)
         return result
     }
@@ -26,27 +26,19 @@ class NumberViewModel (application: Application) : AndroidViewModel(application)
 
 
 
-    fun getHamsado(): LiveData<ArrayList<AlphabetsModel>> {
-        val myDataSet = repository.getHamsado()
-        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+    fun getToq(): LiveData<ArrayList<NumbersModel>> {
+        val myDataSet = repository.getToq()
+        val result: MutableLiveData<ArrayList<NumbersModel>> = MutableLiveData()
         result.postValue(myDataSet)
         return result
     }
 
-    fun getSadonok(): LiveData<ArrayList<AlphabetsModel>> {
-        val myDataSet = repository.getSadonok()
-        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
+    fun getJuft(): LiveData<ArrayList<NumbersModel>> {
+        val myDataSet = repository.getJuft()
+        val result: MutableLiveData<ArrayList<NumbersModel>> = MutableLiveData()
         result.postValue(myDataSet)
         return result
     }
-
-    fun getYodbarsar(): LiveData<ArrayList<AlphabetsModel>> {
-        val myDataSet = repository.getYodbarsar()
-        val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
-        result.postValue(myDataSet)
-        return result
-    }
-
 
 
 }

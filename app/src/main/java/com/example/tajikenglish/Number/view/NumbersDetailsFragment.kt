@@ -11,9 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
+import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
 import java.io.InputStream
@@ -23,8 +22,8 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var image: ImageView
     private lateinit var word: TextView
     private lateinit var vm: AlphabetsViewModel
-    var array: AlphabetsModel =
-        (AlphabetsModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
+    var array: NumbersModel =
+        (NumbersModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -37,7 +36,7 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_numbers_details, container, false)
-        alphabet = view.findViewById(R.id.alhpabet)
+        alphabet = view.findViewById(R.id.number)
         image = view.findViewById(R.id.image)
         word = view.findViewById(R.id.word)
 
@@ -55,18 +54,20 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
 
     }
 
-    fun initializeViews(alphabets: AlphabetsModel) {
+    fun initializeViews(alphabets: NumbersModel) {
 
         alphabet.apply {
-            text = alphabets.alphabet
+            text = alphabets.number
             setOnClickListener(this@NumbersDetailsFragment)
             setTag(alphabets)
         }
         image.apply {
+
             val inputStream: InputStream =
                 requireContext().getAssets().open(alphabets.image)
             val image = Drawable.createFromStream(inputStream, null)
             setImageDrawable(image)
+
             setOnClickListener(this@NumbersDetailsFragment)
             setTag(alphabets)
         }
@@ -79,24 +80,25 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         v?.let {
-            val alphabetModel: AlphabetsModel = it.getTag() as AlphabetsModel
+            val alphabetModel: NumbersModel = it.getTag() as NumbersModel
             when (it.id) {
+                R.id.number -> {
+                    Toast.makeText(requireContext(),alphabetModel.number , Toast.LENGTH_SHORT).show()
+                }
+                R.id.image -> {
+                    Toast.makeText(requireContext(),alphabetModel.numberPlayer , Toast.LENGTH_SHORT).show()
+                }
                 R.id.image -> {
 
-                }
-                R.id.alhpabet -> {
-
-                }
-                R.id.word -> {
+                    Toast.makeText(requireContext(),alphabetModel.imagePlayer , Toast.LENGTH_SHORT).show()
 
                 }
             }
-            Toast.makeText(requireContext(), alphabetModel.alphabet, Toast.LENGTH_SHORT).show()
         }
     }
 
     companion object {
-        fun newInstance(itemContact: AlphabetsModel): NumbersDetailsFragment {
+        fun newInstance(itemContact: NumbersModel): NumbersDetailsFragment {
 
             val fragment = NumbersDetailsFragment()
             fragment.array = itemContact
