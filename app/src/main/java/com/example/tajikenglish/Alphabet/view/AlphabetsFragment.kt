@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 
 class AlphabetsFragment : Fragment(), View.OnClickListener {
