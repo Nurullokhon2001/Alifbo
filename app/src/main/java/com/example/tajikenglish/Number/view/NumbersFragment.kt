@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 
 class NumbersFragment : Fragment(), View.OnClickListener {
 
     private lateinit var linearLayout: LinearLayout
-     var array: ArrayList<AlphabetsModel> = ArrayList()
+     var array: ArrayList<NumbersModel> = ArrayList()
 
 
     override fun onCreateView(
@@ -34,13 +34,13 @@ class NumbersFragment : Fragment(), View.OnClickListener {
         initializeViews(array)
     }
 
-    private fun initializeViews(alphabetModels: ArrayList<AlphabetsModel>) {
+    private fun initializeViews(alphabetModels: ArrayList<NumbersModel>) {
         for (alphabetModel in alphabetModels) {
             val itemView: View =
                 layoutInflater.inflate(R.layout.item_alphabet_main_cview_fragment_view,
                     linearLayout,
                     false)
-            itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.alphabet
+            itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.number
             itemView.setOnClickListener(this)
             itemView.setTag(alphabetModel)
             linearLayout.addView(itemView)
@@ -49,7 +49,7 @@ class NumbersFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         v?.let {
-            val alphabetModel: AlphabetsModel = it.getTag() as AlphabetsModel
+            val alphabetModel: NumbersModel = it.getTag() as NumbersModel
 
 
             requireActivity().supportFragmentManager.beginTransaction()
@@ -60,7 +60,7 @@ class NumbersFragment : Fragment(), View.OnClickListener {
     }
 
     companion object {
-        fun newInstance(itemAlpabets: ArrayList<AlphabetsModel>): NumbersFragment {
+        fun newInstance(itemAlpabets: ArrayList<NumbersModel>): NumbersFragment {
 
             val fragment = NumbersFragment()
             fragment.array = itemAlpabets

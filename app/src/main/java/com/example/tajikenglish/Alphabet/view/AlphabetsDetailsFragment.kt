@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
+import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
 import java.io.InputStream
@@ -56,7 +57,7 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
 
     }
 
-    fun initializeViews(alphabets: AlphabetsModel) {
+    private fun initializeViews(alphabets: AlphabetsModel) {
 
         alphabet.apply {
             text = alphabets.alphabet
