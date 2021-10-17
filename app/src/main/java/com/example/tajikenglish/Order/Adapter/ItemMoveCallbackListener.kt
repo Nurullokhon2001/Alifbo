@@ -2,7 +2,6 @@ package com.example.tajikenglish.Order.Adapter
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tajikenglish.Order.Adapter.DragDropRecyclerAdapter
 
 class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouchHelper.Callback() {
 
@@ -33,8 +32,10 @@ class ItemMoveCallbackListener(val adapter: DragDropRecyclerAdapter) : ItemTouch
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+
             if (viewHolder is DragDropRecyclerAdapter.ItemViewHolder) {
                 adapter.onRowSelected(viewHolder)
+
             }
         }
         super.onSelectedChanged(viewHolder, actionState)
