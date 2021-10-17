@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.example.tajikenglish.Order.Adapter.DragDropRecyclerAdapter
 import com.example.tajikenglish.Order.Adapter.ItemMoveCallbackListener
 import com.example.tajikenglish.Order.Adapter.OnStartDragListener
@@ -44,7 +45,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
 
 
-        adapter = DragDropRecyclerAdapter(this)
+        adapter = DragDropRecyclerAdapter(this,this)
         populateListItem()
 
         val callback: ItemTouchHelper.Callback = ItemMoveCallbackListener(adapter)
@@ -73,44 +74,43 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         when (number) {
             0 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
-                users.add(OrderModel(3, R.drawable.v))
-                users.add(OrderModel(4, R.drawable.g))
-                users.add(OrderModel(1, R.drawable.a))
-                users.add(OrderModel(5, R.drawable.gg))
-                users.add(OrderModel(2, R.drawable.b))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
 
                 adapter.setUsers(users)
             }
             1 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
-                users.add(OrderModel(1, R.drawable.a))
-                users.add(OrderModel(5, R.drawable.gg))
-                users.add(OrderModel(2, R.drawable.b))
 
-                users.add(OrderModel(4, R.drawable.g))
-                users.add(OrderModel(3, R.drawable.v))
-
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
                 adapter.setUsers(users)
             }
             2 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
 
-                users.add(OrderModel(4, R.drawable.g))
-                users.add(OrderModel(3, R.drawable.v))
-                users.add(OrderModel(1, R.drawable.a))
-                users.add(OrderModel(5, R.drawable.gg))
-                users.add(OrderModel(2, R.drawable.b))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
 
                 adapter.setUsers(users)
             }
             3 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
 
-                users.add(OrderModel(5, R.drawable.gg))
-                users.add(OrderModel(2, R.drawable.b))
-                users.add(OrderModel(4, R.drawable.g))
-                users.add(OrderModel(3, R.drawable.v))
-                users.add(OrderModel(1, R.drawable.a))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(0, "rasmho/anor.jpg"))
 
                 adapter.setUsers(users)
             }

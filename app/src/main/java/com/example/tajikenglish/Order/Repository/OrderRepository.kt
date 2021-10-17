@@ -7,10 +7,14 @@ import com.example.tajikenglish.R
 class OrderRepository(context: Context) {
 
     fun getAlphabet(): ArrayList<OrderModel> {
-        val array: ArrayList<OrderModel> = ArrayList()
-        array.add(OrderModel(0, R.drawable.abc))
+        val users: ArrayList<OrderModel> = ArrayList()
+        users.add(OrderModel(0, "rasmho/anor.jpg"))
+        users.add(OrderModel(0, "rasmho/anor.jpg"))
+        users.add(OrderModel(0, "rasmho/anor.jpg"))
+        users.add(OrderModel(0, "rasmho/anor.jpg"))
+        users.add(OrderModel(0, "rasmho/anor.jpg"))
 
-        return array
+        return users
     }
 
 }
