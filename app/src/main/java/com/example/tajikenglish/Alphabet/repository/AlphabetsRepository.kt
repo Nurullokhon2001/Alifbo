@@ -1,43 +1,117 @@
 package com.example.tajikenglish.Alphabet.repository
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.MySqlOpenHelper.MySQLiteOpenHelper
 
-class AlphabetsRepository(context: Context) {
+class AlphabetsRepository(context: Context) : MySQLiteOpenHelper(context)  {
 
+    @SuppressLint("Range")
     fun getAlphabet(): ArrayList<AlphabetsModel> {
         val array: ArrayList<AlphabetsModel> = ArrayList()
-        array.add(AlphabetsModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
-        array.add(AlphabetsModel(1, "Б б", "Барг", "rasmho/barg.png", "2.mp3", "rasmho/barg.mp3", 2))
-        array.add(AlphabetsModel(2, "В в", "Вагон", "rasmho/vagon.png", "3.mp3", "rasmho/vagon.mp3", 2))
-        array.add(AlphabetsModel(3, "Г г", "Гул", "rasmho/gul.png", "4.mp3", "rasmho/gul.mp3", 2))
-        array.add(AlphabetsModel(4, "Ғ ғ", "Ғалтак", "rasmho/ghaltak.png", "5.mp3", "rasmho/ghaltak.mp3", 2))
-        array.add(AlphabetsModel(5, "Д д","Дутор", "rasmho/dutor.jpg","6.mp3","rasmho/dutor.mp3",2))
-        array.add(AlphabetsModel(6, "Е е","Елим", "rasmho/elim.png","7.mp3","rasmho/elim.mp3",3))
-        array.add(AlphabetsModel(7, "Ё ё","Ёқут", "rasmho/yoqut.png","8.mp3","rasmho/yoqut.mp3",3))
+        val sql = "SELECT * FROM AlfabetsData"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("alfabet"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("alfabetplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplager"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(AlphabetsModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
+
+    @SuppressLint("Range")
     fun getHamsado(): ArrayList<AlphabetsModel> {
         val array: ArrayList<AlphabetsModel> = ArrayList()
-        array.add(AlphabetsModel(0, "Б б", "Барг", "rasmho/barg.png", "2.mp3", "rasmho/barg.mp3", 2))
-        array.add(AlphabetsModel(1, "В в", "Вагон", "rasmho/vagon.png", "3.mp3", "rasmho/vagon.mp3", 2))
-        array.add(AlphabetsModel(2, "Г г", "Гул", "rasmho/gul.png", "4.mp3", "rasmho/gul.mp3", 2))
-        array.add(AlphabetsModel(3, "Ғ ғ", "Ғалтак", "rasmho/ghaltak.png", "5.mp3", "rasmho/ghaltak.mp3", 2))
-        array.add(AlphabetsModel(4, "Д д","Дутор", "rasmho/dutor.jpg","6.mp3","rasmho/dutor.mp3",2))
+        val sql = "SELECT * FROM AlfabetsData Where category=2"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("alfabet"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("alfabetplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplager"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(AlphabetsModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
 
+    @SuppressLint("Range")
     fun getSadonok(): ArrayList<AlphabetsModel> {
         val array: ArrayList<AlphabetsModel> = ArrayList()
-        array.add(AlphabetsModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
+        val sql = "SELECT * FROM AlfabetsData Where category=1"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("alfabet"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("alfabetplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplager"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(AlphabetsModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
 
+    @SuppressLint("Range")
     fun getYodbarsar(): ArrayList<AlphabetsModel> {
         val array: ArrayList<AlphabetsModel> = ArrayList()
-        array.add(AlphabetsModel(0, "Е е","Елим", "rasmho/elim.png","7.mp3","rasmho/elim.mp3",3))
-        array.add(AlphabetsModel(1, "Ё ё","Ёқут", "rasmho/yoqut.png","8.mp3","rasmho/yoqut.mp3",3))
+        val sql = "SELECT * FROM AlfabetsData Where category=3"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("alfabet"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("alfabetplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplager"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(AlphabetsModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

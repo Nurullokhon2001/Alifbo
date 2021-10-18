@@ -23,7 +23,7 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var word: TextView
     private lateinit var vm: AlphabetsViewModel
     var array: NumbersModel =
-        (NumbersModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
+        (NumbersModel(0, 1, "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,7 +57,7 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     fun initializeViews(alphabets: NumbersModel) {
 
         alphabet.apply {
-            text = alphabets.number
+            text = alphabets.number.toString()
             setOnClickListener(this@NumbersDetailsFragment)
             setTag(alphabets)
         }
@@ -80,19 +80,15 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         v?.let {
-            val alphabetModel: NumbersModel = it.getTag() as NumbersModel
+            val numbersModel: NumbersModel = it.getTag() as NumbersModel
             when (it.id) {
                 R.id.number -> {
-                    Toast.makeText(requireContext(),alphabetModel.number , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),numbersModel.numberPlayer , Toast.LENGTH_SHORT).show()
                 }
                 R.id.image -> {
-                    Toast.makeText(requireContext(),alphabetModel.numberPlayer , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),numbersModel.imagePlayer , Toast.LENGTH_SHORT).show()
                 }
-                R.id.image -> {
 
-                    Toast.makeText(requireContext(),alphabetModel.imagePlayer , Toast.LENGTH_SHORT).show()
-
-                }
             }
         }
     }

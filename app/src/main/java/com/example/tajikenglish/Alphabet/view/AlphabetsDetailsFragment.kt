@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
 import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
-import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
 import java.io.InputStream
@@ -24,7 +23,7 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var image: ImageView
     private lateinit var word: TextView
     private lateinit var vm: AlphabetsViewModel
-    var array: AlphabetsModel =
+    var alphabetArray: AlphabetsModel =
         (AlphabetsModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
 
     override fun onAttach(context: Context) {
@@ -52,7 +51,7 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeViews(array)
+        initializeViews(alphabetArray)
 
 
     }
@@ -84,16 +83,16 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
             val alphabetModel: AlphabetsModel = it.getTag() as AlphabetsModel
             when (it.id) {
                 R.id.image -> {
+                    Toast.makeText(requireContext(), alphabetModel.imagePlayer, Toast.LENGTH_SHORT).show()
 
                 }
                 R.id.alhpabet -> {
+                    Toast.makeText(requireContext(), alphabetModel.alphabetPlayer, Toast.LENGTH_SHORT).show()
 
                 }
-                R.id.word -> {
 
-                }
             }
-            Toast.makeText(requireContext(), alphabetModel.alphabet, Toast.LENGTH_SHORT).show()
+
         }
     }
 
@@ -101,7 +100,7 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
         fun newInstance(itemContact: AlphabetsModel): AlphabetsDetailsFragment {
 
             val fragment = AlphabetsDetailsFragment()
-            fragment.array = itemContact
+            fragment.alphabetArray = itemContact
             return fragment
         }
     }

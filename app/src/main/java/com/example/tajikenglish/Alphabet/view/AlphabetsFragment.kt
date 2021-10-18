@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
-import com.example.tajikenglish.Number.Model.NumbersModel
 import com.example.tajikenglish.R
 
 class AlphabetsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var linearLayout: LinearLayout
-     var array: ArrayList<AlphabetsModel> = ArrayList()
+     var numberArray: ArrayList<AlphabetsModel> = ArrayList()
 
 
     override fun onCreateView(
@@ -32,7 +31,7 @@ class AlphabetsFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializeViews(array)
+        initializeViews(numberArray)
     }
 
     private fun initializeViews(alphabetModels: ArrayList<AlphabetsModel>) {
@@ -64,7 +63,7 @@ class AlphabetsFragment : Fragment(), View.OnClickListener {
         fun newInstance(itemAlpabets: ArrayList<AlphabetsModel>): AlphabetsFragment {
 
             val fragment = AlphabetsFragment()
-            fragment.array = itemAlpabets
+            fragment.numberArray = itemAlpabets
             return fragment
         }
 

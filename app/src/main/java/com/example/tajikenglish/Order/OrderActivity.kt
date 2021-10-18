@@ -45,7 +45,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
 
 
-        adapter = DragDropRecyclerAdapter(this,this)
+        adapter = DragDropRecyclerAdapter(this, this)
         populateListItem()
 
         val callback: ItemTouchHelper.Callback = ItemMoveCallbackListener(adapter)
@@ -74,43 +74,52 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         when (number) {
             0 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
+
+                users.add(OrderModel(2, "rasmho/2.png"))
+                users.add(OrderModel(1, "rasmho/1.png"))
+                users.add(OrderModel(5, "rasmho/5.png"))
+                users.add(OrderModel(4, "rasmho/4.png"))
+                users.add(OrderModel(3, "rasmho/3.png"))
+
 
                 adapter.setUsers(users)
             }
             1 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
 
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(1, "rasmho/1.png"))
+                users.add(OrderModel(3, "rasmho/3.png"))
+                users.add(OrderModel(2, "rasmho/2.png"))
+                users.add(OrderModel(5, "rasmho/5.png"))
+                users.add(OrderModel(4, "rasmho/4.png"))
+
                 adapter.setUsers(users)
             }
             2 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
 
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
+                users.add(OrderModel(2, "rasmho/2.png"))
+                users.add(OrderModel(5, "rasmho/5.png"))
+                users.add(OrderModel(1, "rasmho/1.png"))
+                users.add(OrderModel(4, "rasmho/4.png"))
+                users.add(OrderModel(3, "rasmho/3.png"))
+
+
 
                 adapter.setUsers(users)
             }
             3 -> {
                 val users: ArrayList<OrderModel> = ArrayList()
 
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
-                users.add(OrderModel(0, "rasmho/anor.jpg"))
+
+                users.add(OrderModel(4, "rasmho/4.png"))
+                users.add(OrderModel(1, "rasmho/1.png"))
+                users.add(OrderModel(2, "rasmho/2.png"))
+                users.add(OrderModel(5, "rasmho/5.png"))
+                users.add(OrderModel(3, "rasmho/3.png"))
+
+
+
 
                 adapter.setUsers(users)
             }
