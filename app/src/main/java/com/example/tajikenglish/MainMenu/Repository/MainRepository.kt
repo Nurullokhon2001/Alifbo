@@ -1,5 +1,6 @@
-package com.example.tajikenglish.mainFragment.model
+package com.example.tajikenglish.MainMenu.Repository
 
+import com.example.tajikenglish.MainMenu.Model.MainItemData
 import com.example.tajikenglish.R
 class MainRepository() {
     fun getMenu():ArrayList<MainItemData>{

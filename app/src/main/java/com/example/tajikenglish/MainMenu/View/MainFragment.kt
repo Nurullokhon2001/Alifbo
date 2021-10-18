@@ -1,4 +1,4 @@
-package com.example.tajikenglish
+package com.example.tajikenglish.MainMenu.View
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,13 +10,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.Alphabet.AlphabetActivity
+import com.example.tajikenglish.DrawActivity
 import com.example.tajikenglish.Number.NumberActivity
 import com.example.tajikenglish.Order.OrderActivity
-import com.example.tajikenglish.mainFragment.adaptors.EngTopicAdapter
-import com.example.tajikenglish.mainFragment.model.MainRepository
+import com.example.tajikenglish.R
+import com.example.tajikenglish.MainMenu.adaptors.EngTopicAdapter
+import com.example.tajikenglish.MainMenu.Repository.MainRepository
 
 
-class MainnFragment : Fragment(), View.OnClickListener {
+class MainFragment : Fragment(), View.OnClickListener {
     lateinit var recyclerView: RecyclerView
     private lateinit var adapter: EngTopicAdapter
 
