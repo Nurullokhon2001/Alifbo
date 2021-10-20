@@ -1,4 +1,4 @@
-package com.example.tajikenglish.mainFragment.adaptors
+package com.example.tajikenglish.MainMenu.adaptors
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.R
-import com.example.tajikenglish.mainFragment.model.MainItemData
+import com.example.tajikenglish.MainMenu.Model.MainItemData
 import kotlin.collections.ArrayList
 
 
