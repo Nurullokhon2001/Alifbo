@@ -15,6 +15,7 @@ import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.layout_recyclerview_item.view.*
 import java.io.InputStream
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DragDropRecyclerAdapter(
@@ -27,7 +28,10 @@ class DragDropRecyclerAdapter(
 
     private var orderArray = emptyList<OrderModel>().toMutableList()
 
-    fun setUsers(newUsers: List<OrderModel>) {
+
+
+
+    fun setUsers(newUsers: ArrayList<OrderModel>) {
         orderArray.clear()
         orderArray.addAll(newUsers)
     }
@@ -98,18 +102,23 @@ class DragDropRecyclerAdapter(
     }
 
     fun onClickForButton(): Boolean {
-        var i = 0
-        var a = true
-        while (i < orderArray.size) {
+        orderArray.shuffle()
 
-            if (orderArray[i].id != i + 1) {
-                return false
+        var nol = 0
+        var c = true
+        while (nol < orderArray.size-1) {
+
+            if (orderArray[nol].id > orderArray[nol+1].id) {
+                c = true
+
             } else {
-                a = true
+
+                c = false
+                     break
             }
-            i++
+            nol++
         }
-        return a
+        return c
     }
 
 }

@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
 import com.example.tajikenglish.Order.Adapter.DragDropRecyclerAdapter
 import com.example.tajikenglish.Order.Adapter.ItemMoveCallbackListener
 import com.example.tajikenglish.Order.Adapter.OnStartDragListener
 import com.example.tajikenglish.Order.Model.OrderModel
+import com.example.tajikenglish.Order.ViewModel.OrderViewModel
 import com.example.tajikenglish.R
 
 class OrderActivity : AppCompatActivity(), OnStartDragListener {
@@ -22,6 +25,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var recyclerView: RecyclerView
     lateinit var button: Button
     lateinit var reset: Button
+    private lateinit var vm : OrderViewModel
     var number: Int = 0
 
 
@@ -30,6 +34,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
 
+        vm = ViewModelProvider(this).get(OrderViewModel::class.java)
         recyclerView = findViewById(R.id.recyclerView)
 
 
@@ -40,6 +45,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
             // Toast.makeText(this, "korkad", Toast.LENGTH_SHORT).show()
             adapter.notifyDataSetChanged()
             populateListItem()
+
 
         }
 
@@ -71,57 +77,69 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
+        var a = 1   // (0..7).random()
+        var b =  5    //(9..15).random()
+
         when (number) {
             0 -> {
-                val users: ArrayList<OrderModel> = ArrayList()
+                var users: ArrayList<OrderModel> = ArrayList()
+              vm.getAlphabet().observe(this, Observer {
 
-                users.add(OrderModel(2, "rasmho/2.png"))
-                users.add(OrderModel(1, "rasmho/1.png"))
-                users.add(OrderModel(5, "rasmho/5.png"))
-                users.add(OrderModel(4, "rasmho/4.png"))
-                users.add(OrderModel(3, "rasmho/3.png"))
+                  fun randomArray() {
+                      while (a < b) {
+                          users.add(OrderModel(it[a].id,it[a].image))
+                          a++
+                      }
+                  }
+                  randomArray()
+                  adapter.setUsers(users)
+              })
 
-
-                adapter.setUsers(users)
             }
             1 -> {
-                val users: ArrayList<OrderModel> = ArrayList()
+                var users: ArrayList<OrderModel> = ArrayList()
+                vm.getAlphabet().observe(this, Observer {
 
-                users.add(OrderModel(1, "rasmho/1.png"))
-                users.add(OrderModel(3, "rasmho/3.png"))
-                users.add(OrderModel(2, "rasmho/2.png"))
-                users.add(OrderModel(5, "rasmho/5.png"))
-                users.add(OrderModel(4, "rasmho/4.png"))
+                    fun randomArray() {
+                        while (a < b) {
+                            users.add(OrderModel(it[a].id,it[a].image))
+                            a++
+                        }
+                    }
+                    randomArray()
+                    adapter.setUsers(users)
+                })
 
-                adapter.setUsers(users)
             }
             2 -> {
-                val users: ArrayList<OrderModel> = ArrayList()
+                var users: ArrayList<OrderModel> = ArrayList()
+                vm.getAlphabet().observe(this, Observer {
 
-                users.add(OrderModel(2, "rasmho/2.png"))
-                users.add(OrderModel(5, "rasmho/5.png"))
-                users.add(OrderModel(1, "rasmho/1.png"))
-                users.add(OrderModel(4, "rasmho/4.png"))
-                users.add(OrderModel(3, "rasmho/3.png"))
+                    fun randomArray() {
+                        while (a < b) {
+                            users.add(OrderModel(it[a].id,it[a].image))
+                            a++
+                        }
+                    }
+                    randomArray()
+                    adapter.setUsers(users)
+                })
 
-
-
-                adapter.setUsers(users)
             }
             3 -> {
-                val users: ArrayList<OrderModel> = ArrayList()
+                var users: ArrayList<OrderModel> = ArrayList()
+                vm.getAlphabet().observe(this, Observer {
 
+                    fun randomArray() {
+                        while (a < b) {
+                            users.add(OrderModel(it[a].id,it[a].image))
+                            a++
+                        }
+                    }
+                    randomArray()
+                    adapter.setUsers(users)
+                })
 
-                users.add(OrderModel(4, "rasmho/4.png"))
-                users.add(OrderModel(1, "rasmho/1.png"))
-                users.add(OrderModel(2, "rasmho/2.png"))
-                users.add(OrderModel(5, "rasmho/5.png"))
-                users.add(OrderModel(3, "rasmho/3.png"))
-
-
-
-
-                adapter.setUsers(users)
             }
         }
     }
