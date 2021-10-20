@@ -40,7 +40,7 @@ class NumbersFragment : Fragment(), View.OnClickListener {
                 layoutInflater.inflate(R.layout.item_alphabet_main_cview_fragment_view,
                     linearLayout,
                     false)
-            itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.number
+            itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.number.toString()
             itemView.setOnClickListener(this)
             itemView.setTag(alphabetModel)
             linearLayout.addView(itemView)

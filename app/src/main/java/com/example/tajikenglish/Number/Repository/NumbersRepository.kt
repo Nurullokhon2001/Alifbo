@@ -1,41 +1,77 @@
 package com.example.tajikenglish.Number.Repository
 
+import android.annotation.SuppressLint
 import android.content.Context
+import com.example.tajikenglish.MySqlOpenHelper.MySQLiteOpenHelper
 import com.example.tajikenglish.Number.Model.NumbersModel
 
-class NumbersRepository(context: Context) {
+class NumbersRepository(context: Context) : MySQLiteOpenHelper(context) {
 
+    @SuppressLint("Range")
     fun getNumber(): ArrayList<NumbersModel> {
         val array: ArrayList<NumbersModel> = ArrayList()
-        array.add(NumbersModel(0, "0", "Сифр", "rasmho/sifr.png", "1.mp3", "rasmho/anor.mp3", 1))
-        array.add(NumbersModel(1, "1", "Як", "rasmho/yak.png", "1.mp3", "rasmho/anor.mp3", 1))
-        array.add(NumbersModel(2, "2", "Ду", "rasmho/du.png", "2.mp3", "rasmho/barg.mp3", 2))
-        array.add(NumbersModel(3, "3", "Се", "rasmho/se.png", "3.mp3", "rasmho/vagon.mp3", 1))
-        array.add(NumbersModel(4, "4", "Чор", "rasmho/chor.png", "4.mp3", "rasmho/gul.mp3", 2))
-        array.add(NumbersModel(5, "5", "Панч", "rasmho/panj.png", "5.mp3", "rasmho/ghaltak.mp3", 1))
-        array.add(NumbersModel(6, "6","Шаш", "rasmho/shash.png","6.mp3","rasmho/dutor.mp3",2))
-        array.add(NumbersModel(7, "7","Хафт", "rasmho/haft.png","7.mp3","rasmho/elim.mp3",1))
-        array.add(NumbersModel(8, "8","Хашт", "rasmho/hasht.png","8.mp3","rasmho/yoqut.mp3",2))
-        array.add(NumbersModel(9, "9","Нух", "rasmho/nuh.png","8.mp3","rasmho/yoqut.mp3",1))
-
+        val sql = "SELECT * FROM NumbersData"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getInt(mCursor.getColumnIndex("number"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("numberplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplayer"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(NumbersModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
+    @SuppressLint("Range")
     fun getToq(): ArrayList<NumbersModel> {
         val array: ArrayList<NumbersModel> = ArrayList()
-        array.add(NumbersModel(0, "1", "Як", "rasmho/yak.png", "1.mp3", "rasmho/anor.mp3", 1))
-        array.add(NumbersModel(1, "3", "Се", "rasmho/se.png", "3.mp3", "rasmho/vagon.mp3", 1))
-        array.add(NumbersModel(2, "5", "Панч", "rasmho/panj.png", "5.mp3", "rasmho/ghaltak.mp3", 1))
-        array.add(NumbersModel(3, "7","Хафт", "rasmho/haft.png","7.mp3","rasmho/elim.mp3",1))
-        array.add(NumbersModel(4, "9","Нух", "rasmho/nuh.png","8.mp3","rasmho/yoqut.mp3",1))
+        val sql = "SELECT * FROM NumbersData Where category=1"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getInt(mCursor.getColumnIndex("number"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("numberplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplayer"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(NumbersModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
 
+    @SuppressLint("Range")
     fun getJuft(): ArrayList<NumbersModel> {
         val array: ArrayList<NumbersModel> = ArrayList()
-        array.add(NumbersModel(0, "2", "Ду", "rasmho/du.png", "2.mp3", "rasmho/barg.mp3", 2))
-        array.add(NumbersModel(1, "4", "Чор", "rasmho/chor.png", "4.mp3", "rasmho/gul.mp3", 2))
-        array.add(NumbersModel(2, "6","Шаш", "rasmho/shash.png","6.mp3","rasmho/dutor.mp3",2))
-        array.add(NumbersModel(3, "8","Хашт", "rasmho/hasht.png","8.mp3","rasmho/yoqut.mp3",2))
+        val sql = "SELECT * FROM NumbersData Where category=2 "
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getInt(mCursor.getColumnIndex("number"))
+                    val word = mCursor.getString(mCursor.getColumnIndex("word"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val alfabetPlayer = mCursor.getString(mCursor.getColumnIndex("numberplayer"))
+                    val imagePlayer = mCursor.getString(mCursor.getColumnIndex("imageplayer"))
+                    val category = mCursor.getInt(mCursor.getColumnIndex("category"))
+                    array.add(NumbersModel(id,alfabet,word,image,alfabetPlayer,imagePlayer,category))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
         return array
     }
 

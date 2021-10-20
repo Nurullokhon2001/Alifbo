@@ -1,20 +1,32 @@
 package com.example.tajikenglish.Order.Repository
 
+import android.annotation.SuppressLint
 import android.content.Context
+import com.example.tajikenglish.Alphabet.repository.model.AlphabetsModel
+import com.example.tajikenglish.MySqlOpenHelper.MySQLiteOpenHelper
 import com.example.tajikenglish.Order.Model.OrderModel
 import com.example.tajikenglish.R
 
-class OrderRepository(context: Context) {
+class OrderRepository(context: Context):MySQLiteOpenHelper(context) {
 
+    @SuppressLint("Range")
     fun getAlphabet(): ArrayList<OrderModel> {
-        val users: ArrayList<OrderModel> = ArrayList()
-        users.add(OrderModel(0, "rasmho/anor.jpg"))
-        users.add(OrderModel(0, "rasmho/anor.jpg"))
-        users.add(OrderModel(0, "rasmho/anor.jpg"))
-        users.add(OrderModel(0, "rasmho/anor.jpg"))
-        users.add(OrderModel(0, "rasmho/anor.jpg"))
+        val array: ArrayList<OrderModel> = ArrayList()
+        val sql = "SELECT * from Order7"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("Alphabet"))
 
-        return users
+                    array.add(OrderModel(id,alfabet))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
+        return array
+
     }
 
 }

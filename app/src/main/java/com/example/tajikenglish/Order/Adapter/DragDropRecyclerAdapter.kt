@@ -9,13 +9,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.Order.Model.OrderModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.layout_recyclerview_item.view.*
 import java.io.InputStream
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DragDropRecyclerAdapter(
@@ -26,15 +26,20 @@ class DragDropRecyclerAdapter(
     ItemMoveCallbackListener.Listener {
 
 
-    private var users = emptyList<OrderModel>().toMutableList()
+    private var orderArray = emptyList<OrderModel>().toMutableList()
 
-    fun setUsers(newUsers: List<OrderModel>) {
-        users.clear()
-        users.addAll(newUsers)
+
+
+
+    fun setUsers(newUsers: ArrayList<OrderModel>) {
+        orderArray.clear()
+        orderArray.addAll(newUsers)
+        orderArray.shuffle()
+
     }
 
     override fun getItemCount(): Int {
-        return users.size
+        return orderArray.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -45,9 +50,8 @@ class DragDropRecyclerAdapter(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val user = users[position]
-        val pos = position
-        holder.bind(user, context)
+        val orderArrayPosition = orderArray[position]
+        holder.bind(orderArrayPosition, context)
 
         holder.itemView.imageView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
@@ -57,19 +61,19 @@ class DragDropRecyclerAdapter(
             return@setOnTouchListener true
         }
 
-        holder.itemView.tag = pos
+        holder.itemView.tag = position
     }
 
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.textView)
+        val imageViewAlphabet: ImageView = itemView.findViewById(R.id.imageViewAlphabet)
 
         fun bind(data: OrderModel, context: Context) {
             try {
                 val inputStream: InputStream = context.getAssets().open(data.image)
                 val image = Drawable.createFromStream(inputStream, null)
-                imageView.setImageDrawable(image)
-                itemView.tag = data
+                imageViewAlphabet.setImageDrawable(image)
+                imageViewAlphabet.tag = data
             }catch (ex:Exception){
                 ex.message?.let {
                     Log.e(DragDropRecyclerAdapter::class.java.simpleName,it)
@@ -81,11 +85,11 @@ class DragDropRecyclerAdapter(
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
         if (fromPosition < toPosition) {
             for (i in fromPosition until toPosition) {
-                Collections.swap(users, i, i + 1)
+                Collections.swap(orderArray, i, i + 1)
             }
         } else {
             for (i in fromPosition downTo toPosition + 1) {
-                Collections.swap(users, i, i - 1)
+                Collections.swap(orderArray, i, i - 1)
             }
         }
         notifyItemMoved(fromPosition, toPosition)
@@ -100,18 +104,22 @@ class DragDropRecyclerAdapter(
     }
 
     fun onClickForButton(): Boolean {
-        var i = 0
-        var a = true
-        while (i < users.size) {
 
-            if (users[i].id != i + 1) {
-                return false
+        var nol = 0
+        var c = true
+        while (nol < orderArray.size-1) {
+
+            if (orderArray[nol].id > orderArray[nol+1].id) {
+                c = true
+
             } else {
-                a = true
+
+                c = false
+                     break
             }
-            i++
+            nol++
         }
-        return a
+        return c
     }
 
 }
