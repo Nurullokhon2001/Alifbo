@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +17,8 @@ import com.example.tajikenglish.Number.NumberActivity
 import com.example.tajikenglish.Order.OrderActivity
 import com.example.tajikenglish.R
 import com.example.tajikenglish.MainMenu.adaptors.EngTopicAdapter
-import com.example.tajikenglish.MainMenu.Repository.MainRepository
 import com.example.tajikenglish.MainMenu.ViewModel.MainViewModel
+import com.example.tajikenglish.repository.MainRepositoryImpl
 
 
 class MainFragment : Fragment(), View.OnClickListener {
@@ -49,28 +48,28 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.tag.toString()) {
-            MainRepository.ALIFBO -> {
+            MainRepositoryImpl.ALIFBO -> {
                 val intent = Intent(context, AlphabetActivity::class.java)
                 startActivity(intent)
             }
-            MainRepository.RAQAMHO -> {
+            MainRepositoryImpl.RAQAMHO -> {
                 val intent = Intent(context, NumberActivity::class.java)
                 startActivity(intent)
             }
-            MainRepository.RASMKASHI -> {
+            MainRepositoryImpl.RASMKASHI -> {
                 val intent = Intent(context, DrawActivity::class.java)
                 startActivity(intent)
             }
-            MainRepository.TARTIB -> {
+            MainRepositoryImpl.TARTIB -> {
 
                 val intent = Intent(context, OrderActivity::class.java)
                 startActivity(intent)
                // Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
             }
-            MainRepository.KALIMASOZI -> {
+            MainRepositoryImpl.KALIMASOZI -> {
                 Toast.makeText(context, "vkladka kalimasozi", Toast.LENGTH_SHORT).show()
             }
-            MainRepository.KALIMAYOBI -> {
+            MainRepositoryImpl.KALIMAYOBI -> {
                 Toast.makeText(context, "vkladka kalimayobi", Toast.LENGTH_SHORT).show()
             }
         }
