@@ -26,7 +26,6 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var button: Button
     lateinit var reset: Button
     private lateinit var vm : OrderViewModel
-    var number: Int = 0
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -41,7 +40,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         button = findViewById(R.id.button)
         reset = findViewById(R.id.reset)
         reset.setOnClickListener {
-            number = (0..3).random()
+
             // Toast.makeText(this, "korkad", Toast.LENGTH_SHORT).show()
             adapter.notifyDataSetChanged()
             populateListItem()
@@ -77,12 +76,10 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
-        var a = 1   // (0..7).random()
-        var b =  5    //(9..15).random()
+        var a =  (0..15).random()
+        var b =  (18..35).random()
 
-        when (number) {
-            0 -> {
-                var users: ArrayList<OrderModel> = ArrayList()
+     var users: ArrayList<OrderModel> = ArrayList()
               vm.getAlphabet().observe(this, Observer {
 
                   fun randomArray() {
@@ -95,53 +92,6 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                   adapter.setUsers(users)
               })
 
-            }
-            1 -> {
-                var users: ArrayList<OrderModel> = ArrayList()
-                vm.getAlphabet().observe(this, Observer {
-
-                    fun randomArray() {
-                        while (a < b) {
-                            users.add(OrderModel(it[a].id,it[a].image))
-                            a++
-                        }
-                    }
-                    randomArray()
-                    adapter.setUsers(users)
-                })
-
-            }
-            2 -> {
-                var users: ArrayList<OrderModel> = ArrayList()
-                vm.getAlphabet().observe(this, Observer {
-
-                    fun randomArray() {
-                        while (a < b) {
-                            users.add(OrderModel(it[a].id,it[a].image))
-                            a++
-                        }
-                    }
-                    randomArray()
-                    adapter.setUsers(users)
-                })
-
-            }
-            3 -> {
-                var users: ArrayList<OrderModel> = ArrayList()
-                vm.getAlphabet().observe(this, Observer {
-
-                    fun randomArray() {
-                        while (a < b) {
-                            users.add(OrderModel(it[a].id,it[a].image))
-                            a++
-                        }
-                    }
-                    randomArray()
-                    adapter.setUsers(users)
-                })
-
-            }
-        }
     }
 
 

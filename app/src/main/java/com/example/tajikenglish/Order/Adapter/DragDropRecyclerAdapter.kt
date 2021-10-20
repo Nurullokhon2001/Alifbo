@@ -34,6 +34,8 @@ class DragDropRecyclerAdapter(
     fun setUsers(newUsers: ArrayList<OrderModel>) {
         orderArray.clear()
         orderArray.addAll(newUsers)
+        orderArray.shuffle()
+
     }
 
     override fun getItemCount(): Int {
@@ -102,7 +104,6 @@ class DragDropRecyclerAdapter(
     }
 
     fun onClickForButton(): Boolean {
-        orderArray.shuffle()
 
         var nol = 0
         var c = true
