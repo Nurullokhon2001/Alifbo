@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tajikenglish.Alphabet.vm.AlphabetsViewModel
 import com.example.tajikenglish.Order.Adapter.DragDropRecyclerAdapter
 import com.example.tajikenglish.Order.Adapter.ItemMoveCallbackListener
 import com.example.tajikenglish.Order.Adapter.OnStartDragListener
@@ -79,17 +78,17 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         var a =  (0..15).random()
         var b =  (18..35).random()
 
-     var users: ArrayList<OrderModel> = ArrayList()
+     var alphabetsArray: ArrayList<OrderModel> = ArrayList()
               vm.getAlphabet().observe(this, Observer {
 
                   fun randomArray() {
                       while (a < b) {
-                          users.add(OrderModel(it[a].id,it[a].image))
+                          alphabetsArray.add(OrderModel(it[a].id,it[a].image))
                           a++
                       }
                   }
                   randomArray()
-                  adapter.setUsers(users)
+                  adapter.setUsers(alphabetsArray)
               })
 
     }
