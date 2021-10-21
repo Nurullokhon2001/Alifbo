@@ -8,15 +8,12 @@ import com.example.tajikenglish.core.di.BaseViewModel
 class AlphabetsViewModel() : BaseViewModel() {
 
 
-
     fun getAlphabet(): LiveData<ArrayList<AlphabetsModel>> {
         val myDataSet = repository.getAlphabet()
         val result: MutableLiveData<ArrayList<AlphabetsModel>> = MutableLiveData()
         result.postValue(myDataSet)
         return result
     }
-
-
 
 
     fun getHamsado(): LiveData<ArrayList<AlphabetsModel>> {
@@ -39,7 +36,6 @@ class AlphabetsViewModel() : BaseViewModel() {
         result.postValue(myDataSet)
         return result
     }
-
 
 
 }

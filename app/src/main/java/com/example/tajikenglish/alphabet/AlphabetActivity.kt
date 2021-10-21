@@ -37,11 +37,6 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
         })
 
 
-
-
-
-
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener {
@@ -51,7 +46,6 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
-
 
 
     }

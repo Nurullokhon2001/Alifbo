@@ -24,7 +24,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var recyclerView: RecyclerView
     lateinit var button: Button
     lateinit var reset: Button
-    private lateinit var vm : OrderViewModel
+    private lateinit var vm: OrderViewModel
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -75,21 +75,21 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
-        var a =  (0..15).random()
-        var b =  (18..35).random()
+        var a = (0..15).random()
+        var b = (18..35).random()
 
-     var alphabetsArray: ArrayList<OrderModel> = ArrayList()
-              vm.getAlphabet().observe(this, Observer {
+        var alphabetsArray: ArrayList<OrderModel> = ArrayList()
+        vm.getAlphabet().observe(this, Observer {
 
-                  fun randomArray() {
-                      while (a < b) {
-                          alphabetsArray.add(OrderModel(it[a].id,it[a].image))
-                          a++
-                      }
-                  }
-                  randomArray()
-                  adapter.setUsers(alphabetsArray)
-              })
+            fun randomArray() {
+                while (a < b) {
+                    alphabetsArray.add(OrderModel(it[a].id, it[a].image))
+                    a++
+                }
+            }
+            randomArray()
+            adapter.setUsers(alphabetsArray)
+        })
 
     }
 

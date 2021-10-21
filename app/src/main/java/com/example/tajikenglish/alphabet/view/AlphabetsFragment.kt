@@ -13,7 +13,7 @@ import com.example.tajikenglish.R
 class AlphabetsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var linearLayout: LinearLayout
-     var numberArray: ArrayList<AlphabetsModel> = ArrayList()
+    var numberArray: ArrayList<AlphabetsModel> = ArrayList()
 
 
     override fun onCreateView(

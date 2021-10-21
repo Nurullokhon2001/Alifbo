@@ -29,8 +29,6 @@ class DragDropRecyclerAdapter(
     private var orderArray = emptyList<OrderModel>().toMutableList()
 
 
-
-
     fun setUsers(newUsers: ArrayList<OrderModel>) {
         orderArray.clear()
         orderArray.addAll(newUsers)
@@ -74,9 +72,9 @@ class DragDropRecyclerAdapter(
                 val image = Drawable.createFromStream(inputStream, null)
                 imageViewAlphabet.setImageDrawable(image)
                 imageViewAlphabet.tag = data
-            }catch (ex:Exception){
+            } catch (ex: Exception) {
                 ex.message?.let {
-                    Log.e(DragDropRecyclerAdapter::class.java.simpleName,it)
+                    Log.e(DragDropRecyclerAdapter::class.java.simpleName, it)
                 }
             }
         }
@@ -107,15 +105,15 @@ class DragDropRecyclerAdapter(
 
         var nol = 0
         var c = true
-        while (nol < orderArray.size-1) {
+        while (nol < orderArray.size - 1) {
 
-            if (orderArray[nol].id > orderArray[nol+1].id) {
+            if (orderArray[nol].id > orderArray[nol + 1].id) {
                 c = true
 
             } else {
 
                 c = false
-                     break
+                break
             }
             nol++
         }

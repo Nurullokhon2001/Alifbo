@@ -25,7 +25,7 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var image: ImageView
     private lateinit var word: TextView
     private lateinit var vm: AlphabetsViewModel
-    var mp:MediaPlayer? = null
+    var mp: MediaPlayer? = null
     var alphabetArray: AlphabetsModel =
         (AlphabetsModel(0, "А а", "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
 
@@ -100,24 +100,25 @@ class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {
 
         }
     }
-    fun audioPlayer(fullPath:String){
+
+    fun audioPlayer(fullPath: String) {
         try {
-            if (mp!=null){
+            if (mp != null) {
                 mp?.stop()
                 mp?.release()
-                mp= null
+                mp = null
             }
             mp = MediaPlayer()
             val decs: AssetFileDescriptor = requireContext().resources.assets.openFd(fullPath)
-            mp?.setDataSource(decs.fileDescriptor,decs.startOffset,decs.length)
+            mp?.setDataSource(decs.fileDescriptor, decs.startOffset, decs.length)
             decs.close()
             mp?.prepare()
-            mp?.setVolume(1f,1f)
-            mp?.isLooping=false
+            mp?.setVolume(1f, 1f)
+            mp?.isLooping = false
 
             mp?.start()
-        }catch (ex:Exception){
-            Log.i("",ex.message!!)
+        } catch (ex: Exception) {
+            Log.i("", ex.message!!)
         }
     }
 
