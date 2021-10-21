@@ -3,7 +3,7 @@
     <item
         android:id="@+id/alphabet"
         android:enabled="true"
-        android:icon="@drawable/abclearn"
+        android:icon="@drawable/ic_baseline_menu_24"
         android:title="@string/Alphabet" />
     <item
         android:id="@+id/hamsado"

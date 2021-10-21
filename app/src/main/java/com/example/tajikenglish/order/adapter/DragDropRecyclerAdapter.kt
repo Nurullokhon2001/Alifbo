@@ -12,7 +12,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.modules.OrderModel
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.layout_recyclerview_item.view.*
+import kotlinx.android.synthetic.main.order_recyclerview_item.view.*
 import java.io.InputStream
 import java.util.*
 import kotlin.collections.ArrayList
@@ -44,7 +44,7 @@ class DragDropRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_recyclerview_item, parent, false)
+            .inflate(R.layout.order_recyclerview_item, parent, false)
         return ItemViewHolder(itemView)
     }
 

@@ -37,7 +37,7 @@ class AlphabetsFragment : Fragment(), View.OnClickListener {
     private fun initializeViews(alphabetModels: ArrayList<AlphabetsModel>) {
         for (alphabetModel in alphabetModels) {
             val itemView: View =
-                layoutInflater.inflate(R.layout.item_alphabet_main_cview_fragment_view,
+                layoutInflater.inflate(R.layout.item_button_view,
                     linearLayout,
                     false)
             itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.alphabet

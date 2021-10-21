@@ -13,7 +13,7 @@
     app:cardElevation="8dp"
     app:contentPadding="10dp"
     android:layout_margin="12dp"
-    app:cardBackgroundColor="#34B6B2">
+    app:cardBackgroundColor="#61BFE4">
 
     <FrameLayout
         android:layout_gravity="center"

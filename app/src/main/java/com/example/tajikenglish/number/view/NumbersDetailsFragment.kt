@@ -13,8 +13,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.example.tajikenglish.alphabet.vm.AlphabetsViewModel
 import com.example.tajikenglish.modules.NumbersModel
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
@@ -24,14 +22,14 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
     private lateinit var alphabet: TextView
     private lateinit var image: ImageView
     private lateinit var word: TextView
-    private lateinit var vm: AlphabetsViewModel
     var mp:MediaPlayer? = null
+
     var array: NumbersModel =
         (NumbersModel(0, 1, "Анор", "rasmho/anor.jpg", "1.mp3", "rasmho/anor.mp3", 1))
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        vm = ViewModelProvider(this).get(AlphabetsViewModel::class.java)
+
     }
 
     override fun onCreateView(
