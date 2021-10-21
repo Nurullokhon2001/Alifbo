@@ -12,8 +12,10 @@ import com.example.tajikenglish.modules.drawsModel
 import kotlin.collections.ArrayList
 
 
-class MenuAdapter(private var context:Context, var dataSet: ArrayList<drawsModel>,
-                  private val onClickListener: View.OnClickListener) : RecyclerView.Adapter<MenuAdapter.MyViewHolder>()  {
+class MenuAdapter(
+    private var context: Context, var dataSet: ArrayList<drawsModel>,
+    private val onClickListener: View.OnClickListener,
+) : RecyclerView.Adapter<MenuAdapter.MyViewHolder>() {
 
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,14 +30,15 @@ class MenuAdapter(private var context:Context, var dataSet: ArrayList<drawsModel
     ): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.dictionary_item, parent, false)
-        return MyViewHolder(view)    }
+        return MyViewHolder(view)
+    }
 
     override fun onBindViewHolder(holder: MenuAdapter.MyViewHolder, position: Int) {
         val data: drawsModel = dataSet.get(position)
         //   holder.itemView.startAnimation(animation)
         holder.title.text = data.title
         holder.icon.setImageResource(data.icon)
-       holder.title.setTextColor(context.resources.getColor(data.color))
+        holder.title.setTextColor(context.resources.getColor(data.color))
         holder.title.tag = position
 //        holder.topicname.setOnClickListener(onClickListener)
         holder.itemView.setOnClickListener(onClickListener)
@@ -48,10 +51,6 @@ class MenuAdapter(private var context:Context, var dataSet: ArrayList<drawsModel
     override fun getItemCount(): Int {
         return dataSet.size
     }
-
-
-
-
 
 
 }

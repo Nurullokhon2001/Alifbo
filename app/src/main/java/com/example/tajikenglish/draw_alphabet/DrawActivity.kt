@@ -1,4 +1,5 @@
 package com.example.tajikenglish
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -29,18 +30,19 @@ import java.io.FileOutputStream
 class DrawActivity : AppCompatActivity() {
 
     private var mImageButtonCurrentPaint: ImageButton? =
-            null// Переменная для текущего цвета выбирается из палитры цветов.
+        null// Переменная для текущего цвета выбирается из палитры цветов.
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, AlphabetButtonDrawFragment())
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, AlphabetButtonDrawFragment())
             .commit()
         supportFragmentManager.beginTransaction().replace(R.id.fragment, AlphabetDrawFragment())
             .commit()
 
-         drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
+        drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
         /**
          * Это делается для выбора кнопки Изображения по умолчанию, которая
@@ -50,10 +52,10 @@ class DrawActivity : AppCompatActivity() {
          */
         mImageButtonCurrentPaint = ll_paint_colors[1] as ImageButton
         mImageButtonCurrentPaint!!.setImageDrawable(
-                ContextCompat.getDrawable(
-                        this,
-                        R.drawable.pallet_pressed
-                )
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.pallet_pressed
+            )
         )
 
         ib_brush.setOnClickListener {
@@ -95,9 +97,9 @@ class DrawActivity : AppCompatActivity() {
      * @param requestCode Код запроса конкретного приложения для сопоставления с результатом, сообщенным
      */
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -107,16 +109,16 @@ class DrawActivity : AppCompatActivity() {
             //Если разрешение будет предоставлено
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(
-                        this@DrawActivity,
-                        "Разрешение предоставлено, теперь вы можете читать файлы хранилища.",
-                        Toast.LENGTH_LONG
+                    this@DrawActivity,
+                    "Разрешение предоставлено, теперь вы можете читать файлы хранилища.",
+                    Toast.LENGTH_LONG
                 ).show()
             } else {
                 //Displaying another toast if permission is not granted
                 Toast.makeText(
-                        this@DrawActivity,
-                        "Упс, ты только что отказал в разрешении.",
-                        Toast.LENGTH_LONG
+                    this@DrawActivity,
+                    "Упс, ты только что отказал в разрешении.",
+                    Toast.LENGTH_LONG
                 ).show()
             }
         }
@@ -171,10 +173,10 @@ class DrawActivity : AppCompatActivity() {
             // Поменяйте местами фон для последней активной и текущей активной кнопки изображения.
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
             mImageButtonCurrentPaint!!.setImageDrawable(
-                    ContextCompat.getDrawable(
-                            this,
-                            R.drawable.pallet_normal
-                    )
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.pallet_normal
+                )
             )
 
             //Текущее представление обновляется выбранным представлением в виде кнопки ImageButton.
@@ -206,12 +208,12 @@ class DrawActivity : AppCompatActivity() {
          *
          */
         if (ActivityCompat.shouldShowRequestPermissionRationale(
-                        this,
-                        arrayOf(
-                                Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        ).toString()
-                )
+                this,
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ).toString()
+            )
         ) {
             //Если пользователь ранее отказал в разрешении, ваш код попадет в этот блок
             //Здесь вы можете объяснить, зачем вам нужно это разрешение
@@ -225,11 +227,11 @@ class DrawActivity : AppCompatActivity() {
 
         //И, наконец, попросите разрешения
         ActivityCompat.requestPermissions(
-                this, arrayOf(
+            this, arrayOf(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ),
-                STORAGE_PERMISSION_CODE
+            ),
+            STORAGE_PERMISSION_CODE
         )
     }
 
@@ -246,7 +248,7 @@ class DrawActivity : AppCompatActivity() {
          *
          */
         val result = ContextCompat.checkSelfPermission(
-                this, Manifest.permission.READ_EXTERNAL_STORAGE
+            this, Manifest.permission.READ_EXTERNAL_STORAGE
         )
 
         /**
@@ -297,7 +299,7 @@ class DrawActivity : AppCompatActivity() {
      */
     @SuppressLint("StaticFieldLeak")
     private inner class BitmapAsyncTask(val mBitmap: Bitmap?) :
-            AsyncTask<Any, Void, String>() {
+        AsyncTask<Any, Void, String>() {
 
         /**
          * ProgressDialog-это модальный диалог, который запрещает пользователю взаимодействовать с приложением.
@@ -322,7 +324,8 @@ class DrawActivity : AppCompatActivity() {
             if (mBitmap != null) {
 
                 try {
-                    val bytes = ByteArrayOutputStream() // Создает новый поток вывода массива байтов.
+                    val bytes =
+                        ByteArrayOutputStream() // Создает новый поток вывода массива байтов.
                     // Емкость буфера изначально составляет 32 байта, хотя при необходимости его размер увеличивается.
                     mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
                     /**
@@ -344,15 +347,15 @@ class DrawActivity : AppCompatActivity() {
                      */
 
                     val f = File(
-                            externalCacheDir!!.absoluteFile.toString()
-                                    + File.separator + "KidDrawingApp_" + System.currentTimeMillis() / 1000 + ".jpg"
+                        externalCacheDir!!.absoluteFile.toString()
+                                + File.separator + "KidDrawingApp_" + System.currentTimeMillis() / 1000 + ".jpg"
                     )
                     // Здесь Среда : Предоставляет доступ к переменным среды.
                     // getExternalStorageDirectory : возвращает основной каталог общего/внешнего хранилища.
                     // absoluteFile : Возвращает абсолютную форму этого абстрактного пути.
                     // File.separator : Зависящий от системы символ-разделитель имени по умолчанию. Эта строка содержит один символ.
                     val fo =
-                            FileOutputStream(f) // Создает поток вывода файла для записи в файл, представленный указанным объектом.
+                        FileOutputStream(f) // Создает поток вывода файла для записи в файл, представленный указанным объектом.
                     fo.write(bytes.toByteArray()) // Записывает байты из указанного массива байтов в этот поток вывода файла.
                     fo.close() //Закрывает это поток вывода файла и освобождает любые системные ресурсы, связанные с этим потоком. Этот поток вывода файла больше не может использоваться для записи байтов.
                     result = f.absolutePath // В результате возвращается абсолютный путь к файлу.
@@ -371,15 +374,15 @@ class DrawActivity : AppCompatActivity() {
 
             if (!result.isEmpty()) {
                 Toast.makeText(
-                        this@DrawActivity,
-                        "Файл успешно сохранен:$result",
-                        Toast.LENGTH_SHORT
+                    this@DrawActivity,
+                    "Файл успешно сохранен:$result",
+                    Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Toast.makeText(
-                        this@DrawActivity,
-                        "Что-то пошло не так при сохранении файла.",
-                        Toast.LENGTH_SHORT
+                    this@DrawActivity,
+                    "Что-то пошло не так при сохранении файла.",
+                    Toast.LENGTH_SHORT
                 ).show()
             }
 
@@ -395,23 +398,23 @@ class DrawActivity : AppCompatActivity() {
            клиенту класса MediaScannerConnection.*/
 
             /*scanFile используется для сканирования файла при установлении соединения с MediaScanner.*/            MediaScannerConnection.scanFile(
-                    this@DrawActivity, arrayOf(result), null
+                this@DrawActivity, arrayOf(result), null
             ) { path, uri ->
                 // Это используется для совместного использования изображения после того, как оно было сохранено в хранилище.
-                    val shareIntent = Intent()
-                    shareIntent.action = Intent.ACTION_SEND
-                    shareIntent.putExtra(
-                            Intent.EXTRA_STREAM,
-                            uri
-                    ) // Содержимое: URI, содержащий поток данных, связанных с Намерением, используемый для предоставления отправляемых данных.
-                    shareIntent.type =
-                            "image/jpeg" // Тип MIME данных, обрабатываемых этим намерением.
-                    startActivity(
-                            Intent.createChooser(
-                                    shareIntent,
-                                    "Share"
-                            )
-                    )// Действие действия: Отображение средства выбора действия,
+                val shareIntent = Intent()
+                shareIntent.action = Intent.ACTION_SEND
+                shareIntent.putExtra(
+                    Intent.EXTRA_STREAM,
+                    uri
+                ) // Содержимое: URI, содержащий поток данных, связанных с Намерением, используемый для предоставления отправляемых данных.
+                shareIntent.type =
+                    "image/jpeg" // Тип MIME данных, обрабатываемых этим намерением.
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent,
+                        "Share"
+                    )
+                )// Действие действия: Отображение средства выбора действия,
                 // позволяет пользователю выбрать то, что он хочет, прежде чем продолжить.
                 // Это может быть использовано в качестве альтернативы стандартному средству выбора действий
                 // это отображается системой при попытке начать действие с несколькими возможными совпадениями,
@@ -426,9 +429,9 @@ class DrawActivity : AppCompatActivity() {
         private fun showProgressDialog() {
             @Suppress("DEPRECATION")
             mDialog = ProgressDialog.show(
-                    this@DrawActivity,
-                    "",
-                    "Сохранение вашего изображения..."
+                this@DrawActivity,
+                "",
+                "Сохранение вашего изображения..."
             )
         }
 
@@ -442,6 +445,7 @@ class DrawActivity : AppCompatActivity() {
             }
         }
     }
+
     companion object {
 
         /**
@@ -456,4 +460,4 @@ class DrawActivity : AppCompatActivity() {
     }
 
 
-    }
+}

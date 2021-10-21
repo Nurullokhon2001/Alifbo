@@ -24,7 +24,7 @@ import com.example.tajikenglish.repository.MainRepositoryImpl
 class MainFragment : Fragment(), View.OnClickListener {
     lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MenuAdapter
-    private lateinit var viewModel:MainViewModel
+    private lateinit var viewModel: MainViewModel
     override fun onAttach(context: Context) {
         super.onAttach(context)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -32,7 +32,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_mainn, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -64,7 +64,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
                 val intent = Intent(context, OrderActivity::class.java)
                 startActivity(intent)
-               // Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
             }
             MainRepositoryImpl.KALIMASOZI -> {
                 Toast.makeText(context, "vkladka kalimasozi", Toast.LENGTH_SHORT).show()

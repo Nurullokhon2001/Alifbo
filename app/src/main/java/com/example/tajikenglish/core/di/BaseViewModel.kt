@@ -12,5 +12,5 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     protected val repository: MainRepository by inject()
 
 
-    fun getLoading(): LiveData<Boolean> = isLoading
+          fun getLoading(): LiveData<Boolean> = isLoading
 }

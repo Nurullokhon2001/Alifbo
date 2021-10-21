@@ -17,7 +17,7 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
     private lateinit var linearLayout: LinearLayout
     private lateinit var viewModel: DrawViewModel
 
-    var indexarray :Int = 0
+    var indexarray: Int = 0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -26,7 +26,7 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_alpabet_draw_button, container, false)
         linearLayout = view.findViewById<LinearLayout>(R.id.linearLayout)
@@ -41,7 +41,8 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
         v?.let {
             val alphabet: DrawModel = it.getTag() as DrawModel
 
-requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragment,AlphabetDrawFragment.newInstance(alphabet)).commit()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, AlphabetDrawFragment.newInstance(alphabet)).commit()
 
 
         }
@@ -49,7 +50,8 @@ requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmen
 
     fun initializeViews(alphabets: ArrayList<DrawModel>) {
         alphabets.forEachIndexed { index, alphabetModel ->
-            val itemView: View = layoutInflater.inflate(R.layout.item_button_view,linearLayout,false)
+            val itemView: View =
+                layoutInflater.inflate(R.layout.item_button_view, linearLayout, false)
             itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.alphabet
             itemView.setOnClickListener(this)
             itemView.setTag(alphabetModel)
@@ -57,10 +59,6 @@ requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmen
             linearLayout.addView(itemView)
 
         }
-
-
-
-
 
 
 //        for (item in alphabets) {

@@ -20,7 +20,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
     private lateinit var linearLayout: LinearLayout
     private lateinit var viewModel: DrawViewModel
 
-    var itemAlphabet : Int = 0
+    var itemAlphabet: Int = 0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -29,7 +29,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_alphabet_draw, container, false)
         linearLayout = view.findViewById<LinearLayout>(R.id.linearLayout)
@@ -52,29 +52,30 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 
     fun initializeViews(alphabets: DrawImageModel) {
 
-            val itemView: View = layoutInflater.inflate(R.layout.item_second_view,linearLayout,false)
+        val itemView: View = layoutInflater.inflate(R.layout.item_second_view, linearLayout, false)
 
 
         val inputStream: InputStream = requireContext().getAssets().open(alphabets.ImageVIew)
         val image = Drawable.createFromStream(inputStream, null)
 
 
-          itemView.findViewById<ImageView>(R.id.ImageView).setImageDrawable(image)
+        itemView.findViewById<ImageView>(R.id.ImageView).setImageDrawable(image)
 
 
-            itemView.setOnClickListener(this)
-            itemView.setTag(alphabets)
-            linearLayout.addView(itemView)
+        itemView.setOnClickListener(this)
+        itemView.setTag(alphabets)
+        linearLayout.addView(itemView)
 
     }
-    companion object{
-        fun newInstance(itemContact : DrawModel): AlphabetDrawFragment  {
+
+    companion object {
+        fun newInstance(itemContact: DrawModel): AlphabetDrawFragment {
 
             val fragment = AlphabetDrawFragment()
-            fragment.itemAlphabet=itemContact.id
+            fragment.itemAlphabet = itemContact.id
             return fragment
         }
 
 
-}
+    }
 }
