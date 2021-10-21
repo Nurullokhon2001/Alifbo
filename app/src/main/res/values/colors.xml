@@ -2,17 +2,17 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#1B757C</color>
+    <color name="purple_700">#61B5CF</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_700">#FF03DAC5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="toolbar">#ACD4DC</color>
+    <color name="toolbar">#B8DBED</color>
     <color name="fragment_background">#FFFFFF</color>
     <color name="unchecked">#575552</color>
     <color name="button">#469AA3</color>
     <color name="colorPrimary">#6200EE</color>
-    <color name="col">#49AAA7</color>
+    <color name="col">#76C2D5</color>
     <color name="colorPrimaryDark">#3700B3</color>
 
     <color name="colorAccent">#03DAC5</color>

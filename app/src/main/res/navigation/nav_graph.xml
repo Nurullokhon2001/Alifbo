@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.tajikenglish.Order.FirstFragment"
+        android:name="com.example.tajikenglish.order.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first" >
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/Second2Fragment"
-        android:name="com.example.tajikenglish.Order.Second2Fragment"
+        android:name="com.example.tajikenglish.order.Second2Fragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second2" >
 

@@ -2,7 +2,7 @@ package com.example.tajikenglish
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tajikenglish.MainMenu.View.MainFragment
+import com.example.tajikenglish.main_menu.view.MainFragment
 import com.example.tajikenglish.core.di.ApplicationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

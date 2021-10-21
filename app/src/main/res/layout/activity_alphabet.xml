@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Alphabet.AlphabetActivity"
-    android:background="@color/teal_200"
+    tools:context=".alphabet.AlphabetActivity"
+    android:background="@drawable/ramka"
     android:layout_gravity="center"
     >
 
@@ -14,8 +14,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700"
-        android:backgroundTint="@color/purple_700"
+        android:background="@color/toolbar"
+        android:backgroundTint="@color/toolbar"
         app:navigationIcon="@drawable/back"
         tools:ignore="MissingConstraints" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/purple_700"
+        android:background="@color/toolbar"
         android:backgroundTint="@color/toolbar"
         app:itemIconTint="@drawable/bottom_selector"
         app:itemRippleColor="@color/purple_700"
