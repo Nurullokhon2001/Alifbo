@@ -5,26 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".Alphabet.view.AlphabetsDetailsFragment">
+    tools:context=".alphabet.view.AlphabetsDetailsFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_vertical|top"
         android:layout_margin="-5dp"
         android:minWidth="50dp"
         android:minHeight="50dp"
         app:cardCornerRadius="25dp"
-        app:cardElevation="8dp">
+        app:cardElevation="3dp">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:backgroundTint="#00BCD4"
-            android:paddingLeft="50dp"
+            android:layout_height="400dp"
+            android:paddingLeft="15dp"
             android:paddingTop="5dp"
-            android:paddingRight="50dp">
+            android:paddingRight="15dp">
 
             <TextView
                 android:id="@+id/alhpabet"
@@ -36,7 +36,7 @@
                 android:foreground="?selectableItemBackground"
                 android:gravity="center"
                 android:textColor="@color/col"
-                android:textSize="120dp"
+                android:textSize="100dp"
                 android:textStyle="bold|italic" />
 
             <ImageView
