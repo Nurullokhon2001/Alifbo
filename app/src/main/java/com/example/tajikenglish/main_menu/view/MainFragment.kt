@@ -16,6 +16,7 @@ import com.example.tajikenglish.number.NumberActivity
 import com.example.tajikenglish.order.OrderActivity
 import com.example.tajikenglish.R
 import com.example.tajikenglish.alphabet.AlphabetActivity
+import com.example.tajikenglish.find_alphabet_activty.FIndAlphabetActivity
 import com.example.tajikenglish.main_menu.adapter.MenuAdapter
 import com.example.tajikenglish.main_menu.view_model.MainViewModel
 import com.example.tajikenglish.repository.MainRepositoryImpl
@@ -64,10 +65,11 @@ class MainFragment : Fragment(), View.OnClickListener {
 
                 val intent = Intent(context, OrderActivity::class.java)
                 startActivity(intent)
-                // Toast.makeText(context, "vkladka tartib", Toast.LENGTH_SHORT).show()
+
             }
             MainRepositoryImpl.KALIMASOZI -> {
-                Toast.makeText(context, "vkladka kalimasozi", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, FIndAlphabetActivity::class.java)
+                startActivity(intent)
             }
             MainRepositoryImpl.KALIMAYOBI -> {
                 Toast.makeText(context, "vkladka kalimayobi", Toast.LENGTH_SHORT).show()
