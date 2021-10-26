@@ -2,7 +2,7 @@ package com.example.tajikenglish
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tajikenglish.main_menu.view.MainFragment
+import com.example.tajikenglish.modules.main_menu.view.MainFragment
 
 
 class MainActivity : AppCompatActivity() {

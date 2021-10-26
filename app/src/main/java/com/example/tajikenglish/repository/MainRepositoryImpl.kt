@@ -2,15 +2,15 @@ package com.example.tajikenglish.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.example.tajikenglish.modules.DrawImageModel
-import com.example.tajikenglish.modules.DrawModel
+import com.example.tajikenglish.modules.models.DrawImageModel
+import com.example.tajikenglish.modules.models.DrawModel
 import com.example.tajikenglish.modules.drawsModel
 import com.example.tajikenglish.R
-import com.example.tajikenglish.find_alphabet_activty.Question
-import com.example.tajikenglish.modules.AlphabetsModel
+import com.example.tajikenglish.modules.find_alphabet_activty.Question
+import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.my_sql_open_helper.MySQLiteOpenHelper
-import com.example.tajikenglish.modules.NumbersModel
-import com.example.tajikenglish.modules.OrderModel
+import com.example.tajikenglish.modules.models.NumbersModel
+import com.example.tajikenglish.modules.models.OrderModel
 
 class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHelper(context) {
 

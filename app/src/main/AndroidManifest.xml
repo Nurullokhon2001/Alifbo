@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TajikEnglish">
         <activity
-            android:name=".find_alphabet_activty.ResultActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.ResultActivity"
             android:exported="true" />
         <activity
-            android:name=".find_alphabet_activty.QuizQuestionsActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.QuizQuestionsActivity"
             android:exported="true" />
         <activity
-            android:name=".find_alphabet_activty.FIndAlphabetActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.FIndAlphabetActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"

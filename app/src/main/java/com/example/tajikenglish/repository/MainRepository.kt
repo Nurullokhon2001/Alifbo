@@ -1,12 +1,12 @@
 package com.example.tajikenglish.repository
 
-import com.example.tajikenglish.find_alphabet_activty.Question
-import com.example.tajikenglish.modules.DrawImageModel
-import com.example.tajikenglish.modules.DrawModel
-import com.example.tajikenglish.modules.AlphabetsModel
+import com.example.tajikenglish.modules.find_alphabet_activty.Question
+import com.example.tajikenglish.modules.models.DrawImageModel
+import com.example.tajikenglish.modules.models.DrawModel
+import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.modules.drawsModel
-import com.example.tajikenglish.modules.NumbersModel
-import com.example.tajikenglish.modules.OrderModel
+import com.example.tajikenglish.modules.models.NumbersModel
+import com.example.tajikenglish.modules.models.OrderModel
 
 interface MainRepository {
     fun getMenu(): ArrayList<drawsModel>

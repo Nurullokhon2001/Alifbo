@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="20dp"
-    tools:context=".find_alphabet_activty.ResultActivity">
+    tools:context=".modules.find_alphabet_activty.ResultActivity">
 
     <TextView
         android:id="@+id/tv_result"

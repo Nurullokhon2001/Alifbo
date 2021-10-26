@@ -61,7 +61,7 @@
 
 
 
-        <com.example.tajikenglish.draw_alphabet.vm.DrawingView
+        <com.example.tajikenglish.modules.draw_alphabet.vm.DrawingView
 
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
