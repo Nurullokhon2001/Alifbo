@@ -6,6 +6,7 @@ import com.example.tajikenglish.modules.DrawImageModel
 import com.example.tajikenglish.modules.DrawModel
 import com.example.tajikenglish.modules.drawsModel
 import com.example.tajikenglish.R
+import com.example.tajikenglish.find_alphabet_activty.Question
 import com.example.tajikenglish.modules.AlphabetsModel
 import com.example.tajikenglish.my_sql_open_helper.MySQLiteOpenHelper
 import com.example.tajikenglish.modules.NumbersModel
@@ -284,6 +285,31 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
         }
         return array
 
+    }
+
+    @SuppressLint("Range")
+    override fun getAlphabetTest(): ArrayList<Question> {
+        val array: ArrayList<Question> = ArrayList()
+        val sql = "SELECT * from AlfabetsTest"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val question = mCursor.getString(mCursor.getColumnIndex("question"))
+                    val speechAlphabet = mCursor.getString(mCursor.getColumnIndex("speechAlphabet"))
+                    val optionOne = mCursor.getString(mCursor.getColumnIndex("optionOne"))
+                    val optionTwo = mCursor.getString(mCursor.getColumnIndex("optionTwo"))
+                    val optionThree = mCursor.getString(mCursor.getColumnIndex("optionThree"))
+                    val optionFour = mCursor.getString(mCursor.getColumnIndex("optionFour"))
+                    val correctAnswer = mCursor.getInt(mCursor.getColumnIndex("correctAnswer"))
+
+                  array.add(Question(id, question,speechAlphabet,optionOne,optionTwo,optionThree,optionFour,correctAnswer))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
+        return array
     }
 
 

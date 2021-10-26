@@ -1,23 +1,30 @@
 package com.example.tajikenglish.find_alphabet_activty
 
 import android.content.Intent
+import android.content.res.AssetFileDescriptor
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.activity_quiz_questions.*
+import java.io.InputStream
 
 class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
     private var mCurrentPosition: Int = 1 // Default and the first question position
     private var mQuestionsList: ArrayList<Question> = ArrayList()
-
+    var mp: MediaPlayer? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
+
+    var tv_speech : String =" "
 
     // TODO (STEP 3: Create a variable for getting the name from intent.)
     // START
@@ -37,7 +44,7 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
 
         // TODO (STEP 4: Get the NAME from intent and assign it the variable.)
         // START
-        mUserName = intent.getStringExtra(Constants.USER_NAME)
+       // mUserName = intent.getStringExtra(Constants.USER_NAME)
         // END
 
         mQuestionsList = Constants.getQuestions()
@@ -78,7 +85,7 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
             R.id.iv_image -> {
                 setQuestion2()
 
-                Toast.makeText(this, "${toast}", Toast.LENGTH_SHORT).show()
+              audioPlayer(tv_speech)
             }
 
             R.id.btn_submit -> {
@@ -152,11 +159,12 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         tv_progress.text = "$mCurrentPosition" + "/" + progressBar.getMax()
 
         tv_question.text = question.question
-        iv_image.setImageResource(question.image)
+        iv_image.setImageResource(R.drawable.abc)
         tv_option_one.text = question.optionOne
         tv_option_two.text = question.optionTwo
         tv_option_three.text = question.optionThree
         tv_option_four.text = question.optionFour
+         tv_speech  = question.speech
     }
 
     /**
@@ -249,5 +257,26 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
 
         toast = question.question
 
+    }
+
+    fun audioPlayer(fullPath: String) {
+        try {
+            if (mp != null) {
+                mp?.stop()
+                mp?.release()
+                mp = null
+            }
+            mp = MediaPlayer()
+            val decs: AssetFileDescriptor = this.resources.assets.openFd(fullPath)
+            mp?.setDataSource(decs.fileDescriptor, decs.startOffset, decs.length)
+            decs.close()
+            mp?.prepare()
+            mp?.setVolume(1f, 1f)
+            mp?.isLooping = false
+
+            mp?.start()
+        } catch (ex: Exception) {
+            Log.i("", ex.message!!)
+        }
     }
 }

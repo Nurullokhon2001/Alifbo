@@ -1,5 +1,6 @@
 package com.example.tajikenglish.repository
 
+import com.example.tajikenglish.find_alphabet_activty.Question
 import com.example.tajikenglish.modules.DrawImageModel
 import com.example.tajikenglish.modules.DrawModel
 import com.example.tajikenglish.modules.AlphabetsModel
@@ -19,5 +20,6 @@ interface MainRepository {
     fun getToq(): ArrayList<NumbersModel>
     fun getJuft(): ArrayList<NumbersModel>
     fun getOrderAlphabet(): ArrayList<OrderModel>
+    fun getAlphabetTest(): ArrayList<Question>
 
 }

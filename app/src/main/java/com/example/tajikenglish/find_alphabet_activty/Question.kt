@@ -3,7 +3,7 @@ package com.example.tajikenglish.find_alphabet_activty
 data class Question(
     val id: Int,
     val question: String,
-    val image: Int,
+    val speech: String,
     val optionOne: String,
     val optionTwo: String,
     val optionThree: String,
