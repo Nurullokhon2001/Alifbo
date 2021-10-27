@@ -61,13 +61,7 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
         }
 
 
-//        for (item in alphabets) {
-//            val itemView: View = layoutInflater.inflate(R.layout.item_button_view,linearLayout,false)
-//            itemView.findViewById<TextView>(R.id.textView).text = item.alphabet
-//            itemView.setOnClickListener(this)
-//            itemView.setTag(item)
-//            linearLayout.addView(itemView)
-//        }
+
     }
 
 }
