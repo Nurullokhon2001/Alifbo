@@ -29,9 +29,7 @@ import com.encom.dynamicview.vm.DrawViewModel
 import kotlinx.android.synthetic.main.activity_draw.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 import kotlinx.android.synthetic.main.fragment_alphabet_draw.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
+
 import java.io.InputStream
 
 
@@ -41,14 +39,23 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
     private var mImageButtonCurrentPaint: ImageButton? =
         null// Переменная для текущего цвета выбирается из палитры цветов.
 
-    lateinit var ll_paint_colors : LinearLayout
-    lateinit var ib_brush : ImageButton
-    lateinit var ib_undo : ImageButton
-    lateinit var ib_save : ImageButton
-    lateinit var fl_drawing_view_container : FrameLayout
+    lateinit var ll_paint_colors: LinearLayout
+    lateinit var ib_brush: ImageButton
+    lateinit var ib_undo: ImageButton
+    lateinit var ib_save: ImageButton
+    lateinit var fl_drawing_view_container: FrameLayout
+    lateinit var orange: ImageButton
+    lateinit var black: ImageButton
+    lateinit var red: ImageButton
+    lateinit var green: ImageButton
+    lateinit var blue: ImageButton
+    lateinit var yellow: ImageButton
+    lateinit var greenhigh: ImageButton
+    lateinit var fiolet: ImageButton
 
-    lateinit var imagedraw : ImageView
-    private lateinit var drawing_view : com.example.tajikenglish.modules.draw_alphabet.vm.DrawingView
+
+    lateinit var imagedraw: ImageView
+    private lateinit var drawing_view: com.example.tajikenglish.modules.draw_alphabet.vm.DrawingView
 
 
     var itemAlphabet: Int = 0
@@ -65,13 +72,35 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
         val view: View = inflater.inflate(R.layout.fragment_alphabet_draw, container, false)
         linearLayout = view.findViewById<LinearLayout>(R.id.linearLayout)
 
-        drawing_view=view.findViewById(R.id.drawing_view)
+        drawing_view = view.findViewById(R.id.drawing_view)
         ll_paint_colors = view.findViewById(R.id.ll_paint_colors)
         ib_brush = view.findViewById(R.id.ib_brush)
-        ib_undo= view.findViewById(R.id.ib_undo)
+        ib_undo = view.findViewById(R.id.ib_undo)
         ib_save = view.findViewById(R.id.ib_save)
         fl_drawing_view_container = view.findViewById(R.id.fl_drawing_view_container)
         imagedraw = view.findViewById(R.id.imagedraw)
+        orange = view.findViewById(R.id.orange)
+        black = view.findViewById(R.id.black)
+        red = view.findViewById(R.id.red)
+        green = view.findViewById(R.id.green)
+        yellow = view.findViewById(R.id.yellow)
+        greenhigh = view.findViewById(R.id.greenhigh)
+        fiolet = view.findViewById(R.id.fiolet)
+        blue = view.findViewById(R.id.blue)
+
+
+
+
+        orange.setOnClickListener(this)
+        black.setOnClickListener(this)
+        red.setOnClickListener(this)
+        green.setOnClickListener(this)
+        blue.setOnClickListener(this)
+        yellow.setOnClickListener(this)
+        greenhigh.setOnClickListener(this)
+        fiolet.setOnClickListener(this)
+
+
 
         drawing_view.setSizeForBrush(20.toFloat()) // Setting the default brush size to drawing v
 
@@ -119,10 +148,33 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         v?.let {
-//            var alphabet: SecondModel = it.getTag() as SecondModel
-//            var imageView = alphabet.ImageVIew
-//            linearLayout.setBackgroundResource(imageView)
+            when (v.id) {
+                R.id.orange -> {
+                    paintClicked(ll_paint_colors[0])
+                }
+                R.id.black -> {
+                    paintClicked(ll_paint_colors[1])
+                }
+                R.id.red -> {
+                    paintClicked(ll_paint_colors[2])
+                }
+                R.id.green -> {
+                    paintClicked(ll_paint_colors[3])
+                }
+                R.id.blue -> {
+                    paintClicked(ll_paint_colors[4])
+                }
+                R.id.yellow -> {
+                    paintClicked(ll_paint_colors[5])
+                }
+                R.id.greenhigh -> {
+                    paintClicked(ll_paint_colors[6])
+                }
+                R.id.fiolet -> {
+                    paintClicked(ll_paint_colors[7])
+                }
 
+            }
         }
     }
 
@@ -221,7 +273,8 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
             // Цвет задается в соответствии с выбранным тегом здесь.
             drawing_view.setColor(colorTag)
             // Поменяйте местами фон для последней активной и текущей активной кнопки изображения.
-            imageButton.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.pallet_pressed))
+            imageButton.setImageDrawable(ContextCompat.getDrawable(requireContext(),
+                R.drawable.pallet_pressed))
             mImageButtonCurrentPaint!!.setImageDrawable(
                 ContextCompat.getDrawable(
                     requireContext(),
@@ -370,50 +423,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
         override fun doInBackground(vararg params: Any): String {
 
             var result = ""
-//
-//            if (mBitmap != null) {
-//
-//                try {
-//                    val bytes =
-//                        ByteArrayOutputStream() // Создает новый поток вывода массива байтов.
-//                    // Емкость буфера изначально составляет 32 байта, хотя при необходимости его размер увеличивается.
-//                    mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
-//                    /**
-//                     * Запишите сжатую версию растрового изображения в указанный выходной поток.
-//                     * Если это возвращает значение true, растровое изображение можно восстановить, передав
-//                     * соответствующий входной поток для BitmapFactory.decodeStream(). Примечание: не
-//                     * все форматы поддерживают все конфигурации растровых изображений напрямую, поэтому возможно, что
-//                     * возвращенное растровое изображение из BitmapFactory может иметь другую глубину
-//                    в битах * и/или может быть потеряно альфа-изображение на пиксель (например, JPEG поддерживает только непрозрачное
-//                     * пикселей).
-//                     *
-//                     * @param format  Формат сжатого изображения
-//                     * @param quality  Подсказка компрессору, 0-100, 0 означает сжатие для
-//                     * малый размер, 100% сжатие для максимального качества. Некоторые
-//                     * форматы, такие как PNG без потерь, будут игнорировать параметр
-//                     * качество
-//                     * @param stream  Выходной поток для записи сжатых данных.
-//                     * @return значение true, если успешно сжато в указанный поток.
-//                     */
-//
-//                    val f = File(
-//                        externalCacheDir!!.absoluteFile.toString()
-//                                + File.separator + "KidDrawingApp_" + System.currentTimeMillis() / 1000 + ".jpg"
-//                    )
-//                    // Здесь Среда : Предоставляет доступ к переменным среды.
-//                    // getExternalStorageDirectory : возвращает основной каталог общего/внешнего хранилища.
-//                    // absoluteFile : Возвращает абсолютную форму этого абстрактного пути.
-//                    // File.separator : Зависящий от системы символ-разделитель имени по умолчанию. Эта строка содержит один символ.
-//                    val fo =
-//                        FileOutputStream(f) // Создает поток вывода файла для записи в файл, представленный указанным объектом.
-//                    fo.write(bytes.toByteArray()) // Записывает байты из указанного массива байтов в этот поток вывода файла.
-//                    fo.close() //Закрывает это поток вывода файла и освобождает любые системные ресурсы, связанные с этим потоком. Этот поток вывода файла больше не может использоваться для записи байтов.
-//                    result = f.absolutePath // В результате возвращается абсолютный путь к файлу.
-//                } catch (e: Exception) {
-//                    result = ""
-//                    e.printStackTrace()
-//                }
-//            }
+
             return result
         }
 
@@ -499,10 +509,6 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 //            TODO("Not yet implemented")
 //        }
     }
-
-
-
-
 
 
     companion object {
