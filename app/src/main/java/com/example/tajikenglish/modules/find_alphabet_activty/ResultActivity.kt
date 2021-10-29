@@ -25,8 +25,10 @@ class ResultActivity : AppCompatActivity() {
 
         tv_score.text = "Ҷавоби дурустии шумо аз $totalQuestions -  $correctAnswers то."
 
+
+
         btn_finish.setOnClickListener {
-            startActivity(Intent(this@ResultActivity, MainActivity::class.java))
+            super.onBackPressed()
         }
         // END
     }

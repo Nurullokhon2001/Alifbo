@@ -1,16 +1,15 @@
 package com.example.tajikenglish.alphabet
 
-import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.alphabet.view.AlphabetsDetailsFragment
 import com.example.tajikenglish.alphabet.view.AlphabetsFragment
 import com.example.tajikenglish.alphabet.vm.AlphabetsViewModel
 
-import com.example.tajikenglish.MainActivity
 import com.example.tajikenglish.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -37,15 +36,16 @@ class AlphabetActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedLi
         })
 
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
+
+        var back : ImageView = findViewById(R.id.back)
+
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
 
 
     }

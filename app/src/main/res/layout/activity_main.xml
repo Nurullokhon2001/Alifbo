@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/toolbar"
-        android:backgroundTint="@color/toolbar"
-        app:navigationIcon="@drawable/settings"
-        tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
@@ -21,7 +13,6 @@
         android:foregroundGravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
          />
 
 </RelativeLayout>

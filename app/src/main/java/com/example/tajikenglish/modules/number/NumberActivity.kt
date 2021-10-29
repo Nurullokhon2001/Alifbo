@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.MainActivity
@@ -41,14 +42,13 @@ class NumberActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedList
 
 
 
+        var back : ImageView = findViewById(R.id.back)
 
-
-        val toolbar  : Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener {
-           val intent= Intent(this,MainActivity::class.java)
-            startActivity(intent)
+        back.setOnClickListener {
+            super.onBackPressed()
         }
+
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener(this)
