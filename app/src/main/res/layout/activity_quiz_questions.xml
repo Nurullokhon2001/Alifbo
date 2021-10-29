@@ -26,11 +26,11 @@
 
         <ImageView
             android:id="@+id/iv_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
             android:layout_marginTop="16dp"
             android:contentDescription="image"
-            tools:src="@drawable/ic_flag_of_germany" />
+            tools:src="@drawable/speech" />
 
         <LinearLayout
             android:id="@+id/ll_progress_details"
