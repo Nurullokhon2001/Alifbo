@@ -1,15 +1,20 @@
 package com.example.tajikenglish.order
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.tajikenglish.order.adapter.DragDropRecyclerAdapter
 import com.example.tajikenglish.order.adapter.ItemMoveCallbackListener
 import com.example.tajikenglish.order.adapter.OnStartDragListener
@@ -25,12 +30,15 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var button: Button
     lateinit var reset: Button
     private lateinit var vm: OrderViewModel
+    lateinit var gif: ImageView
 
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
+
+        gif = findViewById(R.id.gifAnimation)
 
         vm = ViewModelProvider(this).get(OrderViewModel::class.java)
         recyclerView = findViewById(R.id.recyclerView)
@@ -63,9 +71,107 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         button.setOnClickListener {
 
             if (adapter.onClickForButton()) {
-                Toast.makeText(this, "Durust", Toast.LENGTH_SHORT).show()
+                var a = (1..10).random()
+                Toast.makeText(this, "Дуруст", Toast.LENGTH_LONG).show()
+                when (a) {
+                    1 -> {
+                        Glide.with(this).load(R.drawable.gif).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    2 -> {
+                        Glide.with(this).load(R.drawable.gif1).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    3 -> {
+                        Glide.with(this).load(R.drawable.gif2).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    4 -> {
+                        Glide.with(this).load(R.drawable.gif3).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    5 -> {
+                        Glide.with(this).load(R.drawable.gif5).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    6 -> {
+                        Glide.with(this).load(R.drawable.gif6).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    7 -> {
+                        Glide.with(this).load(R.drawable.gif7).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    8 -> {
+                        Glide.with(this).load(R.drawable.gif8).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    9 -> {
+                        Glide.with(this).load(R.drawable.gif9).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+                    else -> {
+                        Glide.with(this).load(R.drawable.gif).into(gif)
+                        MediaPlayer.create(this, R.raw.win).start()
+
+                        Handler().postDelayed({
+                            timer()
+
+                        }, 11000)
+                    }
+
+
+                }
+
+
             } else {
-                Toast.makeText(this, "Khato", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Хато", Toast.LENGTH_LONG).show()
+                MediaPlayer.create(this, R.raw.lose).start()
             }
         }
     }
@@ -75,8 +181,11 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
-        var a = (0..15).random()
-        var b = (18..35).random()
+//        var a = (0..15).random()
+//        var b = (18..35).random()
+
+        var a = (15)
+        var b = (18)
 
         var alphabetsArray: ArrayList<OrderModel> = ArrayList()
         vm.getAlphabet().observe(this, Observer {
@@ -90,6 +199,11 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
             randomArray()
             adapter.setUsers(alphabetsArray)
         })
+
+    }
+
+    fun timer() {
+gif.setImageDrawable(null)
 
     }
 
