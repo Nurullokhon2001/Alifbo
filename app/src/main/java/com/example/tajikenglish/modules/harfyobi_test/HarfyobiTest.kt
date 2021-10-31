@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -47,6 +48,12 @@ class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
         // START
         // mUserName = intent.getStringExtra(Constants.USER_NAME)
         // END
+
+        var back : ImageView = findViewById(R.id.back)
+
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
 
         mQuestionsList = harfyobi.getQuestions()
 

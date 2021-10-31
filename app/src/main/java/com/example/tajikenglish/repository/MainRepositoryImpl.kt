@@ -21,8 +21,8 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
         arrayList.add(drawsModel(RAQAMHO, R.drawable.numbers, "Рақамхо", R.color.raqam))
         arrayList.add(drawsModel(RASMKASHI, R.drawable.words, "Расмкаши", R.color.rasmkashi))
         arrayList.add(drawsModel(TARTIB, R.drawable.phrases, "Тартиб", R.color.tartib))
-        arrayList.add(drawsModel(KALIMASOZI, R.drawable.topic, "Калимасозӣ", R.color.kalimasozi))
-        arrayList.add(drawsModel(KALIMAYOBI, R.drawable.verbs, "Калимаёбӣ", R.color.kalimayobi))
+        arrayList.add(drawsModel(KALIMASOZI, R.drawable.topic, "Тест", R.color.kalimasozi))
+        arrayList.add(drawsModel(KALIMAYOBI, R.drawable.quiz, "Харфрёбак", R.color.kalimayobi))
         return arrayList
     }
 

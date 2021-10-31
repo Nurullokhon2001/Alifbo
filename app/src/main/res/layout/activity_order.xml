@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".order.OrderActivity">
 
+ <ImageView
+     android:id="@+id/back"
+     android:layout_width="25dp"
+     android:layout_height="24dp"
+     android:backgroundTint="@color/toolbar"
+     android:src="@drawable/back"
+     tools:ignore="MissingConstraints" />
+
  <FrameLayout
      android:id="@+id/frame"
      android:layout_width="match_parent"
@@ -18,10 +26,13 @@
      android:layout_marginBottom="8dp"
      android:layout_above="@+id/button"
   >
+
+
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_marginTop="20dp"
       android:layout_above="@+id/button"
       />
  </FrameLayout>
@@ -33,20 +44,24 @@
      android:layout_centerInParent="true"
      />
 
- <Button
-     android:id="@+id/button"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_alignParentBottom="true"
-     android:text="Тафтищ"
-     />
- <Button
+ <ImageButton
+
+     android:backgroundTint="@color/white"
      android:id="@+id/reset"
-     android:layout_alignParentRight="true"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
+     android:layout_width="55dp"
+     android:layout_height="55dp"
      android:layout_alignParentBottom="true"
-     android:text="Ивази Алифбо"
+     android:src="@drawable/reset" />
+ <ImageButton
+     android:id="@+id/button"
+     android:backgroundTint="@color/white"
+
+     android:layout_alignParentRight="true"
+     android:layout_width="55dp"
+     android:layout_height="55dp"
+     android:layout_alignParentBottom="true"
+     android:src="@drawable/check"
+
      />
 
 </RelativeLayout>

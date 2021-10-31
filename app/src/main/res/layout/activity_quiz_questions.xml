@@ -7,12 +7,22 @@
     android:fillViewport="true"
     tools:context=".modules.find_alphabet_activty.QuizQuestionsActivity">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_gravity="start|left"
+            android:layout_width="25dp"
+            android:layout_height="24dp"
+            android:backgroundTint="@color/toolbar"
+            android:src="@drawable/back"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tv_question"
@@ -22,8 +32,7 @@
             android:gravity="center"
             android:textColor="#363A43"
             android:textSize="22sp"
-            tools:text="What country does this flag belong to?" />
-
+/>
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="200dp"
@@ -72,7 +81,7 @@
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
-            tools:text="Apple" />
+             />
 
         <TextView
             android:id="@+id/tv_option_two"
@@ -87,7 +96,7 @@
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
-            tools:text="Google" />
+            />
 
         <TextView
             android:id="@+id/tv_option_three"
@@ -102,7 +111,7 @@
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
-            tools:text="Android Inc." />
+         />
 
         <TextView
             android:id="@+id/tv_option_four"
@@ -117,7 +126,7 @@
             android:padding="15dp"
             android:textColor="#7A8089"
             android:textSize="18sp"
-            tools:text="Nokia" />
+          />
 
         <Button
             android:id="@+id/btn_submit"

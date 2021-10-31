@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -27,8 +28,8 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var adapter: DragDropRecyclerAdapter
     lateinit var touchHelper: ItemTouchHelper
     lateinit var recyclerView: RecyclerView
-    lateinit var button: Button
-    lateinit var reset: Button
+    lateinit var button: ImageButton
+    lateinit var reset: ImageButton
     private lateinit var vm: OrderViewModel
     lateinit var gif: ImageView
 
@@ -55,7 +56,11 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
         }
 
+        var back : ImageView = findViewById(R.id.back)
 
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
 
         adapter = DragDropRecyclerAdapter(this, this)
         populateListItem()
@@ -181,11 +186,9 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     }
 
     private fun populateListItem() {
-//        var a = (0..15).random()
-//        var b = (18..35).random()
-
-        var a = (15)
-        var b = (18)
+        var a = (0..30).random()
+     //   var b = (18..35).random()
+        var b = a + 5
 
         var alphabetsArray: ArrayList<OrderModel> = ArrayList()
         vm.getAlphabet().observe(this, Observer {
