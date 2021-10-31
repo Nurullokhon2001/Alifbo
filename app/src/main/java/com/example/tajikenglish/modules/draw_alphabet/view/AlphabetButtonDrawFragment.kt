@@ -8,14 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.modules.models.DrawModel
 import com.encom.dynamicview.vm.DrawViewModel
+import com.example.tajikenglish.alphabet.view.AlphabetsDetailsFragment
+import com.example.tajikenglish.alphabet.view.AlphabetsFragment
+import com.example.tajikenglish.modules.models.AlphabetsModel
+import kotlinx.android.synthetic.main.item_view_alphabet_cview.*
 
 
 class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
     private lateinit var linearLayout: LinearLayout
     private lateinit var viewModel: DrawViewModel
+    var alphabetArray: ArrayList<DrawModel> = ArrayList()
 
     var indexarray: Int = 0
 
@@ -34,8 +40,10 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initializeViews(viewModel.getAlphabets())
+        initializeViews(alphabetArray)
     }
+
+
 
     override fun onClick(v: View?) {
         v?.let {
@@ -45,23 +53,34 @@ class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {
                 .replace(R.id.fragment, AlphabetDrawFragment.newInstance(alphabet)).commit()
 
 
+
+
+
+
         }
     }
 
-    fun initializeViews(alphabets: ArrayList<DrawModel>) {
-        alphabets.forEachIndexed { index, alphabetModel ->
+    private fun initializeViews(alphabetModels: ArrayList<DrawModel>) {
+        for (alphabetModel in alphabetModels) {
             val itemView: View =
-                layoutInflater.inflate(R.layout.item_button_view, linearLayout, false)
+                layoutInflater.inflate(R.layout.item_button_view,
+                    linearLayout,
+                    false)
             itemView.findViewById<TextView>(R.id.textView).text = alphabetModel.alphabet
             itemView.setOnClickListener(this)
             itemView.setTag(alphabetModel)
-            indexarray = index
             linearLayout.addView(itemView)
-
         }
-
-
-
     }
 
-}
+    companion object {
+        fun newInstance(itemAlpabets: ArrayList<DrawModel>): AlphabetButtonDrawFragment {
+
+            val fragment = AlphabetButtonDrawFragment()
+            fragment.alphabetArray = itemAlpabets
+            return fragment
+        }
+
+    }
+    }
+

@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.modules.models.DrawModel
 import com.example.tajikenglish.modules.models.DrawImageModel
 import com.encom.dynamicview.vm.DrawViewModel
+import com.example.tajikenglish.modules.models.AlphabetsModel
 import kotlinx.android.synthetic.main.activity_draw.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 import kotlinx.android.synthetic.main.fragment_alphabet_draw.*
@@ -38,6 +39,9 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
     private lateinit var viewModel: DrawViewModel
     private var mImageButtonCurrentPaint: ImageButton? =
         null// Переменная для текущего цвета выбирается из палитры цветов.
+
+    var alphabetArray: DrawModel =
+        (DrawModel(0, "А а", "draw/1.jpg"))
 
     lateinit var ll_paint_colors: LinearLayout
     lateinit var ib_brush: ImageButton
@@ -143,7 +147,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        initializeViews(viewModel.getDrawAlphabetsImage(itemAlphabet))
+        initializeViews(alphabetArray)
     }
 
     override fun onClick(v: View?) {
@@ -178,12 +182,33 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    fun initializeViews(alphabets: DrawImageModel) {
+//    fun initializeViews(alphabets: DrawImageModel) {
+//
+//        val itemView: View = layoutInflater.inflate(R.layout.item_second_view, linearLayout, false)
+//
+//
+//        val inputStream: InputStream = requireContext().getAssets().open(alphabets.ImageVIew)
+//        val image = Drawable.createFromStream(inputStream, null)
+//
+//
+//        itemView.findViewById<ImageView>(R.id.ImageView).setImageDrawable(image)
+//
+//        imagedraw.setImageDrawable(image)
+//
+////        itemView.setOnClickListener(this)
+////        itemView.setTag(alphabets)
+////        linearLayout.addView(itemView)
+//
+//    }
+
+
+    private fun initializeViews(alphabets: DrawModel) {
+
 
         val itemView: View = layoutInflater.inflate(R.layout.item_second_view, linearLayout, false)
 
 
-        val inputStream: InputStream = requireContext().getAssets().open(alphabets.ImageVIew)
+        val inputStream: InputStream = requireContext().getAssets().open(alphabets.imageModel)
         val image = Drawable.createFromStream(inputStream, null)
 
 
@@ -195,7 +220,8 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 //        itemView.setTag(alphabets)
 //        linearLayout.addView(itemView)
 
-    }
+        }
+
 
 
     override fun onRequestPermissionsResult(
@@ -515,7 +541,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
         fun newInstance(itemContact: DrawModel): AlphabetDrawFragment {
 
             val fragment = AlphabetDrawFragment()
-            fragment.itemAlphabet = itemContact.id
+            fragment.alphabetArray = itemContact
             return fragment
         }
 

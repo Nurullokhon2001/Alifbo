@@ -146,15 +146,16 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
     @SuppressLint("Range")
     override fun getDrawAlphabets(): ArrayList<DrawModel> {
         val array: ArrayList<DrawModel> = ArrayList()
-        val sql = "SELECT id,alfabet FROM AlfabetsData order by id  "
+        val sql = "SELECT * FROM DrawAlphabet order by id"
         val mCursor = Query(sql)
         if (mCursor != null) {
             if (mCursor.moveToFirst()) {
                 do {
                     val id = mCursor.getInt(mCursor.getColumnIndex("id"))
-                    val alfabet = mCursor.getString(mCursor.getColumnIndex("alfabet"))
+                    val alfabet = mCursor.getString(mCursor.getColumnIndex("TextAlphabet"))
+                    val image = mCursor.getString(mCursor.getColumnIndex("Alphabet"))
 
-                    array.add(DrawModel(id, alfabet))
+                    array.add(DrawModel(id, alfabet,image))
                 } while (mCursor.moveToNext())
             }
             mCursor.close()
@@ -163,22 +164,6 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
     }
 
 
-    @SuppressLint("Range")
-    override fun getDrawAlphabetsImage(): ArrayList<DrawImageModel> {
-        val array: ArrayList<DrawImageModel> = ArrayList()
-        val sql = "SELECT * FROM AlfabetsData"
-        val mCursor = Query(sql)
-        if (mCursor != null) {
-            if (mCursor.moveToFirst()) {
-                do {
-                    val image = mCursor.getString(mCursor.getColumnIndex("image"))
-                    array.add(DrawImageModel(image))
-                } while (mCursor.moveToNext())
-            }
-            mCursor.close()
-        }
-        return array
-    }
 
     @SuppressLint("Range")
     override fun getNumber(): ArrayList<NumbersModel> {

@@ -15,7 +15,6 @@ interface MainRepository {
     fun getSadonok(): ArrayList<AlphabetsModel>
     fun getYodbarsar(): ArrayList<AlphabetsModel>
     fun getDrawAlphabets(): ArrayList<DrawModel>
-    fun getDrawAlphabetsImage(): ArrayList<DrawImageModel>
     fun getNumber(): ArrayList<NumbersModel>
     fun getToq(): ArrayList<NumbersModel>
     fun getJuft(): ArrayList<NumbersModel>

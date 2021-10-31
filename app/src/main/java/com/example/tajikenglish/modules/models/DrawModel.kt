@@ -6,6 +6,6 @@ package com.example.tajikenglish.modules.models
  * http://abduahad.com/
  *
  */
-class DrawModel(var id:Int, var alphabet:String){
+class DrawModel(var id:Int, var alphabet:String,var imageModel: String){
 
 }
