@@ -5,6 +5,7 @@ import com.example.tajikenglish.modules.models.DrawImageModel
 import com.example.tajikenglish.modules.models.DrawModel
 import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.modules.drawsModel
+import com.example.tajikenglish.modules.harfyobi_test.HarfyobiModel
 import com.example.tajikenglish.modules.models.NumbersModel
 import com.example.tajikenglish.modules.models.OrderModel
 
@@ -20,5 +21,7 @@ interface MainRepository {
     fun getJuft(): ArrayList<NumbersModel>
     fun getOrderAlphabet(): ArrayList<OrderModel>
     fun getAlphabetTest(): ArrayList<Question>
+    fun getHarfyobiTest(): ArrayList<HarfyobiModel>
+
 
 }

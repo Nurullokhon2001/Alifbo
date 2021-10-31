@@ -15,4 +15,6 @@ open class BaseViewModel : ViewModel(), KoinComponent {
           fun getLoading(): LiveData<Boolean> = isLoading
 
     var testalphabet = repository.getAlphabetTest()
+
+    var testharfyobi = repository.getHarfyobiTest()
 }

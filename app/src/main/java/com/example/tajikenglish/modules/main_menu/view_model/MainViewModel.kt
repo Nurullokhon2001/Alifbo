@@ -8,5 +8,4 @@ class MainViewModel : BaseViewModel() {
     fun getMenu(): ArrayList<drawsModel> {
         return repository.getMenu()
     }
-
 }

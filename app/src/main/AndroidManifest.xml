@@ -14,13 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TajikEnglish">
         <activity
-            android:name="com.example.tajikenglish.modules.find_alphabet_activty.ResultActivity"
+            android:name=".modules.harfyobi_test.HarfyobiTest"
             android:exported="true" />
         <activity
-            android:name="com.example.tajikenglish.modules.find_alphabet_activty.QuizQuestionsActivity"
+            android:name=".modules.find_alphabet_activty.ResultActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.tajikenglish.modules.find_alphabet_activty.FIndAlphabetActivity"
+            android:name=".modules.find_alphabet_activty.QuizQuestionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.find_alphabet_activty.FIndAlphabetActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"

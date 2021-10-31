@@ -7,6 +7,7 @@ import com.example.tajikenglish.modules.models.DrawModel
 import com.example.tajikenglish.modules.drawsModel
 import com.example.tajikenglish.R
 import com.example.tajikenglish.modules.find_alphabet_activty.Question
+import com.example.tajikenglish.modules.harfyobi_test.HarfyobiModel
 import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.my_sql_open_helper.MySQLiteOpenHelper
 import com.example.tajikenglish.modules.models.NumbersModel
@@ -296,6 +297,35 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
         }
         return array
     }
+
+
+    @SuppressLint("Range")
+    override fun getHarfyobiTest(): ArrayList<HarfyobiModel> {
+        val array: ArrayList<HarfyobiModel> = ArrayList()
+        val sql = "SELECT * from SearchAlphabet"
+        val mCursor = Query(sql)
+        if (mCursor != null) {
+            if (mCursor.moveToFirst()) {
+                do {
+                    val id = mCursor.getInt(mCursor.getColumnIndex("id"))
+                    val question = mCursor.getString(mCursor.getColumnIndex("question"))
+                    val icon = mCursor.getString(mCursor.getColumnIndex("image"))
+                    val speechAlphabet = mCursor.getString(mCursor.getColumnIndex("speechAlphabet"))
+                    val optionOne = mCursor.getString(mCursor.getColumnIndex("optionOne"))
+                    val optionTwo = mCursor.getString(mCursor.getColumnIndex("optionTwo"))
+                    val optionThree = mCursor.getString(mCursor.getColumnIndex("optionThree"))
+                    val optionFour = mCursor.getString(mCursor.getColumnIndex("optionFour"))
+                    val correctAnswer = mCursor.getInt(mCursor.getColumnIndex("correctAnswer"))
+
+                    array.add(HarfyobiModel(id, question,icon,speechAlphabet,optionOne,optionTwo,optionThree,optionFour,correctAnswer))
+                } while (mCursor.moveToNext())
+            }
+            mCursor.close()
+        }
+        return array
+    }
+
+
 
 
     companion object {
