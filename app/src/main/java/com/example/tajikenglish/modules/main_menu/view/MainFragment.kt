@@ -18,6 +18,7 @@ import com.example.tajikenglish.R
 import com.example.tajikenglish.alphabet.AlphabetActivity
 import com.example.tajikenglish.modules.find_alphabet_activty.FIndAlphabetActivity
 import com.example.tajikenglish.modules.harfyobi_test.HarfyobiTest
+import com.example.tajikenglish.modules.harfyobi_test.TestHarfyobi
 import com.example.tajikenglish.modules.main_menu.adapter.MenuAdapter
 import com.example.tajikenglish.modules.main_menu.view_model.MainViewModel
 import com.example.tajikenglish.repository.MainRepositoryImpl
@@ -73,9 +74,8 @@ class MainFragment : Fragment(), View.OnClickListener {
                 startActivity(intent)
             }
             MainRepositoryImpl.KALIMAYOBI -> {
-                val intent = Intent(context, HarfyobiTest::class.java)
+                val intent = Intent(context, TestHarfyobi::class.java)
                 startActivity(intent)
-               // Toast.makeText(context, "vkladka kalimayobi", Toast.LENGTH_SHORT).show()
             }
         }
     }

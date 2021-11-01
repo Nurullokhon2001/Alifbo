@@ -17,6 +17,9 @@
             android:name=".modules.harfyobi_test.HarfyobiTest"
             android:exported="true" />
         <activity
+            android:name=".modules.harfyobi_test.TestHarfyobi"
+            android:exported="true" />
+        <activity
             android:name=".modules.find_alphabet_activty.ResultActivity"
             android:exported="true" />
         <activity
