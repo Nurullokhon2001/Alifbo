@@ -52,10 +52,23 @@
      android:layout_height="35dp"
      android:layout_alignParentBottom="true"
      android:src="@drawable/reset" />
+
+ <ImageButton
+     android:id="@+id/offAnimation"
+     android:layout_width="35dp"
+     android:layout_height="35dp"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true"
+     android:backgroundTint="@color/white"
+     android:foregroundGravity="center_horizontal"
+
+     android:src="@drawable/off_animation"
+
+     />
+
  <ImageButton
      android:id="@+id/button"
      android:backgroundTint="@color/white"
-
      android:layout_alignParentRight="true"
      android:layout_width="35dp"
      android:layout_height="35dp"

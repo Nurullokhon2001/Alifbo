@@ -30,8 +30,11 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
     lateinit var recyclerView: RecyclerView
     lateinit var button: ImageButton
     lateinit var reset: ImageButton
+    lateinit var offAnimation: ImageButton
     private lateinit var vm: OrderViewModel
     lateinit var gif: ImageView
+    var mMediaPlayer: MediaPlayer? = null
+
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -47,13 +50,16 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
         button = findViewById(R.id.button)
         reset = findViewById(R.id.reset)
-        reset.setOnClickListener {
+        offAnimation = findViewById(R.id.offAnimation)
 
-            // Toast.makeText(this, "korkad", Toast.LENGTH_SHORT).show()
+        offAnimation.setOnClickListener {
+            timer()
+        }
+
+        reset.setOnClickListener {
             adapter.notifyDataSetChanged()
             populateListItem()
-
-
+            timer()
         }
 
         var back : ImageView = findViewById(R.id.back)
@@ -78,10 +84,14 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
             if (adapter.onClickForButton()) {
                 var a = (1..10).random()
                 Toast.makeText(this, "Дуруст", Toast.LENGTH_LONG).show()
+                playSound(R.raw.win)
+
+
+
                 when (a) {
                     1 -> {
                         Glide.with(this).load(R.drawable.gif).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -90,7 +100,6 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     2 -> {
                         Glide.with(this).load(R.drawable.gif1).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
 
                         Handler().postDelayed({
                             timer()
@@ -99,7 +108,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     3 -> {
                         Glide.with(this).load(R.drawable.gif2).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -108,7 +117,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     4 -> {
                         Glide.with(this).load(R.drawable.gif3).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -117,7 +126,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     5 -> {
                         Glide.with(this).load(R.drawable.gif5).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -126,7 +135,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     6 -> {
                         Glide.with(this).load(R.drawable.gif6).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -135,7 +144,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     7 -> {
                         Glide.with(this).load(R.drawable.gif7).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -144,7 +153,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     8 -> {
                         Glide.with(this).load(R.drawable.gif8).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -153,7 +162,6 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     9 -> {
                         Glide.with(this).load(R.drawable.gif9).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
 
                         Handler().postDelayed({
                             timer()
@@ -162,7 +170,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                     }
                     else -> {
                         Glide.with(this).load(R.drawable.gif).into(gif)
-                        MediaPlayer.create(this, R.raw.win).start()
+
 
                         Handler().postDelayed({
                             timer()
@@ -176,7 +184,13 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
             } else {
                 Toast.makeText(this, "Хато", Toast.LENGTH_LONG).show()
-                MediaPlayer.create(this, R.raw.lose).start()
+                playSound(R.raw.lose)
+
+                Handler().postDelayed({
+                    timer()
+
+                }, 5000)
+
             }
         }
     }
@@ -187,7 +201,6 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
     private fun populateListItem() {
         var a = (0..30).random()
-     //   var b = (18..35).random()
         var b = a + 5
 
         var alphabetsArray: ArrayList<OrderModel> = ArrayList()
@@ -205,9 +218,35 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
 
     }
 
-    fun timer() {
+    private fun timer() {
 gif.setImageDrawable(null)
+        stopSound()
+        pauseSound()
+    }
 
+    fun playSound(audio : Int) {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, audio)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+            button.isEnabled = false
+        } else mMediaPlayer!!.start()
+        button.isEnabled = false
+    }
+
+    fun stopSound() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.release()
+            mMediaPlayer = null
+            button.isEnabled = true
+        }
+    }
+
+    fun pauseSound() {
+        button.isEnabled = true
+
+        if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) mMediaPlayer!!.pause()
     }
 
 
