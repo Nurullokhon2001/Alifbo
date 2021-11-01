@@ -14,8 +14,8 @@
             android:orientation="horizontal" />
 
         <LinearLayout
-            android:backgroundTint="#e8f3f5"
-            android:background="#e8f3f5"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
             android:id="@+id/alphabet_action_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         </LinearLayout>
 
         <FrameLayout
-            android:backgroundTint="#e8f3f5"
+            android:backgroundTint="@color/white"
             android:id="@+id/fl_drawing_view_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -42,9 +42,10 @@
                 <ImageView
 
                     android:layout_below="@id/fragmentContainer"
+                    android:layout_gravity="center"
                     android:id="@+id/imagedraw"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="350dp"
+                    android:layout_height="350dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -54,10 +55,10 @@
 
 
                         <com.example.tajikenglish.modules.draw_alphabet.vm.DrawingView
-
+                            android:layout_gravity="center"
                             android:id="@+id/drawing_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="350dp"
+                            android:layout_height="350dp"
                            />
         </FrameLayout>
 
@@ -173,8 +174,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:backgroundTint="#e8f3f5"
-            android:background="#e8f3f5"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
             android:id="@+id/ll_action_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/back"
-        android:layout_width="25dp"
-        android:layout_height="24dp"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
         android:backgroundTint="@color/toolbar"
         android:src="@drawable/back"
         tools:ignore="MissingConstraints" />

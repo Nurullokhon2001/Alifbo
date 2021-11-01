@@ -8,10 +8,11 @@
     tools:context=".alphabet.view.AlphabetsDetailsFragment">
 
     <androidx.cardview.widget.CardView
+
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_vertical|top"
+        android:layout_gravity="center"
         android:layout_margin="-5dp"
         android:minWidth="50dp"
         android:minHeight="50dp"

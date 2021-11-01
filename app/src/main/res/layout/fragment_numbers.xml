@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"    tools:context=".alphabet.view.AlphabetsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="bottom"
     android:padding="32dp">
     <HorizontalScrollView
         android:id="@+id/horizontal_only"
@@ -14,6 +14,7 @@
         android:scrollbarStyle="outsideInset">
         <LinearLayout
             android:id="@+id/linearLayout"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>

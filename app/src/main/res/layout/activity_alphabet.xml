@@ -12,13 +12,14 @@
 
     <ImageView
         android:id="@+id/back"
-        android:layout_width="25dp"
-        android:layout_height="24dp"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
         android:backgroundTint="@color/toolbar"
         android:src="@drawable/back"
         tools:ignore="MissingConstraints" />
 
     <androidx.fragment.app.FragmentContainerView
+        android:foregroundGravity="bottom"
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="150dp"
