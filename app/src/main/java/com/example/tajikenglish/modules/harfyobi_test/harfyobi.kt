@@ -1,7 +1,7 @@
 package com.example.tajikenglish.modules.harfyobi_test
 
 import com.example.tajikenglish.core.di.BaseViewModel
-import com.example.tajikenglish.modules.find_alphabet_activty.Question
+import com.example.tajikenglish.modules.models.HarfyobiModel
 
 object harfyobi {
     const val USER_NAME: String = "user_name"

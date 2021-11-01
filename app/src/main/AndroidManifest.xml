@@ -23,10 +23,10 @@
             android:name=".modules.find_alphabet_activty.ResultActivity"
             android:exported="true" />
         <activity
-            android:name=".modules.find_alphabet_activty.QuizQuestionsActivity"
+            android:name=".modules.find_alphabet_activty.TestQuestionsActivity"
             android:exported="true" />
         <activity
-            android:name=".modules.find_alphabet_activty.FIndAlphabetActivity"
+            android:name=".modules.find_alphabet_activty.TestAlphabetActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"

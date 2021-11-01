@@ -1,10 +1,8 @@
 package com.example.tajikenglish.modules.find_alphabet_activty
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.tajikenglish.MainActivity
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.activity_result.*
 
@@ -20,8 +18,8 @@ class ResultActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
 
-        val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
-        val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
+        val totalQuestions = intent.getIntExtra(TestConstants.TOTAL_QUESTIONS, 0)
+        val correctAnswers = intent.getIntExtra(TestConstants.CORRECT_ANSWERS, 0)
 
         tv_score.text = "Ҷавоби дурустии шумо аз $totalQuestions -  $correctAnswers то."
 

@@ -2,12 +2,11 @@ package com.example.tajikenglish.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.example.tajikenglish.modules.models.DrawImageModel
 import com.example.tajikenglish.modules.models.DrawModel
 import com.example.tajikenglish.modules.drawsModel
 import com.example.tajikenglish.R
-import com.example.tajikenglish.modules.find_alphabet_activty.Question
-import com.example.tajikenglish.modules.harfyobi_test.HarfyobiModel
+import com.example.tajikenglish.modules.models.TestModel
+import com.example.tajikenglish.modules.models.HarfyobiModel
 import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.my_sql_open_helper.MySQLiteOpenHelper
 import com.example.tajikenglish.modules.models.NumbersModel
@@ -274,8 +273,8 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
     }
 
     @SuppressLint("Range")
-    override fun getAlphabetTest(): ArrayList<Question> {
-        val array: ArrayList<Question> = ArrayList()
+    override fun getAlphabetTest(): ArrayList<TestModel> {
+        val array: ArrayList<TestModel> = ArrayList()
         val sql = "SELECT * from AlfabetsTest"
         val mCursor = Query(sql)
         if (mCursor != null) {
@@ -290,7 +289,7 @@ class MainRepositoryImpl(val context: Context) : MainRepository, MySQLiteOpenHel
                     val optionFour = mCursor.getString(mCursor.getColumnIndex("optionFour"))
                     val correctAnswer = mCursor.getInt(mCursor.getColumnIndex("correctAnswer"))
 
-                  array.add(Question(id, question,speechAlphabet,optionOne,optionTwo,optionThree,optionFour,correctAnswer))
+                  array.add(TestModel(id, question,speechAlphabet,optionOne,optionTwo,optionThree,optionFour,correctAnswer))
                 } while (mCursor.moveToNext())
             }
             mCursor.close()

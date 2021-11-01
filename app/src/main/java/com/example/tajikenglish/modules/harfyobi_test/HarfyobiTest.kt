@@ -15,10 +15,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.tajikenglish.R
-import com.example.tajikenglish.modules.find_alphabet_activty.Constants
-import com.example.tajikenglish.modules.find_alphabet_activty.Question
+import com.example.tajikenglish.modules.find_alphabet_activty.TestConstants
 import com.example.tajikenglish.modules.find_alphabet_activty.ResultActivity
-import kotlinx.android.synthetic.main.activity_quiz_questions.*
+import com.example.tajikenglish.modules.models.HarfyobiModel
+import kotlinx.android.synthetic.main.activity_harfyobi_test.*
 import java.io.InputStream
 
 class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
@@ -115,9 +115,9 @@ class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
                             // START
                             val intent =
                                 Intent(this@HarfyobiTest, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, mUserName)
-                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                            intent.putExtra(TestConstants.USER_NAME, mUserName)
+                            intent.putExtra(TestConstants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(TestConstants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                             startActivity(intent)
                             finish()
                             // END

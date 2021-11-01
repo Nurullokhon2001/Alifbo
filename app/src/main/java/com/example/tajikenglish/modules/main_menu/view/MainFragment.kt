@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +15,7 @@ import com.example.tajikenglish.number.NumberActivity
 import com.example.tajikenglish.order.OrderActivity
 import com.example.tajikenglish.R
 import com.example.tajikenglish.alphabet.AlphabetActivity
-import com.example.tajikenglish.modules.find_alphabet_activty.FIndAlphabetActivity
-import com.example.tajikenglish.modules.harfyobi_test.HarfyobiTest
+import com.example.tajikenglish.modules.find_alphabet_activty.TestAlphabetActivity
 import com.example.tajikenglish.modules.harfyobi_test.TestHarfyobi
 import com.example.tajikenglish.modules.main_menu.adapter.MenuAdapter
 import com.example.tajikenglish.modules.main_menu.view_model.MainViewModel
@@ -70,7 +68,7 @@ class MainFragment : Fragment(), View.OnClickListener {
 
             }
             MainRepositoryImpl.KALIMASOZI -> {
-                val intent = Intent(context, FIndAlphabetActivity::class.java)
+                val intent = Intent(context, TestAlphabetActivity::class.java)
                 startActivity(intent)
             }
             MainRepositoryImpl.KALIMAYOBI -> {

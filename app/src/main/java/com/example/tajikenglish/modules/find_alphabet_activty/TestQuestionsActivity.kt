@@ -13,11 +13,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.activity_quiz_questions.*
+import com.example.tajikenglish.modules.models.TestModel
+import kotlinx.android.synthetic.main.activity_test_questions.*
 
-class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
+class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
     private var mCurrentPosition: Int = 1 // Default and the first question position
-    private var mQuestionsList: ArrayList<Question> = ArrayList()
+    private var mQuestionsList: ArrayList<TestModel> = ArrayList()
     var mp: MediaPlayer? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
@@ -38,7 +39,9 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         //This call the parent constructor
         super.onCreate(savedInstanceState)
         // This is used to align the xml view to this class
-        setContentView(R.layout.activity_quiz_questions)
+        setContentView(R.layout.activity_test_questions)
+
+
 
         // TODO (STEP 4: Get the NAME from intent and assign it the variable.)
         // START
@@ -52,7 +55,7 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         }
 
 
-        mQuestionsList = Constants.getQuestions()
+        mQuestionsList = TestConstants.getQuestions()
 
         setQuestion()
 
@@ -110,10 +113,10 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
                             // TODO (STEP 5: Now remove the toast message and launch the result screen which we have created and also pass the user name and score details to it.)
                             // START
                             val intent =
-                                Intent(this@QuizQuestionsActivity, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, mUserName)
-                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                                Intent(this@TestQuestionsActivity, ResultActivity::class.java)
+                            intent.putExtra(TestConstants.USER_NAME, mUserName)
+                            intent.putExtra(TestConstants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(TestConstants.TOTAL_QUESTIONS, mQuestionsList!!.size)
                             startActivity(intent)
                             finish()
                             // END
@@ -186,7 +189,7 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         )
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(
-            this@QuizQuestionsActivity,
+            this@TestQuestionsActivity,
             R.drawable.selected_option_border_bg
         )
     }
@@ -206,7 +209,7 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
             option.setTextColor(Color.parseColor("#7A8089"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(
-                this@QuizQuestionsActivity,
+                this@TestQuestionsActivity,
                 R.drawable.default_option_border_bg
             )
         }
@@ -221,25 +224,25 @@ class QuizQuestionsActivity : AppCompatActivity(),View.OnClickListener {
 
             1 -> {
                 tv_option_one.background = ContextCompat.getDrawable(
-                    this@QuizQuestionsActivity,
+                    this@TestQuestionsActivity,
                     drawableView
                 )
             }
             2 -> {
                 tv_option_two.background = ContextCompat.getDrawable(
-                    this@QuizQuestionsActivity,
+                    this@TestQuestionsActivity,
                     drawableView
                 )
             }
             3 -> {
                 tv_option_three.background = ContextCompat.getDrawable(
-                    this@QuizQuestionsActivity,
+                    this@TestQuestionsActivity,
                     drawableView
                 )
             }
             4 -> {
                 tv_option_four.background = ContextCompat.getDrawable(
-                    this@QuizQuestionsActivity,
+                    this@TestQuestionsActivity,
                     drawableView
                 )
             }

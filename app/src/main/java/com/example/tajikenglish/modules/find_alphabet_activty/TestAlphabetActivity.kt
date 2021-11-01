@@ -7,7 +7,7 @@ import android.view.View
 import com.example.tajikenglish.R
 import kotlinx.android.synthetic.main.activity_find_alphabet.*
 
-class FIndAlphabetActivity : AppCompatActivity() {
+class TestAlphabetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_alphabet)
@@ -18,7 +18,7 @@ class FIndAlphabetActivity : AppCompatActivity() {
 
 
 
-            val intent = Intent(this, QuizQuestionsActivity::class.java)
+            val intent = Intent(this, TestQuestionsActivity::class.java)
 
             startActivity(intent)
             finish()

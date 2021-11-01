@@ -7,7 +7,7 @@
     android:gravity="center"
     android:background="@drawable/ic_bg"
     android:orientation="vertical"
-    tools:context=".modules.find_alphabet_activty.FIndAlphabetActivity"
+    tools:context=".modules.find_alphabet_activty.TestAlphabetActivity"
 
     >
 

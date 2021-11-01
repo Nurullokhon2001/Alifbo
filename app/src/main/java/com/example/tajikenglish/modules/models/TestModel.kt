@@ -1,13 +1,12 @@
-package com.example.tajikenglish.modules.harfyobi_test
+package com.example.tajikenglish.modules.models
 
-data class HarfyobiModel (
+data class TestModel(
     val id: Int,
     val question: String,
-    val icon: String,
     val speech: String,
     val optionOne: String,
     val optionTwo: String,
     val optionThree: String,
     val optionFour: String,
     val correctAnswer: Int
-    )
+)
