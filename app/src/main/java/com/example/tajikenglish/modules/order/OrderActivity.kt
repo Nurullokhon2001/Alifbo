@@ -199,6 +199,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
         touchHelper.startDrag(viewHolder)
     }
 
+
     private fun populateListItem() {
         var a = (0..30).random()
         var b = a + 5
@@ -248,6 +249,12 @@ gif.setImageDrawable(null)
 
         if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) mMediaPlayer!!.pause()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        offAnimation.performClick()
+    }
+
 
 
 }

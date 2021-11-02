@@ -14,15 +14,11 @@ class TestHarfyobi : AppCompatActivity() {
         // To hide the status bar.
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
+
+
         btn_start.setOnClickListener {
-
-
-
             val intent = Intent(this, HarfyobiTest::class.java)
-
             startActivity(intent)
-            finish()
-
         }
     }
 }
