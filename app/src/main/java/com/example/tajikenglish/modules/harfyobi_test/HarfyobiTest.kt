@@ -93,7 +93,7 @@ class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
             R.id.iv_image -> {
                 setQuestion2()
 
-                Toast.makeText(this, "${tv_speech}", Toast.LENGTH_SHORT).show()
+       //         Toast.makeText(this, "${tv_speech}", Toast.LENGTH_SHORT).show()
               //  audioPlayer(tv_speech)
             }
 

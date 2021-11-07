@@ -19,6 +19,7 @@ class TestHarfyobi : AppCompatActivity() {
         btn_start.setOnClickListener {
             val intent = Intent(this, HarfyobiTest::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

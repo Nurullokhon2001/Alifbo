@@ -7,6 +7,14 @@
     android:background="@drawable/img"
     >
 
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:backgroundTint="@color/toolbar"
+        android:src="@drawable/settings"
+        tools:ignore="MissingConstraints" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="wrap_content"

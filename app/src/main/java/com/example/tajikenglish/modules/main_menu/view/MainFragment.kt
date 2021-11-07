@@ -3,10 +3,13 @@ package com.example.tajikenglish.modules.main_menu.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,12 +23,14 @@ import com.example.tajikenglish.modules.harfyobi_test.TestHarfyobi
 import com.example.tajikenglish.modules.main_menu.adapter.MenuAdapter
 import com.example.tajikenglish.modules.main_menu.view_model.MainViewModel
 import com.example.tajikenglish.repository.MainRepositoryImpl
+import com.example.tajikenglish.settings.SettingsFragment
 
 
 class MainFragment : Fragment(), View.OnClickListener {
     lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MenuAdapter
     private lateinit var viewModel: MainViewModel
+    private lateinit var settings: ImageView
     override fun onAttach(context: Context) {
         super.onAttach(context)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -38,6 +43,10 @@ class MainFragment : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_mainn, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        settings=view.findViewById(R.id.settings)
+        settings.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,SettingsFragment()).addToBackStack(SettingsFragment()::class.java.simpleName).commit()
+        }
         return view
     }
 

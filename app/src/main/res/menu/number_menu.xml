@@ -13,7 +13,7 @@
     <item
         android:id="@+id/juft"
         android:enabled="true"
-        android:icon="@drawable/abcgame"
+        android:icon="@drawable/ic_baseline_menu_24"
         android:title="Чуфт" />
 
 </menu>

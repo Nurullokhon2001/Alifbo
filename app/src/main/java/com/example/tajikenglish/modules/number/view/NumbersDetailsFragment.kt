@@ -88,7 +88,7 @@ class NumbersDetailsFragment : Fragment(), View.OnClickListener {
                     audioPlayer(numbersModel.numberPlayer)
                 }
                 R.id.image -> {
-                    Toast.makeText(requireContext(),numbersModel.imagePlayer , Toast.LENGTH_SHORT).show()
+                    audioPlayer(numbersModel.imagePlayer)
                 }
 
             }

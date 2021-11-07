@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splashscreenvector2"
+    android:gravity="center"
     tools:context=".settings.SettingsFragment">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/Alifbo"
+        android:layout_width="wrap_content"
+        android:textColor="#15A4ED"
+        android:layout_height="wrap_content"
+  android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:text="Алифбо" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/Insho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Alifbo"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:text="Барномаи Алифбо барои худомӯзиши харфу, рақамхо аз тарaфи
+СММ ва Алгоритми нав пешкаш шудааст."
+        android:textColor="#4A92B8"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/Insho"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:text="Гуруҳи барномасозон:"
+        android:textColor="#496777"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/developerLead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Рoҳбар: Абуаҳад Файзуллоев"
+        android:textColor="#4DA7D6"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/developers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/developerLead"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="1)Раҳматова Мутриба\n
+2)Нурматова Маҳинахон\n
+3)Раҳимбоева Манижа\n
+4)Сафаров Сабурҷон\n
+5)Олимов Нуруллохон
+"
+        android:textColor="#4DA7D6"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/ItRun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/developers"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Барои дархосту пешниҳодҳо:\n
+itruntj@gmail.com
+"
+        android:textColor="#0B6898"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
+
+</ScrollView>

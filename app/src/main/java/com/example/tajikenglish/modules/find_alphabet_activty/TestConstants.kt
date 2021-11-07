@@ -14,8 +14,6 @@ object TestConstants  {
 
 
 
-
-
     fun getQuestions(): ArrayList<TestModel> {
 
         var baseViewModel : BaseViewModel = BaseViewModel()
