@@ -96,7 +96,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     2 -> {
                         Glide.with(this).load(R.drawable.gif1).into(gif)
@@ -104,7 +104,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     3 -> {
                         Glide.with(this).load(R.drawable.gif2).into(gif)
@@ -113,7 +113,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     4 -> {
                         Glide.with(this).load(R.drawable.gif3).into(gif)
@@ -122,7 +122,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     5 -> {
                         Glide.with(this).load(R.drawable.gif5).into(gif)
@@ -131,7 +131,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     6 -> {
                         Glide.with(this).load(R.drawable.gif6).into(gif)
@@ -140,7 +140,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     7 -> {
                         Glide.with(this).load(R.drawable.gif7).into(gif)
@@ -149,7 +149,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     8 -> {
                         Glide.with(this).load(R.drawable.gif8).into(gif)
@@ -158,7 +158,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     9 -> {
                         Glide.with(this).load(R.drawable.gif9).into(gif)
@@ -166,7 +166,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
                     else -> {
                         Glide.with(this).load(R.drawable.gif).into(gif)
@@ -175,7 +175,7 @@ class OrderActivity : AppCompatActivity(), OnStartDragListener {
                         Handler().postDelayed({
                             timer()
 
-                        }, 11000)
+                        }, 10000)
                     }
 
 
