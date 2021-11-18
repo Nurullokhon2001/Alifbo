@@ -31,7 +31,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:text="Барномаи Алифбо барои худомӯзиши ҳарфу, рақамҳо аз тарaфи
-СММ,ITrun Алгоритми нав пешкаш шудааст."
+СММ,ITrun,Алгоритми нав пешкаш шудааст."
         android:textColor="#4A92B8"
         android:textSize="30sp" />
 
