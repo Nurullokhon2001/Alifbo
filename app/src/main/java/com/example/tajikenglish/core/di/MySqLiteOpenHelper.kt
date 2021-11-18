@@ -133,7 +133,7 @@ open class MySQLiteOpenHelper(private val mContext: Context) :
 
     companion object {
         private const val TAG = "MySQLiteOpenHelper"
-        private const val DB_NAME = "alifbo8.db"
+        private const val DB_NAME = "alifbo11.db"
         private const val DB_VERSION = 2
     }
 
