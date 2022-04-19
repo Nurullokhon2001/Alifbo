@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splashscreenvector2"
     android:gravity="center"
     tools:context=".settings.SettingsFragment">
 <RelativeLayout
@@ -31,7 +30,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:text="Барномаи Алифбо барои худомӯзиши ҳарфу, рақамҳо аз тарaфи
-СММ,ITrun,Алгоритми нав пешкаш шудааст."
+СММ,ITRUN ва Алгоритми нав пешкаш шудааст."
         android:textColor="#4A92B8"
         android:textSize="30sp" />
 
@@ -74,10 +73,10 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="1)Раҳматова Мутрибахон\n
-2)Нурматова Маҳинахон\n
+2)Олимов Нуруллохон\n
 3)Раҳимбоева Манижа\n
 4)Сафаров Сабурҷон\n
-5)Олимов Нуруллохон
+5)Нурматова Маҳинахон
 "
         android:textColor="#4DA7D6"
         android:textSize="25sp" />
@@ -97,6 +96,16 @@ itruntj@gmail.com
 "
         android:textColor="#0B6898"
         android:textSize="20sp" />
+
+    <ImageView
+        android:layout_below="@id/ItRun"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/itrun"
+
+        />
+
 
 
 </RelativeLayout>
