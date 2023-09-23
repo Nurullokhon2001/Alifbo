@@ -12,10 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.modules.models.DrawModel
 import com.encom.dynamicview.vm.DrawViewModel
-import com.example.tajikenglish.alphabet.view.AlphabetsDetailsFragment
-import com.example.tajikenglish.alphabet.view.AlphabetsFragment
-import com.example.tajikenglish.modules.models.AlphabetsModel
-import kotlinx.android.synthetic.main.item_view_alphabet_cview.*
+
 
 
 class AlphabetButtonDrawFragment : Fragment(), View.OnClickListener {

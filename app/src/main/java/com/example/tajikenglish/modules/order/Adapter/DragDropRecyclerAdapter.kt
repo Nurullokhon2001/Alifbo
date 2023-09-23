@@ -12,7 +12,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tajikenglish.modules.models.OrderModel
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.order_recyclerview_item.view.*
 import java.io.InputStream
 import java.util.*
 import kotlin.collections.ArrayList
@@ -51,7 +50,7 @@ class DragDropRecyclerAdapter(
         val orderArrayPosition = orderArray[position]
         holder.bind(orderArrayPosition, context)
 
-        holder.itemView.imageView.setOnTouchListener { _, event ->
+        holder.imageView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 this.startDragListener.onStartDrag(holder)
             }
@@ -65,6 +64,7 @@ class DragDropRecyclerAdapter(
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewAlphabet: ImageView = itemView.findViewById(R.id.imageViewAlphabet)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
         fun bind(data: OrderModel, context: Context) {
             try {

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tajikenglish">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".App"
+        android:name="com.example.tajikenglish.App"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -14,22 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TajikEnglish">
         <activity
-            android:name=".modules.harfyobi_test.HarfyobiTest"
+            android:name="com.example.tajikenglish.modules.harfyobi_test.HarfyobiTest"
             android:exported="true" />
         <activity
-            android:name=".modules.harfyobi_test.TestHarfyobi"
+            android:name="com.example.tajikenglish.modules.harfyobi_test.TestHarfyobi"
             android:exported="true" />
         <activity
-            android:name=".modules.find_alphabet_activty.ResultActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.ResultActivity"
             android:exported="true" />
         <activity
-            android:name=".modules.find_alphabet_activty.TestQuestionsActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.TestQuestionsActivity"
             android:exported="true" />
         <activity
-            android:name=".modules.find_alphabet_activty.TestAlphabetActivity"
+            android:name="com.example.tajikenglish.modules.find_alphabet_activty.TestAlphabetActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.tajikenglish.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,24 +38,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".order.OrderActivity"
+            android:name="com.example.tajikenglish.order.OrderActivity"
             android:exported="true"
             android:label="@string/title_activity_order"
             android:theme="@style/Theme.TajikEnglish.NoActionBar" />
         <activity
-            android:name=".alphabet.AlphabetActivity"
+            android:name="com.example.tajikenglish.alphabet.AlphabetActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DrawActivity"
+            android:name="com.example.tajikenglish.DrawActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".number.NumberActivity"
+            android:name="com.example.tajikenglish.number.NumberActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.tajikenglish.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 

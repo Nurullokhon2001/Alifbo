@@ -1,10 +1,11 @@
 package com.example.tajikenglish.modules.find_alphabet_activty
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +22,12 @@ class ResultActivity : AppCompatActivity() {
         val totalQuestions = intent.getIntExtra(TestConstants.TOTAL_QUESTIONS, 0)
         val correctAnswers = intent.getIntExtra(TestConstants.CORRECT_ANSWERS, 0)
 
-        tv_score.text = "Ҷавоби дурустии шумо аз $totalQuestions -  $correctAnswers то."
+        findViewById<TextView>(R.id.tv_score).text =
+            "Ҷавоби дурустии шумо аз $totalQuestions -  $correctAnswers то."
 
 
 
-        btn_finish.setOnClickListener {
+        findViewById<Button>(R.id.btn_finish).setOnClickListener {
             super.onBackPressed()
         }
         // END

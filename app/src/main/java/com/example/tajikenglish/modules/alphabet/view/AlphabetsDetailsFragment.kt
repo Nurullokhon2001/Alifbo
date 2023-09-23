@@ -17,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tajikenglish.modules.models.AlphabetsModel
 import com.example.tajikenglish.alphabet.vm.AlphabetsViewModel
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
 import java.io.InputStream
 
 class AlphabetsDetailsFragment : Fragment(), View.OnClickListener {

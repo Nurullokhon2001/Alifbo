@@ -15,7 +15,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.tajikenglish.modules.models.NumbersModel
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.fragment_alphabets_details.view.*
 import java.io.InputStream
 
 class NumbersDetailsFragment : Fragment(), View.OnClickListener {

@@ -5,35 +5,45 @@ import android.content.res.AssetFileDescriptor
 import android.graphics.Color
 import android.graphics.Typeface
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.tajikenglish.R
 import com.example.tajikenglish.modules.models.TestModel
-import kotlinx.android.synthetic.main.activity_test_questions.*
 
-class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
+class TestQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1 // Default and the first question position
     private var mQuestionsList: ArrayList<TestModel> = ArrayList()
     var mp: MediaPlayer? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
 
-    var tv_speech : String =" "
+    var tv_speech: String = " "
 
     // TODO (STEP 3: Create a variable for getting the name from intent.)
     // START
     private var mUserName: String? = null
     // END
 
-
+    private lateinit var tv_option_one: TextView
+    private lateinit var tv_option_two: TextView
+    private lateinit var tv_option_three: TextView
+    private lateinit var tv_option_four: TextView
+    private lateinit var tv_progress: TextView
+    private lateinit var tv_question: TextView
+    private lateinit var iv_image: ImageView
+    private lateinit var btn_submit: Button
+    private lateinit var progressBar: ProgressBar
 
 
     private var toast: String? = null
+
     /**
      * This function is auto created by Android when the Activity Class is created.
      */
@@ -44,13 +54,12 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         setContentView(R.layout.activity_test_questions)
 
 
-
         // TODO (STEP 4: Get the NAME from intent and assign it the variable.)
         // START
-       // mUserName = intent.getStringExtra(Constants.USER_NAME)
+        // mUserName = intent.getStringExtra(Constants.USER_NAME)
         // END
 
-        var back : ImageView = findViewById(R.id.back)
+        var back: ImageView = findViewById(R.id.back)
 
         back.setOnClickListener {
             super.onBackPressed()
@@ -60,6 +69,16 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         mQuestionsList = TestConstants.getQuestions()
 
         setQuestion()
+
+        tv_option_one = findViewById(R.id.tv_option_one)
+        tv_option_two = findViewById(R.id.tv_option_two)
+        tv_option_three = findViewById(R.id.tv_option_three)
+        tv_option_four = findViewById(R.id.tv_option_four)
+        tv_progress = findViewById(R.id.tv_progress)
+        tv_question = findViewById(R.id.tv_question)
+        iv_image = findViewById(R.id.iv_image)
+        btn_submit = findViewById(R.id.btn_submit)
+        progressBar = findViewById(R.id.progressBar)
 
         tv_option_one.setOnClickListener(this)
         tv_option_two.setOnClickListener(this)
@@ -92,10 +111,11 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
 
                 selectedOptionView(tv_option_four, 4)
             }
+
             R.id.iv_image -> {
                 setQuestion2()
 
-              audioPlayer(tv_speech)
+                audioPlayer(tv_speech)
             }
 
             R.id.btn_submit -> {
@@ -110,6 +130,7 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
 
                             setQuestion()
                         }
+
                         else -> {
 
                             // TODO (STEP 5: Now remove the toast message and launch the result screen which we have created and also pass the user name and score details to it.)
@@ -130,8 +151,7 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
                     // This is to check if the answer is wrong
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-                    }
-                    else {
+                    } else {
                         mCorrectAnswers++
                     }
 
@@ -155,7 +175,8 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
      */
     private fun setQuestion() {
 
-        val question = mQuestionsList!!.get(mCurrentPosition - 1) // Getting the question from the list with the help of current position.
+        val question =
+            mQuestionsList!!.get(mCurrentPosition - 1) // Getting the question from the list with the help of current position.
 
         defaultOptionsView()
 
@@ -174,7 +195,7 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
         tv_option_two.text = question.optionTwo
         tv_option_three.text = question.optionThree
         tv_option_four.text = question.optionFour
-         tv_speech  = question.speech
+        tv_speech = question.speech
     }
 
     /**
@@ -230,18 +251,21 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
                     drawableView
                 )
             }
+
             2 -> {
                 tv_option_two.background = ContextCompat.getDrawable(
                     this@TestQuestionsActivity,
                     drawableView
                 )
             }
+
             3 -> {
                 tv_option_three.background = ContextCompat.getDrawable(
                     this@TestQuestionsActivity,
                     drawableView
                 )
             }
+
             4 -> {
                 tv_option_four.background = ContextCompat.getDrawable(
                     this@TestQuestionsActivity,
@@ -252,11 +276,10 @@ class TestQuestionsActivity : AppCompatActivity(),View.OnClickListener {
     }
 
 
-
-
     private fun setQuestion2() {
 
-        val question = mQuestionsList!!.get(mCurrentPosition - 1) // Getting the question from the list with the help of current position.
+        val question =
+            mQuestionsList!!.get(mCurrentPosition - 1) // Getting the question from the list with the help of current position.
 
         defaultOptionsView()
 

@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import com.example.tajikenglish.R
-import kotlinx.android.synthetic.main.activity_find_alphabet.*
 
 class TestHarfyobi : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class TestHarfyobi : AppCompatActivity() {
 
 
 
-        btn_start.setOnClickListener {
+        findViewById<Button>(R.id.btn_start).setOnClickListener {
             val intent = Intent(this, HarfyobiTest::class.java)
             startActivity(intent)
             finish()

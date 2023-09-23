@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -18,7 +20,6 @@ import com.example.tajikenglish.R
 import com.example.tajikenglish.modules.find_alphabet_activty.TestConstants
 import com.example.tajikenglish.modules.find_alphabet_activty.ResultActivity
 import com.example.tajikenglish.modules.models.HarfyobiModel
-import kotlinx.android.synthetic.main.activity_harfyobi_test.*
 import java.io.InputStream
 
 class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
@@ -35,6 +36,15 @@ class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
     private var mUserName: String? = null
     // END
 
+    private lateinit var tv_option_one: TextView
+    private lateinit var tv_option_two: TextView
+    private lateinit var tv_option_three: TextView
+    private lateinit var tv_option_four: TextView
+    private lateinit var tv_progress: TextView
+    private lateinit var tv_question: TextView
+    private lateinit var iv_image: ImageView
+    private lateinit var btn_submit: Button
+    private lateinit var progressBar: ProgressBar
 
     private var toast: String? = null
     /**
@@ -58,6 +68,15 @@ class HarfyobiTest : AppCompatActivity(),View.OnClickListener {
         mQuestionsList = harfyobi.getQuestions()
 
         setQuestion()
+        tv_option_one = findViewById(R.id.tv_option_one)
+        tv_option_two = findViewById(R.id.tv_option_two)
+        tv_option_three = findViewById(R.id.tv_option_three)
+        tv_option_four = findViewById(R.id.tv_option_four)
+        tv_progress = findViewById(R.id.tv_progress)
+        tv_question = findViewById(R.id.tv_question)
+        iv_image = findViewById(R.id.iv_image)
+        btn_submit = findViewById(R.id.btn_submit)
+        progressBar = findViewById(R.id.progressBar)
 
         tv_option_one.setOnClickListener(this)
         tv_option_two.setOnClickListener(this)

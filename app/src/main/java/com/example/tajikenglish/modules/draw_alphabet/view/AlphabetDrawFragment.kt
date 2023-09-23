@@ -14,7 +14,6 @@ import android.graphics.drawable.Drawable
 import android.media.MediaScannerConnection
 import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,15 +21,10 @@ import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.tajikenglish.modules.models.DrawModel
-import com.example.tajikenglish.modules.models.DrawImageModel
 import com.encom.dynamicview.vm.DrawViewModel
-import com.example.tajikenglish.modules.models.AlphabetsModel
-import kotlinx.android.synthetic.main.activity_draw.*
-import kotlinx.android.synthetic.main.dialog_brush_size.*
-import kotlinx.android.synthetic.main.fragment_alphabet_draw.*
-
+import com.example.tajikenglish.modules.models.DrawModel
 import java.io.InputStream
 
 
@@ -156,24 +150,31 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
                 R.id.orange -> {
                     paintClicked(ll_paint_colors[0])
                 }
+
                 R.id.black -> {
                     paintClicked(ll_paint_colors[1])
                 }
+
                 R.id.red -> {
                     paintClicked(ll_paint_colors[2])
                 }
+
                 R.id.green -> {
                     paintClicked(ll_paint_colors[3])
                 }
+
                 R.id.blue -> {
                     paintClicked(ll_paint_colors[4])
                 }
+
                 R.id.yellow -> {
                     paintClicked(ll_paint_colors[5])
                 }
+
                 R.id.greenhigh -> {
                     paintClicked(ll_paint_colors[6])
                 }
+
                 R.id.fiolet -> {
                     paintClicked(ll_paint_colors[7])
                 }
@@ -220,8 +221,7 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
 //        itemView.setTag(alphabets)
 //        linearLayout.addView(itemView)
 
-        }
-
+    }
 
 
     override fun onRequestPermissionsResult(
@@ -265,18 +265,18 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
         val brushDialog = Dialog(requireContext())
         brushDialog.setContentView(R.layout.dialog_brush_size)
         brushDialog.setTitle("Размер кисти :")
-        val smallBtn = brushDialog.ib_small_brush
+        val smallBtn = brushDialog.findViewById<ImageButton>(R.id.ib_small_brush)
         smallBtn.setOnClickListener(View.OnClickListener {
             drawing_view.setSizeForBrush(10.toFloat())
             brushDialog.dismiss()
         })
-        val mediumBtn = brushDialog.ib_medium_brush
+        val mediumBtn = brushDialog.findViewById<ImageButton>(R.id.ib_medium_brush)
         mediumBtn.setOnClickListener(View.OnClickListener {
             drawing_view.setSizeForBrush(20.toFloat())
             brushDialog.dismiss()
         })
 
-        val largeBtn = brushDialog.ib_large_brush
+        val largeBtn = brushDialog.findViewById<ImageButton>(R.id.ib_large_brush)
         largeBtn.setOnClickListener(View.OnClickListener {
             drawing_view.setSizeForBrush(30.toFloat())
             brushDialog.dismiss()
@@ -299,8 +299,12 @@ class AlphabetDrawFragment : Fragment(), View.OnClickListener {
             // Цвет задается в соответствии с выбранным тегом здесь.
             drawing_view.setColor(colorTag)
             // Поменяйте местами фон для последней активной и текущей активной кнопки изображения.
-            imageButton.setImageDrawable(ContextCompat.getDrawable(requireContext(),
-                R.drawable.pallet_pressed))
+            imageButton.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.pallet_pressed
+                )
+            )
             mImageButtonCurrentPaint!!.setImageDrawable(
                 ContextCompat.getDrawable(
                     requireContext(),
